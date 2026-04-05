@@ -1,0 +1,149 @@
+/* Matugen integration */
+:root {
+  --s-base00: {{colors.surface.default.hex}};
+  --s-base01: {{colors.surface_container.default.hex}};
+  --s-base02: {{colors.surface_variant.default.hex}};
+  --s-base03: {{colors.outline_variant.default.hex}};
+  --s-base04: {{colors.outline.default.hex}};
+  --s-base05: {{colors.on_surface.default.hex}};
+  --s-base06: {{colors.on_surface_variant.default.hex}};
+  --s-base07: {{colors.inverse_surface.default.hex}};
+  --s-base08: {{colors.error.default.hex}};
+  --s-base09: {{colors.tertiary.default.hex}};
+  --s-base0A: {{colors.secondary.default.hex}};
+  --s-base0B: {{colors.primary_container.default.hex}};
+  --s-base0C: {{colors.tertiary_container.default.hex}};
+  --s-base0D: {{colors.primary.default.hex}};
+  --s-base0E: {{colors.secondary_container.default.hex}};
+  --s-base0F: {{colors.error_container.default.hex}};
+  --rounding: 8px;
+}
+
+/* Minimalistic and Matugen-themed Firefox UI */
+#main-window {
+  background-color: transparent !important;
+}
+
+#navigator-toolbox {
+  background-color: var(--s-base00) !important;
+  /* Apply some transparency manually or via color modifiers if supported */
+  opacity: 0.9 !important;
+  border: 3px solid var(--s-base0D) !important;
+  border-radius: var(--rounding) !important;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4) !important;
+}
+
+#nav-bar, #TabsToolbar {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#urlbar-background {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+#urlbar[focused="true"] > #urlbar-background {
+  background-color: var(--s-base0D) !important;
+  opacity: 0.2;
+}
+
+.tab-background {
+  border-radius: 10px !important;
+  margin: 2px !important;
+  background-color: var(--s-base01) !important;
+}
+
+.tab-background[selected="true"] {
+  background-color: var(--s-base0D) !important;
+}
+
+#PersonalToolbar {
+  background-color: transparent !important;
+}
+
+/* Search Bar */
+#urlbar-input-container {
+  color: var(--s-base05) !important;
+}
+
+/* Context Menus and Popups */
+menupopup, panel {
+  --panel-background: var(--s-base00) !important;
+  --panel-border-color: var(--s-base0D) !important;
+  --panel-color: var(--s-base05) !important;
+  border-radius: 10px !important;
+}
+
+/* Sidebar */
+#sidebar-box {
+  --sidebar-background-color: var(--s-base00) !important;
+  background-color: var(--s-base00) !important;
+}
+
+/* New vertical tabs / sidebar panel */
+#sidebar-main {
+  background-color: var(--s-base00) !important;
+  color: var(--s-base05) !important;
+}
+
+/* Sidebar header/toolbar */
+#sidebar-header {
+  background-color: var(--s-base01) !important;
+  color: var(--s-base05) !important;
+  border-bottom: 1px solid var(--s-base02) !important;
+}
+
+/* Sidebar inner browser/content area */
+#sidebar {
+  background-color: var(--s-base00) !important;
+  color: var(--s-base05) !important;
+}
+
+/* Sidebar items hover */
+#sidebar-main .tools-and-extensions toolbarbutton:hover,
+.sidebar-panel toolbarbutton:hover {
+  background-color: var(--s-base02) !important;
+  border-radius: 8px !important;
+}
+
+/* Active sidebar button */
+#sidebar-main .tools-and-extensions toolbarbutton[checked="true"] {
+  background-color: var(--s-base0D) !important;
+  border-radius: 8px !important;
+}
+
+/* Border between sidebar and web content */
+.sidebar-splitter {
+  width: 1px !important;
+  background-color: var(--s-base02) !important;
+}
+
+/* Vertical tabs strip */
+#vertical-tabs {
+  background-color: var(--s-base00) !important;
+}
+
+#vertical-tabs .tabbrowser-tab .tab-background {
+  background-color: transparent !important;
+}
+
+#vertical-tabs .tabbrowser-tab[selected] .tab-background {
+  background-color: var(--s-base0D) !important;
+}
+
+/* Hide some clutter */
+#TabsToolbar .titlebar-buttonbox-container {
+  display: none !important;
+}
+
+/* Customizing buttons to match theme */
+.toolbarbutton-1 {
+  fill: var(--s-base05) !important;
+}
+
+.toolbarbutton-1:hover {
+  background-color: var(--s-base02) !important;
+  border-radius: 10px !important;
+}

@@ -4,7 +4,18 @@
   flake.nixosModules.firefox = { pkgs, ... }: {
     programs.firefox = {
       enable = true;
-      #nativeMessagingHosts.packages = [ pkgs.pywalfox-native ];
+    };
+  };
+
+  flake.homeModules.firefox = { ... }: {
+    programs.firefox = {
+      enable = true;
+      profiles.default = {
+        isDefault = true;
+        settings = {
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+        };
+      };
     };
   };
 }

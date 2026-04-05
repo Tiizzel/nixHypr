@@ -5,15 +5,20 @@
     # System-level dotfiles configuration
   };
 
-  flake.homeModules.dotfiles = { config, ... }:
+  flake.homeModules.dotfiles = { config, hostVars, ... }:
     let
-      d = "/home/tiizzel/nixHypr/dotfiles";
+      d = "/home/${hostVars.username}/nixHypr/dotfiles";
     in {
       home.file = {
         ".bashrc".source = config.lib.file.mkOutOfStoreSymlink "${d}/.bashrc";
         ".gtkrc-2.0".source = config.lib.file.mkOutOfStoreSymlink "${d}/.gtkrc-2.0";
         ".Xresources".source = config.lib.file.mkOutOfStoreSymlink "${d}/.Xresources";
-        ".zshrc".source = config.lib.file.mkOutOfStoreSymlink "${d}/.zshrc";
+
+        # Firefox userChrome/userContent
+        ".mozilla/firefox/default/chrome".source = config.lib.file.mkOutOfStoreSymlink "${d}/firefox/chrome";
+
+        # Zen Browser userChrome/userContent
+        ".zen/17tvzomm.Default Profile/chrome".source = config.lib.file.mkOutOfStoreSymlink "${d}/zen/chrome";
       };
 
       xdg.configFile = {

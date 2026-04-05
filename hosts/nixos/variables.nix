@@ -1,5 +1,7 @@
 {
   # 👤 SYSTEM & USER CONFIGURATION
+  username    = "tiizzel";
+  hostName    = "nixos";
   gitUsername = "Tiizzel";
   gitEmail    = "tiizztwitch@gmail.com";
 

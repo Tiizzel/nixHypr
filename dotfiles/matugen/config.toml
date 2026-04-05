@@ -83,3 +83,19 @@ input_path = '~/.config/matugen/templates/ohmyposh-colors.json'
 output_path = '~/.config/ohmyposh/colors.json'
 post_hook = "jq --slurpfile palette ~/.config/ohmyposh/colors.json '. + $palette[0]' ~/.config/ohmyposh/EDM115-newline.omp.json > /tmp/new_theme.json && mv /tmp/new_theme.json ~/.config/ohmyposh/EDM115-newline.omp.json"
 
+[templates.firefox_chrome]
+input_path = '~/.config/matugen/templates/firefox-userChrome.css'
+output_path = '~/nixHypr/dotfiles/firefox/chrome/userChrome.css'
+
+[templates.firefox_content]
+input_path = '~/.config/matugen/templates/firefox-userContent.css'
+output_path = '~/nixHypr/dotfiles/firefox/chrome/userContent.css'
+
+[templates.zen_chrome]
+input_path = '~/.config/matugen/templates/zen-userChrome.css'
+output_path = '~/nixHypr/dotfiles/zen/chrome/userChrome.css'
+
+[templates.zen_content]
+input_path = '~/.config/matugen/templates/zen-userContent.css'
+output_path = '~/nixHypr/dotfiles/zen/chrome/userContent.css'
+

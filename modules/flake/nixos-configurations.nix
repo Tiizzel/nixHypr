@@ -29,6 +29,7 @@ in
       config.flake.nixosModules.nix-settings
       config.flake.nixosModules.users
       config.flake.nixosModules.fonts
+      config.flake.nixosModules.nh
 
       # Desktops
       config.flake.nixosModules.plasma
@@ -47,6 +48,7 @@ in
       config.flake.nixosModules.kitty
 
       # Editors
+      config.flake.nixosModules.antigravity
       config.flake.nixosModules.vim
       config.flake.nixosModules.zed
       config.flake.nixosModules.kate
@@ -59,6 +61,7 @@ in
 
       # Browsers
       config.flake.nixosModules.firefox
+      config.flake.nixosModules.zen
 
       # CLI tools
       config.flake.nixosModules.git
