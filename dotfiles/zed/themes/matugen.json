@@ -1,0 +1,42 @@
+{
+  "$schema": "https://zed.dev/schema/themes/v0.2.0.json",
+  "name": "Matugen",
+  "author": "Tiizzel",
+  "themes": [
+    {
+      "name": "Matugen",
+      "appearance": "dark",
+      "style": {
+        "text": "#e2e2e9",
+        "text.muted": "#c5c6d0",
+        "modified": "#b1c5ff",
+        "created": "#c0c6dd",
+        "deleted": "#ffb4ab",
+        "ignored": "#8f9099",
+        "background": "#121318",
+        "panel.background": "#1a1b21",
+        "editor.background": "#1a1b21",
+        "editor.foreground": "#e2e2e9",
+        "editor.line_number": "#44464f",
+        "editor.active_line_number": "#e2e2e9",
+        "editor.gutter.background": "#1a1b21",
+        "status_bar.background": "#1e1f25",
+        "title_bar.background": "#1a1b21",
+        "tab_bar.background": "#1a1b21",
+        "tab.inactive_background": "#1a1b21",
+        "tab.active_background": "#1e1f25",
+        "syntax": {
+          "keyword": { "color": "#b1c5ff" },
+          "function": { "color": "#c0c6dd" },
+          "type": { "color": "#e1bbdd" },
+          "comment": { "color": "#8f9099" },
+          "string": { "color": "#304578" },
+          "property": { "color": "#dce2f9" },
+          "number": { "color": "#fed7f9" },
+          "boolean": { "color": "#fed7f9" },
+          "operator": { "color": "#c5c6d0" }
+        }
+      }
+    }
+  ]
+}

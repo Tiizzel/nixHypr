@@ -49,6 +49,7 @@
         "wlogout".source = config.lib.file.mkOutOfStoreSymlink "${d}/wlogout";
         "xsettingsd".source = config.lib.file.mkOutOfStoreSymlink "${d}/xsettingsd";
         "zshrc".source = config.lib.file.mkOutOfStoreSymlink "${d}/zshrc";
+        "zed/themes".source = config.lib.file.mkOutOfStoreSymlink "${d}/zed/themes";
       };
     };
 }

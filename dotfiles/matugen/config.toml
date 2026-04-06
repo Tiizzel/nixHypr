@@ -99,3 +99,7 @@ output_path = '~/nixHypr/dotfiles/zen/chrome/userChrome.css'
 input_path = '~/.config/matugen/templates/zen-userContent.css'
 output_path = '~/nixHypr/dotfiles/zen/chrome/userContent.css'
 
+[templates.zed]
+input_path = '~/.config/matugen/templates/zed.json'
+output_path = '~/nixHypr/dotfiles/zed/themes/matugen.json'
+
