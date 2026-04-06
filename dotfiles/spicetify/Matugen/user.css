@@ -1,0 +1,55 @@
+:root {
+    --corner-radius: 10px;
+    --bar-cover-art-size: 40px;
+    --scrollbar-vertical-size: 10px;
+    --scrollbar-horizontal-size: 10px;
+    --bar-height: 90px;
+    --main-gap: 10px;
+}
+
+/* Dribbblish Font Definitions (Standard) */
+@font-face {
+    font-family: "Google Sans Display";
+    src: url("glue-resources/fonts/GoogleSansDisplayRegular.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+}
+/* ... truncated fonts for brevity in template, but I'll include the main logic ... */
+
+body {
+    --glue-font-family: "Google Sans Display", "Roboto", spotify-circular, sans-serif;
+    font-family: var(--glue-font-family);
+}
+
+.global-nav .Root__top-container {
+    grid-template-areas:
+        "top-banner top-banner top-banner"
+        "global-nav global-nav global-nav"
+        "left-sidebar main-view right-sidebar"
+        "left-sidebar now-playing-bar now-playing-bar" !important;
+    grid-template-rows: auto auto 1fr auto;
+}
+
+.Root__now-playing-bar {
+    background-color: var(--spice-player);
+    border-radius: 0 0 var(--corner-radius) var(--corner-radius) !important;
+}
+
+.main-nowPlayingBar-container {
+    background-color: unset;
+    background: radial-gradient(ellipse at right 50% bottom -80px, rgba(var(--spice-rgb-sidebar), 0.55), var(--spice-main) 60%) !important;
+    border-radius: 0 0 var(--corner-radius) var(--corner-radius) !important;
+}
+
+/* Matugen Overrides for better integration */
+:root {
+    --spice-main: #121318;
+    --spice-sidebar: #1e1f25;
+    --spice-player: #1a1b21;
+    --spice-card: #33343a;
+    --spice-text: #e2e2e9;
+    --spice-button: #b1c5ff;
+    --spice-button-active: #dae2ff;
+    --spice-tab-active: #dce2f9;
+    --corner-radius: 12px;
+}

@@ -50,6 +50,7 @@
         "xsettingsd".source = config.lib.file.mkOutOfStoreSymlink "${d}/xsettingsd";
         "zshrc".source = config.lib.file.mkOutOfStoreSymlink "${d}/zshrc";
         "zed/themes".source = config.lib.file.mkOutOfStoreSymlink "${d}/zed/themes";
+        "Antigravity/User/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${d}/antigravity/settings.json";
       };
     };
 }

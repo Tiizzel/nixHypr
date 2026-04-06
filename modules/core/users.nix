@@ -17,6 +17,8 @@
         config.flake.homeModules.dotfiles
         config.flake.homeModules.firefox
         config.flake.homeModules.zen
+        config.flake.homeModules.vesktop
+        config.flake.homeModules.spicetify
       ];
       home.stateVersion = "25.11";
     };

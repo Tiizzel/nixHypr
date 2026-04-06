@@ -1,0 +1,20 @@
+:root {
+  --text: #e2e2e9;
+  --subtext: #c5c6d0;
+  --main: #121318;
+  --main-elevated: #282a2f;
+  --highlight: #b1c5ff;
+  --highlight-elevated: #b1c5ff;
+  --sidebar: #1a1b21;
+  --player: #1e1f25;
+  --card: #1a1b21;
+  --shadow: #000000;
+  --selected-row: #33343a;
+  --button: #b1c5ff;
+  --button-active: #dae2ff;
+  --button-disabled: #8f9099;
+  --tab-active: #304578;
+  --notification: #404659;
+  --notification-error: #93000a;
+  --misc: #c5c6d0;
+}

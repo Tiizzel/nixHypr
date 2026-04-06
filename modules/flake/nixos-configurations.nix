@@ -84,6 +84,8 @@ in
       config.flake.nixosModules.vlc
       config.flake.nixosModules.images
       config.flake.nixosModules.background
+      config.flake.nixosModules.vesktop
+      config.flake.nixosModules.spicetify
 
       # Utilities
       config.flake.nixosModules.rofi

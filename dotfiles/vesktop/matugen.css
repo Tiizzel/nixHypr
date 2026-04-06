@@ -1,0 +1,30 @@
+/**
+ * @name Matugen
+ * @author Tiizzel
+ * @version 1.0.0
+ * @description Matugen theme for Vesktop (Midnight base)
+ */
+
+@import url('https://refact0r.github.io/midnight-discord/build/midnight.css');
+
+:root {
+    --bg-1: #121318;
+    --bg-2: #1a1b21;
+    --bg-3: #1e1f25;
+    --bg-4: #282a2f;
+
+    --accent-1: #b1c5ff;
+    --accent-2: #c0c6dd;
+    --accent-3: #e1bbdd;
+    --accent-4: #304578;
+    --accent-5: #404659;
+
+    --text-1: #e2e2e9;
+    --text-2: #c5c6d0;
+    --text-3: #8f9099;
+    --text-4: #44464f;
+
+    --window-padding: 8px;
+    --window-roundness: 12px;
+    --font: 'gg sans', sans-serif;
+}

@@ -103,3 +103,19 @@ output_path = '~/nixHypr/dotfiles/zen/chrome/userContent.css'
 input_path = '~/.config/matugen/templates/zed.json'
 output_path = '~/nixHypr/dotfiles/zed/themes/matugen.json'
 
+[templates.vesktop]
+input_path = '~/.config/matugen/templates/vesktop.css'
+output_path = '~/nixHypr/dotfiles/vesktop/matugen.css'
+
+[templates.spicetify_css]
+input_path = '~/.config/matugen/templates/spicetify-user.css'
+output_path = '~/nixHypr/dotfiles/spicetify/Matugen/user.css'
+
+[templates.spicetify_ini]
+input_path = '~/.config/matugen/templates/spicetify-color.ini'
+output_path = '~/nixHypr/dotfiles/spicetify/Matugen/color.ini'
+
+[templates.antigravity]
+input_path = '~/.config/matugen/templates/antigravity.json'
+output_path = '~/nixHypr/dotfiles/antigravity/settings.json'
+
