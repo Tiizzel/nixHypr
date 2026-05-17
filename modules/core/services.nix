@@ -1,7 +1,7 @@
 { inputs, config, ... }:
 
 {
-  flake.nixosModules.services = { pkgs, ... }: {
+  flake.nixosModules.services = { pkgs, config, ... }: {
     services = {
       upower.enable = true; # noctalia/quickshell battery reporting
       libinput.enable = true; # Input Handling
@@ -19,8 +19,5 @@
       };
       gnome.gnome-keyring.enable = true;
     };
-
-    # Enable SSH agent system-wide to manage your SSH keys
-    programs.ssh.startAgent = true;
   };
 }
