@@ -24,6 +24,7 @@ in
 
       # Core modules
       config.flake.nixosModules.boot
+      config.flake.nixosModules.drivers
       config.flake.nixosModules.locale
       config.flake.nixosModules.networking
       config.flake.nixosModules.nix-settings
@@ -89,6 +90,10 @@ in
       config.flake.nixosModules.background
       config.flake.nixosModules.vesktop
       config.flake.nixosModules.spicetify
+
+      # Games
+      config.flake.nixosModules.gaming-support
+      config.flake.nixosModules.steam
 
       # Utilities
       config.flake.nixosModules.rofi

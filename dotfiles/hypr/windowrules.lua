@@ -71,6 +71,11 @@ rule("dotfiles-floating", nil, { float = true, center = true, size = "1000 700" 
 -- Dotfiles Sidepad
 rule("dotfiles-sidepad", nil, { float = true, pin = true, center = true, size = "1000 700" })
 
+-- TaterClient / DDNet fullscreen on launch
+rule(".*[Dd][Dd][Nn]et.*", nil, { fullscreen = true })
+rule(".*[Tt]ater[Cc]lient.*", nil, { fullscreen = true })
+
+
 -- Browser Exclusions (opaque, no opacity adjustments, no blur) using class or tag matchers
 hl.window_rule({ match = { class = "^(firefox|zen|zen-beta|chromium|google-chrome|brave-browser|librewolf|opera|vivaldi-stable|waterfox|Thorium-browser|zen-browser)$" }, tag = "browser" })
 
@@ -80,3 +85,18 @@ hl.window_rule({
     opaque = true,
     no_blur = true
 })
+
+-- Games Exclusions (disable blur, force fullscreen, allow tearing/immediate presentation)
+hl.window_rule({ match = { class = "^(gamescope)$" }, tag = "games" })
+hl.window_rule({ match = { class = "^(steam_app_\\d+)$" }, tag = "games" })
+
+hl.window_rule({
+    match = { tag = "games" },
+    fullscreen = true,
+    no_blur = true,
+    immediate = true
+})
+
+-- Idle Inhibition for Fullscreen Windows
+hl.window_rule({ match = { fullscreen = true }, idle_inhibit = "fullscreen" })
+

@@ -21,6 +21,8 @@
 
   # 📦 FEATURE TOGGLES
   thunarEnable    = true;
+  gamingSupportEnable = true;
+  steamEnable     = true;
 
   # 🎨 THEMING & AESTHETICS
   barChoice = "noctalia"; # or "waybar"

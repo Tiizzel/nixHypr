@@ -54,6 +54,10 @@ hl.config({
         force_zero_scaling = true,
     },
 
+    render = {
+        direct_scanout = false,
+    },
+
     -- -----------------------------------------------------
     -- Keyboard Layout
     -- -----------------------------------------------------
@@ -83,6 +87,7 @@ hl.config({
         },
         layout = "dwindle",
         resize_on_border = true,
+        allow_tearing = true,
     },
 
     -- -----------------------------------------------------
