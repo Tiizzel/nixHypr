@@ -76,12 +76,12 @@ PanelWindow {
     }
 
     // Default fallback folder just in case the file doesn't exist
-    property string wallpaperFolder: "file://" + Quickshell.env("HOME") + "/.config/ml4w/wallpapers"
+    property string wallpaperFolder: "file://" + Quickshell.env("HOME") + "/.config/nixHypr/wallpapers"
 
     Process {
         id: folderLoader
         // Call cat directly and pass the path as the second array item
-        command: ["cat", Quickshell.env("HOME") + "/.config/ml4w/settings/wallpaper-folder"]
+        command: ["cat", Quickshell.env("HOME") + "/.config/nixHypr/settings/wallpaper-folder"]
         running: true
         
         stdout: StdioCollector {
@@ -103,7 +103,7 @@ PanelWindow {
     }
 
     // --- REUSABLE COMPONENTS ---
-    component ML4WMenuItem: MenuItem {
+    component NixHyprMenuItem: MenuItem {
         id: control
         contentItem: Text {
             text: control.text
@@ -195,31 +195,31 @@ PanelWindow {
                             radius: 8 
                         }
                         
-                        ML4WMenuItem { 
+                        NixHyprMenuItem { 
                             text: "Random Wallpaper"
                             onClicked: {
                                 root.isOpen = false
-                                Quickshell.execDetached(["bash", "-c", Quickshell.env("HOME") + "/.config/ml4w/scripts/ml4w-wallpaper --random"])
+                                Quickshell.execDetached(["bash", "-c", Quickshell.env("HOME") + "/.config/nixHypr/scripts/nixHypr-wallpaper --random"])
                             } 
                         }
                         
-                        ML4WMenuItem { 
+                        NixHyprMenuItem { 
                             text: "Wallpaper Effects"
                             onClicked: {
                                 root.isOpen = false
-                                Quickshell.execDetached(["bash", "-c", Quickshell.env("HOME") + "/.config/ml4w/scripts/ml4w-wallpaper-effects"])
+                                Quickshell.execDetached(["bash", "-c", Quickshell.env("HOME") + "/.config/nixHypr/scripts/nixHypr-wallpaper-effects"])
                             } 
                         }
 
-                        ML4WMenuItem { 
+                        NixHyprMenuItem { 
                             text: "Clear Wallpaper Cache"
                             onClicked: {
                                 root.isOpen = false
-                                Quickshell.execDetached(["bash", "-c", Quickshell.env("HOME") + "/.config/ml4w/scripts/ml4w-clear-wallpaper-cache"])
+                                Quickshell.execDetached(["bash", "-c", Quickshell.env("HOME") + "/.config/nixHypr/scripts/nixHypr-clear-wallpaper-cache"])
                             } 
                         }
 
-                        ML4WMenuItem { 
+                        NixHyprMenuItem { 
                             text: "Reload Images"
                             onClicked: {
                                 folderLoader.running = true;
@@ -361,7 +361,7 @@ PanelWindow {
                             cursorShape: Qt.PointingHandCursor
                             
                             onClicked: {
-                                let scriptPath = Quickshell.env("HOME") + "/.config/ml4w/scripts/ml4w-wallpaper";
+                                let scriptPath = Quickshell.env("HOME") + "/.config/nixHypr/scripts/nixHypr-wallpaper";
                                 Quickshell.execDetached(["bash", "-c", scriptPath + " '" + model.filePath + "'"]);
                             }
                         }

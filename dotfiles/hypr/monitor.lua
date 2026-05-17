@@ -1,0 +1,23 @@
+-- -----------------------------------------------------
+-- Monitors
+-- -----------------------------------------------------
+
+hl.monitor({
+    output = "DP-1",
+    mode = "5120x1440@240.0",
+    position = "0x0",
+    scale = 1.0,
+    bitdepth = 10,
+    cm = "hdr",
+    sdrbrightness = 1.33,
+    sdrsaturation = 1.18,
+})
+
+-- Workspace Rules
+for i = 1, 6 do
+    hl.workspace_rule({
+        workspace = tostring(i),
+        monitor = "DP-1",
+        default = (i == 1)
+    })
+end

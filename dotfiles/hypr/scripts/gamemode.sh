@@ -7,38 +7,38 @@
 # 
 
 
-ml4w_cache_folder="$HOME/.cache/ml4w/hyprland-dotfiles"
+nixHypr_cache_folder="$HOME/.cache/nixHypr/hyprland-dotfiles"
 gamemode_monitor="$HOME/.config/hypr/conf/monitors/gamemode.conf"
 
 # Notifications
-source "$HOME/.config/ml4w/scripts/ml4w-notification-handler"
+source "$HOME/.config/nixHypr/scripts/nixHypr-notification-handler"
 APP_NAME="System"
 NOTIFICATION_ICON="joystick"
 
 
-if [ -f $HOME/.config/ml4w/settings/gamemode-enabled ]; then
-  if [ -f $ml4w_cache_folder/last_monitor.conf ]; then
-    cat $ml4w_cache_folder/last_monitor.conf > $HOME/.config/hypr/conf/monitor.conf
-    rm $ml4w_cache_folder/last_monitor.conf
+if [ -f $HOME/.config/nixHypr/settings/gamemode-enabled ]; then
+  if [ -f $nixHypr_cache_folder/last_monitor.conf ]; then
+    cat $nixHypr_cache_folder/last_monitor.conf > $HOME/.config/hypr/conf/monitor.conf
+    rm $nixHypr_cache_folder/last_monitor.conf
   fi
-  if [ -f $ml4w_cache_folder/restart-wpauto ]; then
-    rm $ml4w_cache_folder/restart-wpauto
-    $HOME/.config/ml4w/scripts/ml4w-wallpaper-automation &
+  if [ -f $nixHypr_cache_folder/restart-wpauto ]; then
+    rm $nixHypr_cache_folder/restart-wpauto
+    $HOME/.config/nixHypr/scripts/nixHypr-wallpaper-automation &
   fi
   hyprctl reload
-  rm $HOME/.config/ml4w/settings/gamemode-enabled
+  rm $HOME/.config/nixHypr/settings/gamemode-enabled
   notify_user --a "${APP_NAME}" \
             --i "${NOTIFICATION_ICON}" \
             --s "Gamemode deactivated" \
             --m "Animations and blur are now enabled."
 else
   if [ -f $gamemode_monitor ]; then
-    cat $HOME/.config/hypr/conf/monitor.conf > $ml4w_cache_folder/last_monitor.conf
+    cat $HOME/.config/hypr/conf/monitor.conf > $nixHypr_cache_folder/last_monitor.conf
     echo "source = $gamemode_monitor" > $HOME/.config/hypr/conf/monitor.conf
   fi
-  if [ -f $ml4w_cache_folder/wallpaper-automation ]; then
-    touch $ml4w_cache_folder/restart-wpauto
-    $HOME/.config/ml4w/scripts/ml4w-wallpaper-automation
+  if [ -f $nixHypr_cache_folder/wallpaper-automation ]; then
+    touch $nixHypr_cache_folder/restart-wpauto
+    $HOME/.config/nixHypr/scripts/nixHypr-wallpaper-automation
   fi
   hyprctl --batch "\
     keyword animations:enabled 0;\
@@ -51,7 +51,7 @@ else
     keyword decoration:inactive_opacity 1;\
     keyword decoration:fullscreen_opacity 1;\
     keyword decoration:rounding 0"
-  touch $HOME/.config/ml4w/settings/gamemode-enabled
+  touch $HOME/.config/nixHypr/settings/gamemode-enabled
   notify_user --a "${APP_NAME}" \
           --i "${NOTIFICATION_ICON}" \
           --s "Gamemode activated" \

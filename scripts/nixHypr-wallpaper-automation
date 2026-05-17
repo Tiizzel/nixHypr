@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+#     _         _         __        ______
+#    / \  _   _| |_ ___   \ \      / /  _ \
+#   / _ \| | | | __/ _ \   \ \ /\ / /| |_) |
+#  / ___ \ |_| | || (_) |   \ V  V / |  __/
+# /_/   \_\__,_|\__\___/     \_/\_/  |_|
+#
+
+nixHypr_cache_folder="$HOME/.cache/nixHypr/hyprland-dotfiles"
+
+# Notifications
+source "$HOME/.config/nixHypr/scripts/nixHypr-notification-handler"
+APP_NAME="Waypaper"
+NOTIFICATION_ICON="preferences-desktop-wallpaper-symbolic"
+
+sec=$(cat ~/.config/nixHypr/settings/wallpaper-automation)
+_setWallpaperRandomly() {
+    $HOME/.config/nixHypr/scripts/nixHypr-wallpaper --random
+    echo ":: Next wallpaper in $sec seconds..."
+    sleep $sec
+    _setWallpaperRandomly
+}
+
+if [ ! -f $nixHypr_cache_folder/wallpaper-automation ]; then
+    touch $nixHypr_cache_folder/wallpaper-automation
+    echo ":: Start wallpaper automation script"
+    notify_user \
+        --a "${APP_NAME}" \
+        --i "${NOTIFICATION_ICON}" \
+        --m "Wallpaper automation process started.\nWallpaper will be changed every $sec seconds."
+    _setWallpaperRandomly
+else
+    rm $nixHypr_cache_folder/wallpaper-automation
+    notify_user \
+        --a "${APP_NAME}" \
+        --i "${NOTIFICATION_ICON}" \
+        --m "Wallpaper automation process stopped."
+    echo ":: Wallpaper automation script process $wp stopped"
+    wp=$(pgrep -f nixHypr-wallpaper-automation)
+    kill -KILL $wp
+fi

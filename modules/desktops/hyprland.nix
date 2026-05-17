@@ -33,6 +33,7 @@
       hyprlock
       hypridle
       hyprpaper
+      swww
       hyprpicker
       hyprcursor
       hyprsunset
@@ -51,7 +52,14 @@
       slurp
       grim
       grimblast
-      uwsm
+      imagemagick
+      ffmpeg
+      inotify-tools
+      playerctl
+      pavucontrol
+      pamixer
+      networkmanager
+      bluez
     ];
 
     environment.sessionVariables = {

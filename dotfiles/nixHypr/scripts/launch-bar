@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# This script is called by various components (wallpaper script, themes, listeners)
+# to launch the correct bar based on the user's Nix configuration.
+
+BAR_CHOICE=$(cat "$HOME/.config/nixHypr-bar-choice" 2>/dev/null || echo "waybar")
+
+if [ "$BAR_CHOICE" == "waybar" ]; then
+    # Launch or restart Waybar using its existing launch script
+    bash "$HOME/.config/waybar/launch.sh"
+elif [ "$BAR_CHOICE" == "noctalia" ]; then
+    # Kill any existing noctalia instance
+    killall noctalia 2>/dev/null || true
+    pkill noctalia 2>/dev/null || true
+    sleep 0.5
+    
+    # Start noctalia
+    nohup noctalia > /dev/null 2>&1 &
+else
+    echo "Unknown bar choice: $BAR_CHOICE. Defaulting to waybar."
+    bash "$HOME/.config/waybar/launch.sh"
+fi

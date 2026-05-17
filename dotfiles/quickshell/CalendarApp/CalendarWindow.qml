@@ -115,8 +115,8 @@ PanelWindow {
         }
     }
 
-    // Styled ML4W Button for the "Today" action
-    component ML4WButton: Button {
+    // Styled NixHypr Button for the "Today" action
+    component NixHyprButton: Button {
         background: Rectangle {
             color: "transparent"
             border.color: Theme.primary
@@ -256,7 +256,7 @@ PanelWindow {
                     }
                 }
 
-                ML4WButton {
+                NixHyprButton {
                     anchors.right: parent.right
                     anchors.verticalCenter: parent.verticalCenter
                     text: "Today"

@@ -17,18 +17,18 @@
 prompt='Screenshot'
 mesg="DIR: ~/Screenshots"
 
-SAVE_DIR=$(cat ~/.config/ml4w/settings/screenshot-folder)
-SAVE_FILENAME=$(cat ~/.config/ml4w/settings/screenshot-filename)
+SAVE_DIR=$(cat ~/.config/nixHypr/settings/screenshot-folder)
+SAVE_FILENAME=$(cat ~/.config/nixHypr/settings/screenshot-filename)
 eval screenshot_folder="$SAVE_DIR"
 eval NAME="$SAVE_FILENAME"
 
 # Notifications
-source "$HOME/.config/ml4w/scripts/ml4w-notification-handler"
+source "$HOME/.config/nixHypr/scripts/nixHypr-notification-handler"
 APP_NAME="Screen Capture"
 NOTIFICATION_ICON="camera-photo-symbolic"
 
 # Screenshot Editor
-export GRIMBLAST_EDITOR="$(cat ~/.config/ml4w/settings/screenshot-editor)"
+export GRIMBLAST_EDITOR="$(cat ~/.config/nixHypr/settings/screenshot-editor)"
 
 # Example for keybindings
 # bind = SUPER, p, exec, grimblast save active

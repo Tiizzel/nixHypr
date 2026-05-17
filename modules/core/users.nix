@@ -14,11 +14,12 @@
       imports = [
         config.flake.homeModules.zsh
         config.flake.homeModules.plasma
-        config.flake.homeModules.dotfiles
+        config.flake.homeModules.symlinks
         config.flake.homeModules.firefox
         config.flake.homeModules.zen
         config.flake.homeModules.vesktop
         config.flake.homeModules.spicetify
+        config.flake.homeModules.tclient
       ];
       home.stateVersion = "25.11";
     };

@@ -59,9 +59,9 @@
     // Cliphist
     "custom/cliphist": {
         "format": "",
-        "on-click": "sleep 0.1 && ~/.config/ml4w/scripts/ml4w-cliphist",
-        "on-click-right": "sleep 0.1 && ~/.config/ml4w/scripts/ml4w-cliphist d",
-        "on-click-middle": "sleep 0.1 && ~/.config/ml4w/scripts/ml4w-cliphist w",
+        "on-click": "sleep 0.1 && ~/.config/nixHypr/scripts/nixHypr-cliphist",
+        "on-click-right": "sleep 0.1 && ~/.config/nixHypr/scripts/nixHypr-cliphist d",
+        "on-click-middle": "sleep 0.1 && ~/.config/nixHypr/scripts/nixHypr-cliphist w",
         "tooltip": false
     },
 
@@ -83,9 +83,9 @@
         "tooltip-format": "{}",
         "escape": true,
         "return-type": "json",
-        "exec": "~/.config/ml4w/scripts/ml4w-check-system-updates",
+        "exec": "~/.config/nixHypr/scripts/nixHypr-check-system-updates",
         "restart-interval": 60,
-        "on-click": "~/.config/ml4w/settings/installupdates.sh",
+        "on-click": "~/.config/nixHypr/settings/installupdates.sh",
         "tooltip": false
     },
 
@@ -113,7 +113,7 @@
     // Settings
     "custom/settings": {
         "format": "",
-        "on-click": "flatpak run com.ml4w.settings",
+        "on-click": "flatpak run com.nixHypr.settings",
         "tooltip": false
     },
 
@@ -134,14 +134,14 @@
     // Browser Launcher
     "custom/browser": {
         "format": "",
-        "on-click": "~/.config/ml4w/settings/browser.sh",
+        "on-click": "~/.config/nixHypr/settings/browser.sh",
         "tooltip": false
     },
 
-    // ML4W Welcome App
-    "custom/ml4w-welcome": {
-        "on-click": "flatpak run com.ml4w.sidebar",
-        "on-click-right": "flatpak run com.ml4w.welcome",
+    // NixHypr Welcome App
+    "custom/nixHypr-welcome": {
+        "on-click": "flatpak run com.nixHypr.sidebar",
+        "on-click-right": "flatpak run com.nixHypr.welcome",
         "format": " ",
         "tooltip-format": "Open Sidebar"
     },
@@ -188,7 +188,7 @@
     // Clock
     "clock": {
         "format": "{:%H:%M %a}",
-        "on-click": "flatpak run com.ml4w.calendar",
+        "on-click": "flatpak run com.nixHypr.calendar",
         "tooltip": false
     },
 

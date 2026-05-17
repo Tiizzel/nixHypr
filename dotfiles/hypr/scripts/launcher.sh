@@ -1,22 +1,11 @@
 #!/usr/bin/env bash
 
 # -----------------------------------------------------
-# Load Launcher
+# Launcher Script
 # -----------------------------------------------------
-launcher=$(cat $HOME/.config/ml4w/settings/launcher)
 
-# Use Walker
-_launch_walker() {
-    $HOME/.config/walker/launch.sh --height 500
-}
-
-# Use Rofi
-_launch_rofi() {
-    pkill rofi || rofi -show drun -replace -i  
-}
-
-if [ "$launcher" == "walker" ]; then
-    _launch_walker
+if pgrep -x "quickshell" > /dev/null; then
+    quickshell ipc -c nixHypr-shell call shell launcher toggle
 else
-    _launch_rofi
+    rofi -show drun
 fi

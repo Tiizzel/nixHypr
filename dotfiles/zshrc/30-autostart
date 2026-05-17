@@ -5,7 +5,7 @@
 # The 'ff' command (Fuzzy Finder)
 finder() {
     # Run the script and capture the result
-    local result=$($HOME/.config/ml4w/bin/ml4w-finder)
+    local result=$($HOME/.config/nixHypr/bin/nixHypr-finder)
 
     # Check if the script told us to CD
     if [[ "$result" == TYPE_DIR:* ]]; then
@@ -25,7 +25,7 @@ finder() {
 # Fastfetch
 # -----------------------------------------------------
 if [[ $(tty) == *"pts"* ]]; then
-    if [ ! -f $HOME/.config/ml4w/settings/hide-fastfetch ]; then
+    if [ ! -f $HOME/.config/nixHypr/settings/hide-fastfetch ]; then
         fastfetch
     fi
 fi

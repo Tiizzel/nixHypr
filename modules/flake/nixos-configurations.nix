@@ -27,6 +27,7 @@ in
       config.flake.nixosModules.locale
       config.flake.nixosModules.networking
       config.flake.nixosModules.nix-settings
+      config.flake.nixosModules.cachix
       config.flake.nixosModules.users
       config.flake.nixosModules.fonts
       config.flake.nixosModules.nh
@@ -77,7 +78,7 @@ in
       config.flake.nixosModules.matugen
       config.flake.nixosModules.gtk
       config.flake.nixosModules.qt
-      config.flake.nixosModules.dotfiles
+      config.flake.nixosModules.symlinks
 
       # Media
       config.flake.nixosModules.cava

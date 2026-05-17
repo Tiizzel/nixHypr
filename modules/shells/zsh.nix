@@ -8,8 +8,8 @@
       v = "nvim";
       c = "clear";
       fr = "nh os switch";
-      tu = "nh os switch --update";
-      tc = "nh clean all";
+      fu = "nh os switch --update";
+      fc = "nh clean all";
     };
     environment.systemPackages = [
       pkgs.oh-my-posh

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-theme_file="$HOME/.config/ml4w/settings/waybar-theme.sh"
-default_theme="ml4w-glass-center"
+theme_file="$HOME/.config/nixHypr/settings/waybar-theme.sh"
+default_theme="nixHypr-glass-center"
 
 if [ -f "$theme_file" ]; then
     themestyle=$(cat "$theme_file")

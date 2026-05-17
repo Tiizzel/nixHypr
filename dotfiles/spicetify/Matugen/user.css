@@ -46,10 +46,10 @@ body {
     --spice-main: #121318;
     --spice-sidebar: #1e1f25;
     --spice-player: #1a1b21;
-    --spice-card: #33343a;
-    --spice-text: #e2e2e9;
-    --spice-button: #b1c5ff;
-    --spice-button-active: #dae2ff;
-    --spice-tab-active: #dce2f9;
+    --spice-card: #34343a;
+    --spice-text: #e3e2e9;
+    --spice-button: #b4c5ff;
+    --spice-button-active: #dbe1ff;
+    --spice-tab-active: #dde1f9;
     --corner-radius: 12px;
 }

@@ -63,7 +63,7 @@ QtObject {
 
     property var themeReader: Process {
         id: reader
-        command: ["cat", Quickshell.env("HOME") + "/.config/ml4w/colors/colors.json"]
+        command: ["cat", Quickshell.env("HOME") + "/.config/nixHypr/colors/colors.json"]
         
         // REQUIRED: Quickshell needs this to parse the binary stream into text
         stdout: StdioCollector {

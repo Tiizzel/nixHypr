@@ -1,11 +1,11 @@
 # Start Quickshell in configuration folder
-qs -p ~/.config/ml4w-quickshell &
+qs -p ~/.config/nixHypr-quickshell &
 
 # Toggle Settings App
-qs -p ~/.config/ml4w-quickshell ipc call settings toggle
+qs -p ~/.config/nixHypr-quickshell ipc call settings toggle
 
 # Toggle Welcome App
-qs -p ~/.config/ml4w-quickshell ipc call welcome toggle
+qs -p ~/.config/nixHypr-quickshell ipc call welcome toggle
 
 2. Cross-App Launching
 
@@ -14,5 +14,5 @@ QML
 
 onClicked: {
     // This tells the background daemon to show the other window
-    Quickshell.execute(["qs", "-p", Quickshell.env("HOME") + "/.config/ml4w-quickshell", "ipc", "call", "settings", "open"])
+    Quickshell.execute(["qs", "-p", Quickshell.env("HOME") + "/.config/nixHypr-quickshell", "ipc", "call", "settings", "open"])
 }

@@ -7,7 +7,7 @@
     // Choose the order of the modules
     "modules-left": ["hyprland/workspaces","custom/waybarthemes"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["custom/ml4w-welcome","mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "clock", "tray"],
+    "modules-right": ["custom/nixHypr-welcome","mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "clock", "tray"],
     // Modules configuration
     "keyboard-state": {
         "numlock": true,
@@ -18,17 +18,17 @@
             "unlocked": ""
         }
     },
-    // ML4W Welcome App
-    "custom/ml4w-welcome": {
-        "on-click": "sleep 0.1 && ~/.config/ml4w/settings/ml4w-sidebar.sh",
-        "on-click-right": "sleep 0.1 && com.ml4w.welcome",
+    // NixHypr Welcome App
+    "custom/nixHypr-welcome": {
+        "on-click": "sleep 0.1 && ~/.config/nixHypr/settings/nixHypr-sidebar.sh",
+        "on-click-right": "sleep 0.1 && com.nixHypr.welcome",
         "format": " ",
         "tooltip": false
     },    
     // Waybar Themes
     "custom/waybarthemes": {
         "format": "Themes",
-        "on-click": "~/.config/ml4w/waybar/themeswitcher.sh",
+        "on-click": "~/.config/nixHypr/waybar/themeswitcher.sh",
         "tooltip": false
     },
     "sway/mode": {

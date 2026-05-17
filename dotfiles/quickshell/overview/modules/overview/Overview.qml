@@ -179,5 +179,8 @@ Scope {
         function open() {
             GlobalStates.overviewOpen = true;
         }
+        function forceReload() {
+            Quickshell.reload(true);
+        }
     }
 }

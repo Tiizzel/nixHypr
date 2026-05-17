@@ -1,0 +1,1 @@
+$(cat ~/.config/nixHypr/settings/terminal.sh) --class dotfiles-floating -e btop

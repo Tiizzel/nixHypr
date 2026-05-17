@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+echo ":: The script will install the NixHypr Hyprland Settings app."
+echo ":: Please note: The app requires Flatpak."
+if gum confirm "Do you want to proceed?"; then
+    nixHypr_app="com.nixHypr.hyprlandsettings"
+    nixHypr_app_repo="hyprland-settings"
+    echo ":: Installing $nixHypr_app"
+    bash -c "$(curl -s https://raw.githubusercontent.com/mylinuxforwork/$nixHypr_app_repo/master/setup.sh)"
+fi

@@ -12,6 +12,9 @@
       qt6.qtwayland
       qt6.qtdeclarative
       qt6.qtsvg
+      qt6.qtmultimedia
+      qt6.qtwebengine
+      qt6.qtwebsockets
 
       # alternate options
       kdePackages.qt5compat
