@@ -7,7 +7,7 @@ local HYPRSCRIPTS = "/home/tiizzel/.config/hypr/scripts"
 local SCRIPTS = "/home/tiizzel/nixHypr/scripts"
 local editor = "antigravity"
 local browser = "zen-beta"
-local filemanager = "nautilus"
+local filemanager = "thunar"
 local terminal = "kitty"
 
 -- ============= APPLICATIONS =============

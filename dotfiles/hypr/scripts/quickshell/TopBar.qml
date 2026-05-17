@@ -1257,12 +1257,12 @@ Variants {
                                 property bool isActive: barWindow.showEthernet ? (barWindow.ethStatus === "Connected") : barWindow.isWifiOn
                                 
                                 color: isActive 
-                                    ? (isHovered ? Qt.rgba(mocha.primary.r, mocha.primary.g, mocha.primary.b, 0.75) : Qt.rgba(mocha.primary.r, mocha.primary.g, mocha.primary.b, 0.55))
+                                    ? (isHovered ? Qt.rgba(mocha.mauve.r, mocha.mauve.g, mocha.mauve.b, 0.90) : mocha.mauve)
                                     : (isHovered ? Qt.rgba(mocha.surface1.r, mocha.surface1.g, mocha.surface1.b, 0.70) : Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.40))
                                     
                                 border.width: 1
                                 border.color: isActive
-                                    ? Qt.rgba(mocha.primary.r, mocha.primary.g, mocha.primary.b, 0.5)
+                                    ? mocha.mauve
                                     : Qt.rgba(mocha.text.r, mocha.text.g, mocha.text.b, 0.1)
 
                                 property real targetWidth: wifiLayoutRow.implicitWidth + barWindow.s(24)
@@ -1289,7 +1289,7 @@ Variants {
                                         anchors.verticalCenter: parent.verticalCenter; 
                                         text: barWindow.showEthernet ? "󰈀" : barWindow.wifiIcon;
                                         font.family: "Iosevka Nerd Font"; font.pixelSize: barWindow.s(16);
-                                        color: wifiPill.isActive ? mocha.primary : mocha.subtext0
+                                        color: wifiPill.isActive ? mocha.crust : mocha.subtext0
                                     }
                                     Text { 
                                         id: wifiText
@@ -1297,7 +1297,7 @@ Variants {
                                         text: barWindow.showEthernet ? barWindow.ethStatus : ((barWindow.isWifiOn ? (barWindow.wifiSsid !== "" ? barWindow.wifiSsid : "On") : "Off"))
                                         visible: text !== ""
                                         font.family: "JetBrains Mono"; font.pixelSize: barWindow.s(13); font.weight: Font.Black;
-                                        color: mocha.text
+                                        color: wifiPill.isActive ? mocha.crust : mocha.text
                                         width: Math.min(implicitWidth, barWindow.s(100)); elide: Text.ElideRight 
                                     }
                                 }
@@ -1311,12 +1311,12 @@ Variants {
                                 clip: true
                                 
                                 color: barWindow.isBtOn 
-                                    ? (isHovered ? Qt.rgba(mocha.primary.r, mocha.primary.g, mocha.primary.b, 0.75) : Qt.rgba(mocha.primary.r, mocha.primary.g, mocha.primary.b, 0.55))
+                                    ? (isHovered ? Qt.rgba(mocha.mauve.r, mocha.mauve.g, mocha.mauve.b, 0.90) : mocha.mauve)
                                     : (isHovered ? Qt.rgba(mocha.surface1.r, mocha.surface1.g, mocha.surface1.b, 0.70) : Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.40))
                                     
                                 border.width: 1
                                 border.color: barWindow.isBtOn
-                                    ? Qt.rgba(mocha.primary.r, mocha.primary.g, mocha.primary.b, 0.5)
+                                    ? mocha.mauve
                                     : Qt.rgba(mocha.text.r, mocha.text.g, mocha.text.b, 0.1)
 
                                 property real targetWidth: barWindow.isDesktop ? 0 : btLayoutRow.implicitWidth + barWindow.s(24)
@@ -1340,14 +1340,14 @@ Variants {
                                     anchors.left: parent.left
                                     anchors.leftMargin: barWindow.s(12)
                                     spacing: barWindow.s(8)
-                                    Text { anchors.verticalCenter: parent.verticalCenter; text: barWindow.btIcon; font.family: "Iosevka Nerd Font"; font.pixelSize: barWindow.s(16); color: barWindow.isBtOn ? mocha.primary : mocha.subtext0 }
+                                    Text { anchors.verticalCenter: parent.verticalCenter; text: barWindow.btIcon; font.family: "Iosevka Nerd Font"; font.pixelSize: barWindow.s(16); color: barWindow.isBtOn ? mocha.crust : mocha.subtext0 }
                                     Text { 
                                         id: btText
                                         anchors.verticalCenter: parent.verticalCenter
                                         text: barWindow.btDevice
                                         visible: text !== ""; 
                                         font.family: "JetBrains Mono"; font.pixelSize: barWindow.s(13); font.weight: Font.Black; 
-                                        color: mocha.text
+                                        color: barWindow.isBtOn ? mocha.crust : mocha.text
                                         width: Math.min(implicitWidth, barWindow.s(100)); elide: Text.ElideRight 
                                     }
                                 }
@@ -1361,12 +1361,12 @@ Variants {
                                 clip: true
                                 
                                 color: barWindow.isSoundActive 
-                                    ? (isHovered ? Qt.rgba(mocha.primary.r, mocha.primary.g, mocha.primary.b, 0.75) : Qt.rgba(mocha.primary.r, mocha.primary.g, mocha.primary.b, 0.55))
+                                    ? (isHovered ? Qt.rgba(mocha.mauve.r, mocha.mauve.g, mocha.mauve.b, 0.90) : mocha.mauve)
                                     : (isHovered ? Qt.rgba(mocha.surface1.r, mocha.surface1.g, mocha.surface1.b, 0.70) : Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.40))
                                     
                                 border.width: 1
                                 border.color: barWindow.isSoundActive
-                                    ? Qt.rgba(mocha.primary.r, mocha.primary.g, mocha.primary.b, 0.5)
+                                    ? mocha.mauve
                                     : Qt.rgba(mocha.text.r, mocha.text.g, mocha.text.b, 0.1)
                                 
                                 property real targetWidth: volLayoutRow.implicitWidth + barWindow.s(24)
@@ -1392,65 +1392,54 @@ Variants {
                                     Text { 
                                         anchors.verticalCenter: parent.verticalCenter
                                         text: barWindow.volIcon; font.family: "Iosevka Nerd Font"; font.pixelSize: barWindow.s(16); 
-                                        color: barWindow.isSoundActive ? mocha.primary : mocha.subtext0 
+                                        color: barWindow.isSoundActive ? mocha.crust : mocha.subtext0 
                                     }
                                     Text { 
                                         anchors.verticalCenter: parent.verticalCenter
                                         text: barWindow.volPercent; 
                                         font.family: "JetBrains Mono"; font.pixelSize: barWindow.s(13); font.weight: Font.Black; 
-                                        color: mocha.text 
+                                        color: barWindow.isSoundActive ? mocha.crust : mocha.text 
                                     }
                                 }
                                 MouseArea { id: volMouse; hoverEnabled: true; anchors.fill: parent; onClicked: Quickshell.execDetached(["bash", "-c", "~/.config/hypr/scripts/qs_manager.sh toggle volume"]) }
                             }
 
                             Rectangle {
-                                id: batPill
-                                property bool isHovered: batMouse.containsMouse
+                                id: logoutPill
+                                property bool isHovered: logoutMouse.containsMouse
                                 radius: barWindow.s(10); height: sysLayout.pillHeight;
                                 clip: true
                                 
-                                property color activeColor: barWindow.isDesktop ? mocha.red : mocha.primary
-                                
                                 color: isHovered 
-                                    ? Qt.rgba(activeColor.r, activeColor.g, activeColor.b, 0.75) 
-                                    : Qt.rgba(activeColor.r, activeColor.g, activeColor.b, 0.55)
+                                    ? Qt.rgba(mocha.mauve.r, mocha.mauve.g, mocha.mauve.b, 0.90) 
+                                    : mocha.mauve
                                     
                                 border.width: 1
-                                border.color: Qt.rgba(activeColor.r, activeColor.g, activeColor.b, 0.5)
+                                border.color: mocha.mauve
                                 
-                                property real targetWidth: barWindow.isDesktop ? barWindow.s(34) : batLayoutRow.implicitWidth + barWindow.s(24)
-                                width: targetWidth
-                                Behavior on width { NumberAnimation { duration: 500; easing.type: Easing.OutQuint } }
+                                width: barWindow.s(34)
                                 
                                 scale: isHovered ? 1.05 : 1.0
                                 Behavior on scale { NumberAnimation { duration: 250; easing.type: Easing.OutExpo } }
                                 Behavior on color { ColorAnimation { duration: 200 } }
 
                                 property bool initAnimTrigger: false
-                                Timer { running: rightContent.showLayout && !batPill.initAnimTrigger; interval: 200; onTriggered: batPill.initAnimTrigger = true }
+                                Timer { running: rightContent.showLayout && !logoutPill.initAnimTrigger; interval: 200; onTriggered: logoutPill.initAnimTrigger = true }
                                 opacity: initAnimTrigger ? 1 : 0
-                                transform: Translate { y: batPill.initAnimTrigger ? 0 : barWindow.s(15); Behavior on y { NumberAnimation { duration: 500; easing.type: Easing.OutBack } } }
+                                transform: Translate { y: logoutPill.initAnimTrigger ? 0 : barWindow.s(15); Behavior on y { NumberAnimation { duration: 500; easing.type: Easing.OutBack } } }
                                 Behavior on opacity { NumberAnimation { duration: 400; easing.type: Easing.OutCubic } }
 
                                 Row { 
-                                    id: batLayoutRow
                                     anchors.centerIn: parent
-                                    spacing: barWindow.s(8)
                                     Text { 
                                         anchors.verticalCenter: parent.verticalCenter
-                                        text: barWindow.isDesktop ? "" : barWindow.batIcon; 
-                                        font.family: "Iosevka Nerd Font"; font.pixelSize: barWindow.isDesktop ? barWindow.s(18) : barWindow.s(16); 
-                                        color: barWindow.isDesktop ? mocha.red : mocha.primary
-                                    }
-                                    Text { 
-                                        anchors.verticalCenter: parent.verticalCenter
-                                        visible: !barWindow.isDesktop
-                                        text: barWindow.batPercent; font.family: "JetBrains Mono"; font.pixelSize: barWindow.s(13); font.weight: Font.Black; 
-                                        color: mocha.text
+                                        text: ""
+                                        font.family: "Iosevka Nerd Font"
+                                        font.pixelSize: barWindow.s(18)
+                                        color: mocha.on_tertiary
                                     }
                                 }
-                                MouseArea { id: batMouse; hoverEnabled: true; anchors.fill: parent; onClicked: Quickshell.execDetached(["bash", "-c", "~/.config/hypr/scripts/qs_manager.sh toggle battery"]) }
+                                MouseArea { id: logoutMouse; hoverEnabled: true; anchors.fill: parent; onClicked: Quickshell.execDetached(["bash", "-c", "~/.config/hypr/scripts/qs_manager.sh toggle session"]) }
                             }                       
                  }
             }
