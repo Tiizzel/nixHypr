@@ -2,10 +2,12 @@
 import os
 import glob
 import json
+import getpass
 
 def fetch_apps():
     apps = {}
     home = os.path.expanduser('~')
+    username = getpass.getuser()
     
     # Expanded directories to catch Flatpaks, system apps, and Nix packages
     dirs = [
@@ -15,9 +17,19 @@ def fetch_apps():
         '/var/lib/flatpak/exports/share/applications',
         f'{home}/.local/share/flatpak/exports/share/applications',
         f'{home}/.nix-profile/share/applications',
-        '/run/current-system/sw/share/applications'
+        '/run/current-system/sw/share/applications',
+        f'/etc/profiles/per-user/{username}/share/applications'
     ]
     
+    # Also include directories from XDG_DATA_DIRS if set
+    xdg_data_dirs = os.environ.get('XDG_DATA_DIRS', '')
+    if xdg_data_dirs:
+        for xdg_dir in xdg_data_dirs.split(':'):
+            if xdg_dir:
+                apps_dir = os.path.join(xdg_dir, 'applications')
+                if apps_dir not in dirs:
+                    dirs.append(apps_dir)
+                    
     for d in dirs:
         if not os.path.exists(d):
             continue

@@ -20,6 +20,7 @@
         config.flake.homeModules.vesktop
         config.flake.homeModules.spicetify
         config.flake.homeModules.tclient
+        config.flake.homeModules.runelite
       ];
       home.stateVersion = "25.11";
     };

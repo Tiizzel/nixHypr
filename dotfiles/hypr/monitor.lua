@@ -9,8 +9,9 @@ hl.monitor({
     scale = 1.0,
     bitdepth = 10,
     cm = "hdr",
-    sdrbrightness = 1.33,
-    sdrsaturation = 1.18,
+    sdrbrightness = 1.69,
+    sdrsaturation = 1.35,
+    supports_hdr = 1,
 })
 
 -- Workspace Rules

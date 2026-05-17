@@ -34,15 +34,12 @@ terminate_clients() {
 
 		echo ":: PID $pid has terminated."
 	done
-	bash $home/.config/nixHypr/listeners.sh --stopall
+	bash $HOME/.config/nixHypr/listeners.sh --stopall
 }
 
 if [[ "$1" == "exit" ]]; then
 	echo ":: Exit"
-	terminate_clients
-	sleep 0.5
-	hyprctl dispatch exit
-	sleep 2
+	hyprctl dispatch 'hl.dsp.exit()'
 fi
 
 if [[ "$1" == "lock" ]]; then

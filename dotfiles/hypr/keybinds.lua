@@ -5,7 +5,7 @@
 local mainMod = "SUPER"
 local HYPRSCRIPTS = "/home/tiizzel/.config/hypr/scripts"
 local SCRIPTS = "/home/tiizzel/nixHypr/scripts"
-local editor = "zeditor"
+local editor = "antigravity"
 local browser = "zen-beta"
 local filemanager = "nautilus"
 local terminal = "kitty"
@@ -36,7 +36,7 @@ hl.bind(mainMod .. " + SHIFT + I", hl.dsp.layout("togglesplit"))
 hl.bind(mainMod .. " + CTRL + F",  hl.dsp.window.fullscreen({ state = 0 }))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + ALT + F",   hl.dsp.exec_cmd(HYPRSCRIPTS .. "/toggleallfloat.sh"))
-hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("hyprctl dispatch exit"))
+hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("hyprctl dispatch 'hl.dsp.exit()'"))
 
 -- ============= WINDOW NAVIGATION & FOCUS (ARROW KEYS) =============
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
@@ -79,7 +79,7 @@ hl.bind(mainMod .. " + SPACE",          hl.dsp.exec_cmd("quickshell ipc -c nixHy
 hl.bind(mainMod .. " + SHIFT + Return", hl.dsp.exec_cmd("quickshell ipc -c nixHypr-shell call main handleCommand toggle applauncher ''"))
 hl.bind(mainMod .. " + SHIFT + W",      hl.dsp.exec_cmd("quickshell ipc -c nixHypr-shell call main handleCommand toggle wallpaper ''"))
 hl.bind(mainMod .. " + Tab",            hl.dsp.exec_cmd("quickshell ipc -c overview call overview toggle"))
-hl.bind(mainMod .. " + X",              hl.dsp.exec_cmd("wlogout -b 6"))
+hl.bind(mainMod .. " + X",              hl.dsp.exec_cmd("quickshell ipc -c nixHypr-shell call main handleCommand toggle session ''"))
 hl.bind(mainMod .. " + C",              hl.dsp.exec_cmd("quickshell ipc -c nixHypr-shell call main handleCommand toggle network ''"))
 hl.bind(mainMod .. " + V",              hl.dsp.exec_cmd("quickshell ipc -c nixHypr-shell call main handleCommand toggle clipboard ''"))
 hl.bind(mainMod .. " + M",              hl.dsp.exec_cmd("quickshell ipc -c nixHypr-shell call main handleCommand toggle calendar ''"))
