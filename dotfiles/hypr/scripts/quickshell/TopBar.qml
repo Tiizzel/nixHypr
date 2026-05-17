@@ -226,9 +226,7 @@ Variants {
             property int typeInIndex: 0
             property string dateStr: fullDateStr.substring(0, typeInIndex)
 
-            property string weatherIcon: ""
-            property string weatherTemp: "--°"
-            property string weatherHex: mocha.yellow
+
             
             property string wifiStatus: "Off"
             property string wifiIcon: "󰤮"
@@ -530,25 +528,7 @@ Variants {
             }
             Process { id: batteryWaiter; command: ["bash", "-c", "~/.config/hypr/scripts/quickshell/watchers/battery_wait.sh"]; onExited: { batteryPoller.running = false; batteryPoller.running = true; } }
 
-            Process {
-                id: weatherPoller
-                command: ["bash", "-c", `
-                    echo "$(~/.config/hypr/scripts/quickshell/calendar/weather.sh --current-icon)"
-                    echo "$(~/.config/hypr/scripts/quickshell/calendar/weather.sh --current-temp)"
-                    echo "$(~/.config/hypr/scripts/quickshell/calendar/weather.sh --current-hex)"
-                `]
-                stdout: StdioCollector {
-                    onStreamFinished: {
-                        let lines = this.text.trim().split("\n");
-                        if (lines.length >= 3) {
-                            barWindow.weatherIcon = lines[0];
-                            barWindow.weatherTemp = lines[1];
-                            barWindow.weatherHex = lines[2] || mocha.yellow;
-                        }
-                    }
-                }
-            }
-            Timer { interval: 150000; running: true; repeat: true; triggeredOnStart: true; onTriggered: { weatherPoller.running = false; weatherPoller.running = true; } }
+
 
 
             Timer {
@@ -579,7 +559,7 @@ Variants {
                     y: (parent.height - barWindow.barHeight) / 2
                     height: barWindow.barHeight
 
-                    color: Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.45)
+                    color: Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.85)
                     radius: barWindow.s(14)
                     border.width: 1
                     border.color: Qt.rgba(mocha.text.r, mocha.text.g, mocha.text.b, 0.18)
@@ -767,7 +747,7 @@ Variants {
                 
                 Rectangle {
                     id: workspacesBox
-                    color: Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.45)
+                    color: Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.85)
                     radius: barWindow.s(14); border.width: 1; border.color: Qt.rgba(mocha.text.r, mocha.text.g, mocha.text.b, 0.18)
                     height: barWindow.barHeight
                     y: (parent.height - barWindow.barHeight) / 2
@@ -901,7 +881,7 @@ Variants {
 
                 Rectangle {
                     id: mediaBox
-                    color: Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.45)
+                    color: Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.85)
                     radius: barWindow.s(14); border.width: 1; border.color: Qt.rgba(mocha.text.r, mocha.text.g, mocha.text.b, 0.18)
                     y: (parent.height - barWindow.barHeight) / 2
                     height: barWindow.barHeight
@@ -1045,7 +1025,7 @@ Variants {
                 Rectangle {
                     id: centerBox
                     property bool isHovered: centerMouse.containsMouse
-                    color: isHovered ? Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.60) : Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.45)
+                    color: isHovered ? Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.95) : Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.85)
                     radius: barWindow.s(14); border.width: 1; border.color: Qt.rgba(mocha.text.r, mocha.text.g, mocha.text.b, isHovered ? 0.30 : 0.18)
                     
                     y: (parent.height - barWindow.barHeight) / 2
@@ -1090,31 +1070,12 @@ Variants {
                     RowLayout {
                         id: centerLayout
                         anchors.centerIn: parent
-                        spacing: barWindow.s(24)
+                        spacing: 0
 
                         ColumnLayout {
                             spacing: -2
-                            Text { text: barWindow.timeStr; Layout.alignment: Qt.AlignLeft; font.family: "JetBrains Mono"; font.pixelSize: barWindow.s(16); font.weight: Font.Black; color: mocha.blue }
-                            Text { text: barWindow.dateStr; Layout.alignment: Qt.AlignLeft; font.family: "JetBrains Mono"; font.pixelSize: barWindow.s(11); font.weight: Font.Bold; color: mocha.subtext0 }
-                        }
-
-                        RowLayout {
-                            spacing: barWindow.s(8)
-                            Text { 
-                                text: barWindow.weatherIcon; 
-                                Layout.alignment: Qt.AlignVCenter;
-                                font.family: "Iosevka Nerd Font"; 
-                                font.pixelSize: barWindow.s(24); 
-                                color: Qt.tint(barWindow.weatherHex, Qt.rgba(mocha.mauve.r, mocha.mauve.g, mocha.mauve.b, 0.4)) 
-                            }
-                            Text { 
-                                text: barWindow.weatherTemp; 
-                                Layout.alignment: Qt.AlignVCenter;
-                                font.family: "JetBrains Mono"; 
-                                font.pixelSize: barWindow.s(17); 
-                                font.weight: Font.Black; 
-                                color: mocha.peach 
-                            }
+                            Text { text: barWindow.timeStr; Layout.alignment: Qt.AlignHCenter; font.family: "JetBrains Mono"; font.pixelSize: barWindow.s(16); font.weight: Font.Black; color: mocha.blue }
+                            Text { text: barWindow.dateStr; Layout.alignment: Qt.AlignHCenter; font.family: "JetBrains Mono"; font.pixelSize: barWindow.s(11); font.weight: Font.Bold; color: mocha.subtext0 }
                         }
                     }
                 }
@@ -1145,7 +1106,7 @@ Variants {
                         radius: barWindow.s(14)
                         border.color: Qt.rgba(mocha.text.r, mocha.text.g, mocha.text.b, 0.18)
                         border.width: 1
-                        color: Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.45)
+                        color: Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.85)
                         
                         property real targetWidth: trayRepeater.count > 0 ? trayLayout.width + barWindow.s(24) : 0
                         width: targetWidth
@@ -1240,7 +1201,7 @@ Variants {
                         radius: barWindow.s(14)
                         border.color: Qt.rgba(mocha.text.r, mocha.text.g, mocha.text.b, 0.18)
                         border.width: 1
-                        color: Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.45)
+                        color: Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.85)
                         clip: true
                         
                         width: sysLayout.implicitWidth + barWindow.s(20)
@@ -1255,7 +1216,7 @@ Variants {
                             Rectangle {
                                 id: kbPill
                                 property bool isHovered: kbMouse.containsMouse
-                                color: isHovered ? Qt.rgba(mocha.surface1.r, mocha.surface1.g, mocha.surface1.b, 0.50) : Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.20)
+                                color: isHovered ? Qt.rgba(mocha.surface1.r, mocha.surface1.g, mocha.surface1.b, 0.70) : Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.40)
                                 radius: barWindow.s(10); height: sysLayout.pillHeight;
                                 clip: true
                                 border.width: 1
@@ -1296,8 +1257,8 @@ Variants {
                                 property bool isActive: barWindow.showEthernet ? (barWindow.ethStatus === "Connected") : barWindow.isWifiOn
                                 
                                 color: isActive 
-                                    ? (isHovered ? Qt.rgba(mocha.primary.r, mocha.primary.g, mocha.primary.b, 0.45) : Qt.rgba(mocha.primary.r, mocha.primary.g, mocha.primary.b, 0.25))
-                                    : (isHovered ? Qt.rgba(mocha.surface1.r, mocha.surface1.g, mocha.surface1.b, 0.5) : Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.2))
+                                    ? (isHovered ? Qt.rgba(mocha.primary.r, mocha.primary.g, mocha.primary.b, 0.75) : Qt.rgba(mocha.primary.r, mocha.primary.g, mocha.primary.b, 0.55))
+                                    : (isHovered ? Qt.rgba(mocha.surface1.r, mocha.surface1.g, mocha.surface1.b, 0.70) : Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.40))
                                     
                                 border.width: 1
                                 border.color: isActive
@@ -1350,8 +1311,8 @@ Variants {
                                 clip: true
                                 
                                 color: barWindow.isBtOn 
-                                    ? (isHovered ? Qt.rgba(mocha.primary.r, mocha.primary.g, mocha.primary.b, 0.45) : Qt.rgba(mocha.primary.r, mocha.primary.g, mocha.primary.b, 0.25))
-                                    : (isHovered ? Qt.rgba(mocha.surface1.r, mocha.surface1.g, mocha.surface1.b, 0.5) : Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.2))
+                                    ? (isHovered ? Qt.rgba(mocha.primary.r, mocha.primary.g, mocha.primary.b, 0.75) : Qt.rgba(mocha.primary.r, mocha.primary.g, mocha.primary.b, 0.55))
+                                    : (isHovered ? Qt.rgba(mocha.surface1.r, mocha.surface1.g, mocha.surface1.b, 0.70) : Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.40))
                                     
                                 border.width: 1
                                 border.color: barWindow.isBtOn
@@ -1400,8 +1361,8 @@ Variants {
                                 clip: true
                                 
                                 color: barWindow.isSoundActive 
-                                    ? (isHovered ? Qt.rgba(mocha.primary.r, mocha.primary.g, mocha.primary.b, 0.45) : Qt.rgba(mocha.primary.r, mocha.primary.g, mocha.primary.b, 0.25))
-                                    : (isHovered ? Qt.rgba(mocha.surface1.r, mocha.surface1.g, mocha.surface1.b, 0.5) : Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.2))
+                                    ? (isHovered ? Qt.rgba(mocha.primary.r, mocha.primary.g, mocha.primary.b, 0.75) : Qt.rgba(mocha.primary.r, mocha.primary.g, mocha.primary.b, 0.55))
+                                    : (isHovered ? Qt.rgba(mocha.surface1.r, mocha.surface1.g, mocha.surface1.b, 0.70) : Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.40))
                                     
                                 border.width: 1
                                 border.color: barWindow.isSoundActive
@@ -1452,8 +1413,8 @@ Variants {
                                 property color activeColor: barWindow.isDesktop ? mocha.red : mocha.primary
                                 
                                 color: isHovered 
-                                    ? Qt.rgba(activeColor.r, activeColor.g, activeColor.b, 0.45) 
-                                    : Qt.rgba(activeColor.r, activeColor.g, activeColor.b, 0.25)
+                                    ? Qt.rgba(activeColor.r, activeColor.g, activeColor.b, 0.75) 
+                                    : Qt.rgba(activeColor.r, activeColor.g, activeColor.b, 0.55)
                                     
                                 border.width: 1
                                 border.color: Qt.rgba(activeColor.r, activeColor.g, activeColor.b, 0.5)

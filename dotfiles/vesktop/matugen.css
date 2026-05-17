@@ -8,21 +8,21 @@
 @import url('https://refact0r.github.io/midnight-discord/build/midnight.css');
 
 :root {
-    --bg-1: #0e1415;
-    --bg-2: #171d1e;
-    --bg-3: #1b2122;
-    --bg-4: #252b2c;
+    --bg-1: #121318;
+    --bg-2: #1a1b21;
+    --bg-3: #1e1f25;
+    --bg-4: #292a2f;
 
-    --accent-1: #81d3df;
-    --accent-2: #b1cbcf;
-    --accent-3: #b9c6ea;
-    --accent-4: #004f56;
-    --accent-5: #324b4e;
+    --accent-1: #b5c4ff;
+    --accent-2: #c1c5dd;
+    --accent-3: #e3badb;
+    --accent-4: #344479;
+    --accent-5: #414659;
 
-    --text-1: #dee4e4;
-    --text-2: #bec8ca;
-    --text-3: #899294;
-    --text-4: #3f484a;
+    --text-1: #e3e1e9;
+    --text-2: #c6c6d0;
+    --text-3: #8f909a;
+    --text-4: #45464f;
 
     --window-padding: 8px;
     --window-roundness: 12px;

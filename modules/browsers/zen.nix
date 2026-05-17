@@ -8,7 +8,7 @@
   };
 
   flake.homeModules.zen = { ... }: {
-    home.file.".zen/17tvzomm.Default Profile/user.js".text = ''
+    home.file.".zen/aiodjulf.Default Profile/user.js".text = ''
       user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
     '';
   };

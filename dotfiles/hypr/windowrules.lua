@@ -6,6 +6,9 @@
 hl.layer_rule({ match = { namespace = "swaync-control-center" },    blur = true, ignore_alpha = 0.5 })
 hl.layer_rule({ match = { namespace = "swaync-notification-window" }, blur = true, ignore_alpha = 0.5 })
 hl.layer_rule({ match = { namespace = "nixHypr-shell" },            blur = true, ignore_alpha = 0.5 })
+hl.layer_rule({ match = { namespace = "qs-master" },                blur = true, ignore_alpha = 0.5 })
+hl.layer_rule({ match = { namespace = "quickshell" },               blur = true, ignore_alpha = 0.5 })
+hl.layer_rule({ match = { namespace = "qs-popups" },                blur = true, ignore_alpha = 0.5 })
 
 -- Window Rules Helper Function
 local function rule(class, title, props)

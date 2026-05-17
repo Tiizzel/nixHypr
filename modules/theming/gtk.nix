@@ -7,6 +7,7 @@
       nwg-look
       kdePackages.breeze-gtk
       gnome-themes-extra
+      adw-gtk3
     ];
   };
 }

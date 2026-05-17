@@ -463,6 +463,12 @@ PanelWindow {
     }
 
     function executeSwitch(newWidget, arg, immediate) {
+        if (newWidget === "wallpaper") {
+            masterWindow.WlrLayershell.namespace = "qs-wallpaper";
+        } else {
+            masterWindow.WlrLayershell.namespace = "qs-master";
+        }
+
         masterWindow.currentActive = newWidget;
         masterWindow.activeArg = arg;
 
@@ -517,6 +523,7 @@ PanelWindow {
         id: delayedClear
         interval: 200
         onTriggered: {
+            masterWindow.WlrLayershell.namespace = "qs-master";
             masterWindow.currentActive = "hidden";
             widgetStack.clear();
             masterWindow.disableMorph = false;

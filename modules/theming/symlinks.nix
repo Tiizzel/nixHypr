@@ -19,7 +19,7 @@
         ".mozilla/firefox/default/chrome".source = config.lib.file.mkOutOfStoreSymlink "${d}/firefox/chrome";
 
         # Zen Browser userChrome/userContent
-        ".zen/17tvzomm.Default Profile/chrome".source = config.lib.file.mkOutOfStoreSymlink "${d}/zen/chrome";
+        ".zen/aiodjulf.Default Profile/chrome".source = config.lib.file.mkOutOfStoreSymlink "${d}/zen/chrome";
       };
 
       xdg.configFile = {

@@ -25,6 +25,12 @@ Item {
 
     MatugenColors { id: _theme }
 
+    Rectangle {
+        anchors.fill: parent
+        color: _theme.mantle
+        z: -1
+    }
+
     property string widgetArg: ""
     property string targetWallName: ""
     property bool initialFocusSet: false
@@ -1266,7 +1272,7 @@ Item {
         width: filterRow.width + window.s(24)
         radius: window.s(14)
         
-        color: Qt.rgba(_theme.mantle.r, _theme.mantle.g, _theme.mantle.b, 0.90)
+        color: _theme.mantle
         border.color: _theme.surface2
         border.width: 1
 

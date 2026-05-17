@@ -12,12 +12,16 @@ TARGET="$2"
 SUBTARGET="$3"
 
 if [[ "$ACTION" =~ ^[0-9]+$ ]]; then
-    # Send IPC command directly to Main.qml via Quickshell's native IPC handler
-    quickshell ipc -c nixHypr-shell call main handleCommand "close" "" "" >/dev/null 2>&1
+    # Send IPC command directly to Main.qml asynchronously
+    (quickshell ipc -c nixHypr-shell call main handleCommand "close" "" "" >/dev/null 2>&1) &
 
-    CMD="workspace $ACTION"
-    [[ "$TARGET" == "move" ]] && CMD="movetoworkspace $ACTION"
-    hyprctl --batch "dispatch $CMD" >/dev/null 2>&1
+    if [[ "$TARGET" == "move" ]]; then
+        CMD="hl.dsp.window.move({ workspace = $ACTION })"
+    else
+        CMD="hl.dsp.focus({ workspace = $ACTION })"
+    fi
+    
+    hyprctl dispatch "$CMD" >/dev/null 2>&1
     exit 0
 fi
 

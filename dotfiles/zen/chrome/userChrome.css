@@ -1,19 +1,19 @@
 :root {
-  --s-base00: #0e1415;
-  --s-base01: #1b2122;
-  --s-base02: #3f484a;
-  --s-base03: #3f484a;
-  --s-base04: #899294;
-  --s-base05: #dee4e4;
-  --s-base06: #bec8ca;
-  --s-base07: #dee4e4;
+  --s-base00: #121318;
+  --s-base01: #1e1f25;
+  --s-base02: #45464f;
+  --s-base03: #45464f;
+  --s-base04: #8f909a;
+  --s-base05: #e3e1e9;
+  --s-base06: #c6c6d0;
+  --s-base07: #e3e1e9;
   --s-base08: #ffb4ab;
-  --s-base09: #b9c6ea;
-  --s-base0A: #b1cbcf;
-  --s-base0B: #004f56;
-  --s-base0C: #394664;
-  --s-base0D: #81d3df;
-  --s-base0E: #324b4e;
+  --s-base09: #e3badb;
+  --s-base0A: #c1c5dd;
+  --s-base0B: #344479;
+  --s-base0C: #5b3d57;
+  --s-base0D: #b5c4ff;
+  --s-base0E: #414659;
   --s-base0F: #93000a;
 
   --zen-primary-color: var(--s-base0D) !important;

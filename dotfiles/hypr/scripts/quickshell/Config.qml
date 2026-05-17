@@ -17,7 +17,6 @@ Item {
     readonly property string cacheDir: paths.cacheDir
     
     readonly property string settingsJsonPath: hyprDir + "/settings.json"
-    readonly property string weatherEnvPath: qsScriptsDir + "/calendar/.env"
 
     // State Tracking
     property bool dataReady: false
@@ -90,10 +89,6 @@ Item {
     property string language: ""
     property string kbOptions: "grp:alt_shift_toggle"
 
-    property string weatherUnit: "metric"
-    property string weatherApiKey: ""
-    property string weatherCityId: ""
-
     property var keybindsData: []
     signal keybindsLoaded()
 
@@ -121,18 +116,6 @@ Item {
             sh(`qs -p "${qsScriptsDir}/TopBar.qml" ipc call topbar queueReload`);
             config.initialWorkspaceCount = config.workspaceCount;
         }
-    }
-
-    function saveWeatherConfig() {
-        let envs = {
-            "OPENWEATHER_KEY": config.weatherApiKey,
-            "OPENWEATHER_CITY_ID": config.weatherCityId,
-            "OPENWEATHER_UNIT": config.weatherUnit
-        };
-        
-        config.updateEnvBulk(config.weatherEnvPath, envs);
-        sh(`rm -rf "${paths.getCacheDir('weather')}"`);
-        sh("notify-send 'Weather' 'API configuration saved successfully!'");
     }
 
     function saveAllKeybinds(bindsArray) {
@@ -325,36 +308,8 @@ Item {
         }
     }
 
-    // =========================================================================
-    // Boot Initialization (Runs once on start)
-    // =========================================================================
     Component.onCompleted: {
         settingsReader.running = true;
-        envReader.running = true;
-    }
-
-    Process {
-        id: envReader
-        command: ["bash", "-c", `cat "${config.weatherEnvPath}" 2>/dev/null || echo ''`]
-        running: false
-        stdout: StdioCollector {
-            onStreamFinished: {
-                let lines = this.text ? this.text.trim().split('\n') : [];
-                for (let line of lines) {
-                    line = line.trim();
-                    let parts = line.split("=");
-                    if (parts.length >= 2) {
-                        let key = parts[0].trim();
-                        let val = parts.slice(1).join("=").replace(/^['"]|['"]$/g, '').trim();
-                        config.rawEnvs[key] = val;
-                        
-                        if (key === "OPENWEATHER_KEY") config.weatherApiKey = val;
-                        else if (key === "OPENWEATHER_CITY_ID") config.weatherCityId = val;
-                        else if (key === "OPENWEATHER_UNIT") config.weatherUnit = val;
-                    }
-                }
-            }
-        }
     }
 
     Process {
