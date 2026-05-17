@@ -14,6 +14,7 @@
           PasswordAuthentication = true; # Users can SSH using keyboard and password
           KbdInteractiveAuthentication = true;
         };
+        authorizedKeysFiles = [ "%h/.ssh/authorized_keys" config.sops.secrets.sshAuthorizedKey.path ];
         ports = [22];
       };
       gnome.gnome-keyring.enable = true;

@@ -32,6 +32,7 @@ in
       config.flake.nixosModules.fonts
       config.flake.nixosModules.nh
       config.flake.nixosModules.services
+      config.flake.nixosModules.sops
 
       # Desktops
       config.flake.nixosModules.plasma
