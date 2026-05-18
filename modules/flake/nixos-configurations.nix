@@ -96,7 +96,6 @@ in
       config.flake.nixosModules.steam
 
       # Utilities
-      config.flake.nixosModules.rofi
       config.flake.nixosModules.wlogout
       config.flake.nixosModules.screenshot
       config.flake.nixosModules.ocr

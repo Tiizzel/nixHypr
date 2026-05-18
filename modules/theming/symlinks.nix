@@ -23,7 +23,6 @@
       };
 
       xdg.configFile = {
-        "nixHypr-bar-choice".text = hostVars.barChoice;
         "bashrc".source = config.lib.file.mkOutOfStoreSymlink "${d}/bashrc";
         "btop".source = config.lib.file.mkOutOfStoreSymlink "${d}/btop";
         "chromium-flags.conf".source = config.lib.file.mkOutOfStoreSymlink "${d}/chromium-flags.conf";
@@ -43,12 +42,8 @@
         "ohmyposh".source = config.lib.file.mkOutOfStoreSymlink "${d}/ohmyposh";
         "qt6ct".source = config.lib.file.mkOutOfStoreSymlink "${d}/qt6ct";
         "quickshell".source = config.lib.file.mkOutOfStoreSymlink "${d}/quickshell";
-        "rofi".source = config.lib.file.mkOutOfStoreSymlink "${d}/rofi";
-        "sidepad".source = config.lib.file.mkOutOfStoreSymlink "${d}/sidepad";
         "swaync".source = config.lib.file.mkOutOfStoreSymlink "${d}/swaync";
         "vim".source = config.lib.file.mkOutOfStoreSymlink "${d}/vim";
-        "walker".source = config.lib.file.mkOutOfStoreSymlink "${d}/walker";
-        "waybar".source = config.lib.file.mkOutOfStoreSymlink "${d}/waybar";
         "waypaper".source = config.lib.file.mkOutOfStoreSymlink "${d}/waypaper";
         "wlogout".source = config.lib.file.mkOutOfStoreSymlink "${d}/wlogout";
         "xsettingsd".source = config.lib.file.mkOutOfStoreSymlink "${d}/xsettingsd";

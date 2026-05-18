@@ -21,6 +21,12 @@
         config.flake.homeModules.spicetify
         config.flake.homeModules.tclient
         config.flake.homeModules.runelite
+        config.flake.homeModules.atuin
+        config.flake.homeModules.bat
+        config.flake.homeModules.fzf
+        config.flake.homeModules.git
+        config.flake.homeModules.lazygit
+        config.flake.homeModules.pay-respects
       ];
       home.stateVersion = "25.11";
     };

@@ -5,7 +5,6 @@
 local mainMod = "SUPER"
 local home = os.getenv("HOME")
 local HYPRSCRIPTS = home .. "/.config/hypr/scripts"
-local SCRIPTS = home .. "/nixHypr/scripts"
 local editor = "antigravity"
 local browser = "zen-beta"
 local filemanager = "thunar"
@@ -91,23 +90,15 @@ hl.bind(mainMod .. " + CTRL + R",       hl.dsp.exec_cmd("quickshell ipc -c nixHy
 -- ============= ACTIONS & SCRIPTS =============
 hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd(HYPRSCRIPTS .. "/toggle-animations.sh"))
 hl.bind(mainMod .. " + S",         hl.dsp.exec_cmd(HYPRSCRIPTS .. "/screenshot.sh"))
-hl.bind(mainMod .. " + CTRL + S",  hl.dsp.exec_cmd(HYPRSCRIPTS .. "/screenshot.sh --instant"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(HYPRSCRIPTS .. "/screenshot.sh --instant-area"))
-hl.bind(mainMod .. " + ALT + S",   hl.dsp.exec_cmd(HYPRSCRIPTS .. "/screenshot.sh --instant-area"))
+hl.bind(mainMod .. " + CTRL + S",  hl.dsp.exec_cmd(HYPRSCRIPTS .. "/screenshot.sh --full"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd(HYPRSCRIPTS .. "/screenshot.sh --edit"))
+hl.bind(mainMod .. " + ALT + S",   hl.dsp.exec_cmd(HYPRSCRIPTS .. "/screenshot.sh --edit"))
 hl.bind(mainMod .. " + ALT + A",   hl.dsp.exec_cmd(HYPRSCRIPTS .. "/text-extractor.sh"))
-hl.bind(mainMod .. " + CTRL + W",  hl.dsp.exec_cmd(SCRIPTS .. "/nixHypr-wallpaper-app"))
-hl.bind(mainMod .. " + ALT + W",   hl.dsp.exec_cmd(SCRIPTS .. "/nixHypr-wallpaper-automation"))
-hl.bind(mainMod .. " + K",         hl.dsp.exec_cmd(HYPRSCRIPTS .. "/keybindings.sh"))
-hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(home .. "/.config/waybar/launch.sh"))
-hl.bind(mainMod .. " + CTRL + B",  hl.dsp.exec_cmd(home .. "/.config/waybar/toggle.sh"))
-hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd(HYPRSCRIPTS .. "/loadconfig.sh"))
-hl.bind(mainMod .. " + CTRL + T",  hl.dsp.exec_cmd(home .. "/.config/waybar/themeswitcher.sh"))
-hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd(SCRIPTS .. "/nixHypr-toggle-theme"))
+hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + ALT + G",   hl.dsp.exec_cmd(HYPRSCRIPTS .. "/gamemode.sh"))
 hl.bind(mainMod .. " + CTRL + L",  hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
 hl.bind(mainMod .. " + ALT + L",   hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
-hl.bind(mainMod .. " + SHIFT + H", hl.dsp.exec_cmd(SCRIPTS .. "/nixHypr-toggle-hyprsunset"))
-hl.bind("CTRL + ALT + T",          hl.dsp.exec_cmd(home .. "/.config/nixHypr/themes/themes.sh"))
+hl.bind(mainMod .. " + SHIFT + H", hl.dsp.exec_cmd("pgrep -x hyprsunset && pkill -x hyprsunset || hyprsunset"))
 
 -- ============= WORKSPACES (1-10) =============
 for i = 1, 10 do

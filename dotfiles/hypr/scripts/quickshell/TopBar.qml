@@ -64,7 +64,6 @@ Variants {
                 id: mocha
             }
 
-            property bool showHelpIcon: true
             property bool isRecording: false
             
             property bool updateAvailable: false
@@ -75,6 +74,8 @@ Variants {
             
             property string activeWidget: "" 
             property bool isSettingsOpen: activeWidget === "settings"
+
+            property int notificationCount: 0
 
             property real settingsSlideProgress: isSettingsOpen ? 1.0 : 0.0
             Behavior on settingsSlideProgress { 
@@ -167,10 +168,6 @@ Variants {
                             if (this.text && this.text.trim().length > 0 && this.text.trim() !== "{}") {
                                 let parsed = JSON.parse(this.text);
                                 
-                                if (parsed.topbarHelpIcon !== undefined && barWindow.showHelpIcon !== parsed.topbarHelpIcon) {
-                                    barWindow.showHelpIcon = parsed.topbarHelpIcon;
-                                }
-                                
                                 if (parsed.workspaceCount !== undefined && barWindow.workspaceCount !== parsed.workspaceCount) {
                                     barWindow.workspaceCount = parsed.workspaceCount;
                                     wsDaemon.running = false;
@@ -194,6 +191,33 @@ Variants {
                         settingsWatcher.running = false;
                         settingsWatcher.running = true;
                     }
+                }
+            }
+
+            Process {
+                id: notifPoller
+                command: ["bash", "-c", "cat " + paths.runDir + "/notification_count 2>/dev/null || echo '0'"]
+                running: true
+                stdout: StdioCollector {
+                    onStreamFinished: {
+                        let txt = this.text.trim();
+                        let parsed = parseInt(txt, 10);
+                        if (!isNaN(parsed) && barWindow.notificationCount !== parsed) {
+                            barWindow.notificationCount = parsed;
+                        }
+                    }
+                }
+            }
+
+            Process {
+                id: notifWatcher
+                command: ["bash", "-c", "while [ ! -f " + paths.runDir + "/notification_count ]; do sleep 1; done; inotifywait -qq -e modify,close_write " + paths.runDir + "/notification_count"]
+                running: true
+                onExited: {
+                    notifPoller.running = false;
+                    notifPoller.running = true;
+                    running = false;
+                    running = true;
                 }
             }
             
@@ -558,39 +582,6 @@ Variants {
                         spacing: barWindow.s(4)
                         
                         property int pillHeight: barWindow.s(34)
-
-                        Rectangle {
-                            property bool isHovered: helpMouse.containsMouse
-                            color: isHovered ? Qt.rgba(mocha.surface1.r, mocha.surface1.g, mocha.surface1.b, 0.6) : "transparent"
-                            radius: barWindow.s(10)
-                            
-                            property real targetWidth: barWindow.showHelpIcon ? barWindow.s(34) : 0
-                            width: targetWidth
-                            height: parent.pillHeight
-                            visible: targetWidth > 0 || opacity > 0
-                            opacity: barWindow.showHelpIcon ? 1.0 : 0.0
-                            clip: true
-                            
-                            Behavior on width { NumberAnimation { duration: 400; easing.type: Easing.OutQuint } }
-                            Behavior on opacity { NumberAnimation { duration: 300 } }
-                            Behavior on color { ColorAnimation { duration: 200 } }
-                            
-                            Text {
-                                anchors.centerIn: parent
-                                text: "󰋗"
-                                font.family: "Iosevka Nerd Font"; font.pixelSize: barWindow.s(22)
-                                color: parent.isHovered ? mocha.teal : mocha.text
-                                Behavior on color { ColorAnimation { duration: 200 } }
-                                scale: parent.isHovered ? 1.15 : 1.0
-                                Behavior on scale { NumberAnimation { duration: 250; easing.type: Easing.OutExpo } }
-                            }
-                            MouseArea {
-                                id: helpMouse
-                                anchors.fill: parent
-                                hoverEnabled: true
-                                onClicked: Quickshell.execDetached(["bash", "-c", "~/.config/hypr/scripts/qs_manager.sh toggle guide"])
-                            }
-                        }
 
                         Rectangle {
                             property bool isHovered: searchMouse.containsMouse
@@ -1213,6 +1204,58 @@ Variants {
                                     Text { anchors.verticalCenter: parent.verticalCenter; text: barWindow.kbLayout; font.family: "JetBrains Mono"; font.pixelSize: barWindow.s(13); font.weight: Font.Black; color: mocha.text }
                                 }
                                 MouseArea { id: kbMouse; anchors.fill: parent; hoverEnabled: true; onClicked: Quickshell.execDetached(["hyprctl", "switchxkblayout", "main", "next"]) }
+                            }
+
+                            Rectangle {
+                                id: notifPill
+                                property bool isHovered: notifMouse.containsMouse
+                                radius: barWindow.s(10); height: sysLayout.pillHeight;
+                                clip: true
+                                
+                                property bool isActive: barWindow.notificationCount > 0
+                                
+                                color: isActive 
+                                    ? (isHovered ? Qt.rgba(mocha.mauve.r, mocha.mauve.g, mocha.mauve.b, 0.90) : mocha.mauve)
+                                    : (isHovered ? Qt.rgba(mocha.surface1.r, mocha.surface1.g, mocha.surface1.b, 0.70) : Qt.rgba(mocha.surface0.r, mocha.surface0.g, mocha.surface0.b, 0.40))
+                                    
+                                border.width: 1
+                                border.color: isActive
+                                    ? mocha.mauve
+                                    : Qt.rgba(mocha.text.r, mocha.text.g, mocha.text.b, 0.1)
+                                
+                                property real targetWidth: notifLayoutRow.implicitWidth + barWindow.s(24)
+                                width: targetWidth
+                                Behavior on width { NumberAnimation { duration: 500; easing.type: Easing.OutQuint } }
+                                
+                                scale: isHovered ? 1.05 : 1.0
+                                Behavior on scale { NumberAnimation { duration: 250; easing.type: Easing.OutExpo } }
+                                Behavior on color { ColorAnimation { duration: 200 } }
+
+                                property bool initAnimTrigger: false
+                                Timer { running: rightContent.showLayout && !notifPill.initAnimTrigger; interval: 175; onTriggered: notifPill.initAnimTrigger = true }
+                                opacity: initAnimTrigger ? 1 : 0
+                                transform: Translate { y: notifPill.initAnimTrigger ? 0 : barWindow.s(15); Behavior on y { NumberAnimation { duration: 500; easing.type: Easing.OutBack } } }
+                                Behavior on opacity { NumberAnimation { duration: 400; easing.type: Easing.OutCubic } }
+
+                                Row { 
+                                    id: notifLayoutRow
+                                    anchors.verticalCenter: parent.verticalCenter
+                                    anchors.left: parent.left
+                                    anchors.leftMargin: barWindow.s(12)
+                                    spacing: barWindow.s(8)
+                                    Text { 
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        text: ""; font.family: "Iosevka Nerd Font"; font.pixelSize: barWindow.s(16); 
+                                        color: notifPill.isActive ? mocha.crust : mocha.subtext0 
+                                    }
+                                    Text { 
+                                        anchors.verticalCenter: parent.verticalCenter
+                                        text: barWindow.notificationCount.toString(); 
+                                        font.family: "JetBrains Mono"; font.pixelSize: barWindow.s(13); font.weight: Font.Black; 
+                                        color: notifPill.isActive ? mocha.crust : mocha.text 
+                                    }
+                                }
+                                MouseArea { id: notifMouse; hoverEnabled: true; anchors.fill: parent; onClicked: Quickshell.execDetached(["bash", "-c", "~/.config/hypr/scripts/qs_manager.sh toggle notifications"]) }
                             }
 
                             Rectangle {

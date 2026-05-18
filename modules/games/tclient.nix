@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.homeModules.tclient = { pkgs, config, ... }: {
+  flake.homeModules.tclient = { pkgs, config, lib, ... }: {
     home.packages = with pkgs; [
       taterclient-ddnet
     ];

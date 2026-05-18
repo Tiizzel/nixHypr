@@ -134,7 +134,6 @@ PanelWindow {
         repeat: false
         onTriggered: {
             preloadWidget("search");
-            preloadWidget("help");
         }
     }
 
@@ -237,6 +236,11 @@ PanelWindow {
     }
 
     property var notifModel: globalNotificationHistory
+
+    property int totalNotifications: globalNotificationHistory.count
+    onTotalNotificationsChanged: {
+        Quickshell.execDetached(["bash", "-c", "echo '" + totalNotifications + "' > " + paths.runDir + "/notification_count"]);
+    }
 
     Notifs.NotificationPopups {
         id: osdPopups

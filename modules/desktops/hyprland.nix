@@ -33,7 +33,7 @@
       hyprlock
       hypridle
       hyprpaper
-      swww
+      awww
       hyprpicker
       hyprcursor
       hyprsunset
@@ -43,7 +43,6 @@
       jq
       socat
       libnotify
-      waybar
       swaynotificationcenter
       pyprland
       brightnessctl # added because hypridle uses it
