@@ -1,55 +1,51 @@
-# 🌌 nixHypr
+# nixHypr - NixOS & Hyprland Configuration
 
-A premium, highly modular, personal **NixOS & Hyprland** configuration built using modern Nix Flakes (`flake-parts`), dendritic module auto-discovery (`import-tree`), and out-of-store dotfile symlinks for hot-reloading configurations.
+This is my personal NixOS and Hyprland configuration. It is built using Nix Flakes (`flake-parts`), `import-tree` for automatic module discovery, and symlinks dotfiles out-of-store using Home-Manager so they update immediately without a full system rebuild.
 
-Originally ported from the exceptional **ML4W (My Linux for Work)** Hyprland environment, then completely rewritten and modernized to be 100% declarative, modular, and dynamic.
-
----
-
-## 🎨 Preview & Styling
-
-The environment features a gorgeous glassmorphic theme designed to wow at first glance. All interface elements, system panels, wallpapers, and application themes (like Vesktop, Kitty, Spicetify, and Zed) are dynamically themed on the fly using **Matugen** (Material You color generation).
-
-| Panel Choices | System View | Matugen Colors |
-|:---:|:---:|:---:|
-| **Quickshell (Noctalia)** | Sleek Glassmorphism | Automated Material Palette |
+It was originally ported from Stephan Raabe's **ML4W** Hyprland configuration, and I've since rewritten and modularized it to fit NixOS.
 
 ---
 
-## 🚀 Tech Stack & Specifications
+## 🎨 Theme & Styling
+The desktop environment uses a glassmorphic look. Everything (Vesktop, Kitty, Spicetify, Hyprland, etc.) is dynamically themed using **Matugen** based on the current wallpaper.
 
-| Component | Technology | Description |
+*   **Top Bar & Widgets:** Driven by **Quickshell** (adapted from **ilyamiro**'s QML configs) with an option to use **Waybar**.
+*   **Wallpaper Picker & Sessions:** Native QML popups built into the shell.
+
+---
+
+## 💻 Tech Stack & Specs
+
+| Component | Software | Description |
 |---|---|---|
-| **Operating System** | [NixOS](https://nixos.org/) | Declarative, reproducible Linux distribution |
-| **Window Manager** | [Hyprland](https://hyprland.org/) | Dynamic tiling Wayland compositor with smooth animations |
-| **User Panels & Shell** | [Quickshell](https://github.com/outfoxxed/quickshell) | QML-based, blazing-fast native panel and widget suite |
-| **Alternative Panel** | [Waybar](https://github.com/Alexays/Waybar) | Customizable GTK-based status bar |
-| **Dynamic Themes** | [Matugen](https://github.com/InioX/matugen) | Automated Material You color theme generation |
-| **Terminal** | [Kitty](https://sw.kovidgoyal.net/kitty/) | GPU-accelerated terminal emulator |
-| **Shell Interpreter** | [Zsh](https://www.zsh.org/) / [Fish](https://fishshell.com/) | Interactive shells customized with [Oh My Posh](https://ohmyposh.dev/) |
-| **File Managers** | [Thunar](https://docs.xfce.org/xfce/thunar/start) / [Yazi](https://github.com/sxyazi/yazi) | Modern GUI and terminal-based file managers |
-| **Text Editor** | Neovim / Zed | Highly productive modern editors |
-| **Secret Management**| [sops-nix](https://github.com/Mic92/sops-nix) | Decrypted Age/SSH-based secrets (SSH keys, tokens) |
-| **Package Helper** | [nh](https://github.com/viperML/nh) | Clean, premium Nix helper for building and cleaning |
+| **OS** | NixOS (Unstable) | Declarative package management |
+| **Compositor** | Hyprland (lua) | Wayland tiling window manager |
+| **Widgets & Panel** | Quickshell / Waybar | Configurable status bar and shell widgets |
+| **Colors / Theme** | Matugen | Dynamic Material You theme generator |
+| **Terminal** | Kitty | GPU-accelerated terminal emulator |
+| **Shell** | Zsh / Fish | Custom prompts using Oh My Posh |
+| **File Manager** | Thunar / Nautilus / Yazi | Graphical and terminal-based file managers |
+| **Text Editor** | Neovim / Zed | My primary text editors |
+| **Secrets** | sops-nix | For decrypting SSH keys and other secrets securely |
+| **Rebuild Helper**| nh | A CLI wrapper for building/cleaning the system |
 
 ---
 
-## 🛠️ Bootstrapping & Installation
+## 🛠️ How to Install (Fresh Install)
 
-We have built a fully dynamic, interactive installer script to make installing this configuration on a fresh system incredibly simple.
+I wrote an interactive bash script to handle setting up this configuration on a fresh NixOS install. 
 
-### 1. Fresh NixOS Installation
-Install a standard NixOS installation onto your computer (using the graphical NixOS Calamares installer ISO). Boot into your fresh system.
+### 1. Install NixOS
+Do a standard, clean installation of NixOS on your computer (using the default installer) and boot into it.
 
-### 2. Run the Bootstrap Script
-Open a terminal in your booted system and run the installer script. It will ask for your custom details, clone the repository, replace configurations dynamically, copy your active hardware details, and apply the config!
+### 2. Run the Installer Script
+Open a terminal in your new system and run the following command. The script will ask for your preferred username, hostname, git details, clone the repo to your home directory, copy your hardware config over, and rebuild the system:
 
 ```bash
-# Execute the nixHypr bootstrapper directly:
 curl -sL https://raw.githubusercontent.com/Tiizzel/nixHypr/main/install.sh | sudo bash
 ```
 
-Alternatively, you can clone your repository first and execute the local script:
+Alternatively, you can clone the repository manually and run it:
 ```bash
 git clone https://github.com/Tiizzel/nixHypr.git ~/nixHypr
 cd ~/nixHypr
@@ -58,77 +54,71 @@ sudo ./install.sh
 
 ---
 
-## 📂 Repository Architecture
+## 📂 Repository Structure
 
-This configuration utilizes a modular **Dendritic Pattern** for auto-discovery of settings:
+The project has a dendritic layout for module imports:
 
 ```
-├── flake.nix                  # Flake entry point (uses import-tree)
+├── flake.nix                  # Flake entry point (calls import-tree)
 ├── install.sh                 # Post-boot interactive system bootstrapper
 ├── hosts/
 │   └── nixos/
-│       ├── default.nix        # Host entrypoint
-│       ├── hardware.nix       # Baseline hardware configuration (auto-replaced on install)
-│       └── variables.nix      # Host customization (username, hostname, timezone)
-├── dotfiles/                  # Raw config files (hypr, kitty, matugen, waybar)
-│                              # Symlinked out-of-store to allow live, instant reloads
-├── modules/                   # Auto-discovered modular configuration blocks
-│   ├── core/                  # Core modules (users, boot, network, locale, sops)
-│   ├── desktops/              # Desktop environments (hyprland, plasma)
+│       ├── default.nix        # Target host configuration imports
+│       ├── hardware.nix       # Your system's generated hardware-configuration.nix
+│       └── variables.nix      # Custom variables (username, hostname, timezone, etc.)
+├── dotfiles/                  # Raw config files (hypr, kitty, waybar, matugen)
+│                              # Symlinked out-of-store so they update instantly
+├── modules/                   # Auto-discovered modules
+│   ├── core/                  # Core options (users, boot, network, locale, sops)
+│   ├── desktops/              # Desktop environment modules (hyprland, plasma)
 │   ├── theming/               # GTK, Qt, Matugen, Symlinks setup
 │   └── [browsers, cli-tools, editors, file-managers, shells...]
-└── secrets/                   # Encrypted yaml secrets managed by SOPS
+└── secrets/                   # Encrypted secrets managed by sops-nix
 ```
 
 ---
 
-## ⚙️ Customization & Tweaking
+## ⚙️ Customization
 
-### Custom Variables
-All host-level parameters are central and customizable in [hosts/nixos/variables.nix](file:///home/tiizzel/nixHypr/hosts/nixos/variables.nix). Adjust these to match your new system parameters:
+### Central Variables
+You can configure your settings in [hosts/nixos/variables.nix](file:///home/tiizzel/nixHypr/hosts/nixos/variables.nix) without having to dig through system modules:
 
 ```nix
 username       = "your-username";
 hostName       = "your-hostname";
 keyboardLayout = "de";
 timezone       = "Europe/Berlin";
-barChoice      = "noctalia";      # Choose "noctalia" for QML or "waybar"
+barChoice      = "noctalia";      # Set to "noctalia" (Quickshell) or "waybar"
 ```
 
-### Out-of-Store Dotfile Symlinks
-Because your configuration utilizes out-of-store symlinks (`config.lib.file.mkOutOfStoreSymlink`), any modifications made inside the cloned directory's `dotfiles/` folder (such as Hyprland keybinds, autostart, or CSS rules) **take effect immediately** without requiring a system rebuild!
+### Live Dotfiles Editing
+Since dotfiles are symlinked out-of-store, any changes you make to configurations inside `dotfiles/` (like `dotfiles/hypr/autostart.lua` or keybindings) will apply **immediately** when you save the file. No rebuild is needed.
 
-### Rebuilding Manually
-If you make system-level changes (such as adding Nix packages or system options):
+### System-level Rebuilds
+For any Nix option additions or system package installs, run:
 ```bash
 sudo nixos-rebuild switch --flake ~/nixHypr#<your-hostname>
 ```
 
 ---
 
-## 🔐 Secrets & SOPS Setup
+## 🔐 SOPS & Secrets Setup
 
-The configuration utilizes `sops-nix` to securely decrypt private files (like your GitHub SSH key) at `/home/<username>/.ssh/id_ed25519` using the system's host key.
+This setup uses `sops-nix` to decrypt my GitHub SSH key to `~/.ssh/id_ed25519` using the machine's host SSH key.
 
-To activate your encrypted secrets after your first boot:
-1. Provision your SSH keys or age keys at `~/.ssh/id_ed25519`.
+To use it after a fresh install:
+1. Put your SSH/Age keys at `~/.ssh/id_ed25519`.
 2. Un-comment `config.flake.nixosModules.sops` in [nixos-configurations.nix](file:///home/tiizzel/nixHypr/modules/flake/nixos-configurations.nix).
-3. Re-encrypt or add your new system's SSH keys to `.sops.yaml` and run `sops secrets/secrets.yaml` to update the secret encryption.
-4. Run a system rebuild:
+3. Re-encrypt or add your new SSH host keys to `.sops.yaml` and update the secret via `sops secrets/secrets.yaml`.
+4. Rebuild the system:
    ```bash
    sudo nixos-rebuild switch --flake ~/nixHypr#<your-hostname>
    ```
 
 ---
 
-## 🤝 Credits & Shoutouts
+## 🤝 Credits
 
-* **[ML4W (Stephan Raabe)](https://github.com/mylinuxforwork)** - The original inspiration. Ported from their brilliant, highly polished Hyprland structure, and adapted to run natively as a declarative NixOS flake.
-* **[ilyamiro (Ilya Miroshnik)](https://github.com/ilyamiro)** - The outstanding, glassmorphic QML topbar, native session menus, QML application launchers, and workspace widgets are heavily inspired and adapted from their magnificent QuickShell configurations.
-* **[flake-parts](https://github.com/hercules-ci/flake-parts)** & **[import-tree](https://github.com/vic/import-tree)** - For enabling a clean, modular structure with automatic module discovery.
-
----
-
-<p align="center">
-  <i>Declutter, Declarative, Dynamic. Powered by NixOS ❄️</i>
-</p>
+*   **[ML4W (Stephan Raabe)](https://github.com/mylinuxforwork)** - This configuration was originally ported from his fantastic ML4W Hyprland setup and then adapted into a modular NixOS flake.
+*   **[ilyamiro (Ilya Miroshnik)](https://github.com/ilyamiro)** - The Quickshell topbar panel, session menus, application launcher, and workspace overview widgets are adapted from his QML configurations.
+*   **[flake-parts](https://github.com/hercules-ci/flake-parts)** & **[import-tree](https://github.com/vic/import-tree)** - Used to easily discover and structure all Nix modules automatically.
