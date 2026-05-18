@@ -124,7 +124,7 @@ Item {
     }
 
     function maxHighlightForTab(tab) {
-        if (tab === 0) return 6;
+        if (tab === 0) return 4;
         if (tab === 1) return dynamicKeybindsModel.count - 1;
         if (tab === 3) return dynamicStartupModel.count - 1;
         return -1;
@@ -133,17 +133,13 @@ Item {
     function activateHighlightedBox() {
         if (root.currentTab === 0) {
             if (root.highlightedBox === 0) {
-                Config.openGuideAtStartup = !Config.openGuideAtStartup;
             } else if (root.highlightedBox === 1) {
-                Config.topbarHelpIcon = !Config.topbarHelpIcon;
-            } else if (root.highlightedBox === 2) {
-            } else if (root.highlightedBox === 3) {
                 if (generalLoader.item) generalLoader.item.focusLangInput();
-            } else if (root.highlightedBox === 4) {
+            } else if (root.highlightedBox === 2) {
                 root.isLayoutDropdownOpen = !root.isLayoutDropdownOpen;
-            } else if (root.highlightedBox === 5) {
+            } else if (root.highlightedBox === 3) {
                 if (generalLoader.item) generalLoader.item.focusWpDirInput();
-            } else if (root.highlightedBox === 6) {
+            } else if (root.highlightedBox === 4) {
             }
         } else if (root.currentTab === 1) {
             if (root.highlightedBox >= 0 && root.highlightedBox < dynamicKeybindsModel.count) {
@@ -168,11 +164,11 @@ Item {
         if (box < 0) return;
         if (root.currentTab === 0 && generalLoader.item) {
             let approxY = 0;
-            if (box === 0 || box === 1) approxY = 0;
-            else if (box === 2) approxY = root.s(120);
-            else if (box === 3 || box === 4) approxY = root.s(240);
-            else if (box === 5) approxY = root.s(400);
-            else if (box === 6) approxY = root.s(520);
+            if (box === 0) approxY = 0;
+            else if (box === 1) approxY = root.s(100);
+            else if (box === 2) approxY = root.s(280);
+            else if (box === 3) approxY = root.s(400);
+            else if (box === 4) approxY = root.s(520);
             generalLoader.item.scrollToBox(approxY);
         } else if (root.currentTab === 1 && keybindLoader.item) {
             let approxY = box * root.s(56) + root.s(120);
@@ -283,22 +279,22 @@ Item {
         }
         
         if (event.key === Qt.Key_Left) {
-            if (root.currentTab === 0 && root.highlightedBox === 2) {
+            if (root.currentTab === 0 && root.highlightedBox === 0) {
                 Config.uiScale = Math.max(0.5, (Config.uiScale - 0.1).toFixed(1));
                 event.accepted = true;
                 return;
-            } else if (root.currentTab === 0 && root.highlightedBox === 6) {
+            } else if (root.currentTab === 0 && root.highlightedBox === 4) {
                 Config.workspaceCount = Math.max(2, Config.workspaceCount - 1);
                 event.accepted = true;
                 return;
             }
         }
         if (event.key === Qt.Key_Right) {
-            if (root.currentTab === 0 && root.highlightedBox === 2) {
+            if (root.currentTab === 0 && root.highlightedBox === 0) {
                 Config.uiScale = Math.min(2.0, (Config.uiScale + 0.1).toFixed(1));
                 event.accepted = true;
                 return;
-            } else if (root.currentTab === 0 && root.highlightedBox === 6) {
+            } else if (root.currentTab === 0 && root.highlightedBox === 4) {
                 Config.workspaceCount = Math.min(10, Config.workspaceCount + 1);
                 event.accepted = true;
                 return;
@@ -597,11 +593,11 @@ Item {
                 let approxY = 0;
 
                 if (targetTab === 0 && generalLoader.item) {
-                    if (targetBox === 0 || targetBox === 1) approxY = 0;
-                    else if (targetBox === 2) approxY = root.s(120);
-                    else if (targetBox === 3 || targetBox === 4) approxY = root.s(240);
-                    else if (targetBox === 5) approxY = root.s(400);
-                    else if (targetBox === 6) approxY = root.s(520);
+                    if (targetBox === 0) approxY = 0;
+                    else if (targetBox === 1) approxY = root.s(100);
+                    else if (targetBox === 2) approxY = root.s(280);
+                    else if (targetBox === 3) approxY = root.s(400);
+                    else if (targetBox === 4) approxY = root.s(520);
                     generalLoader.item.scrollTo(approxY);
                 } else if (targetTab === 1 && keybindLoader.item) {
                     approxY = targetBox * (root.s(56)) + root.s(120);
@@ -857,13 +853,11 @@ Item {
     }
 
     property var allSettingsCards: [
-        { tab: 0, boxIndex: 0, label: "Guide on startup",  desc: "Launch on login",        icon: "󰑊", color: "peach" },
-        { tab: 0, boxIndex: 1, label: "Help icon",         desc: "Show button in topbar",  icon: "󰋖", color: "blue" },
-        { tab: 0, boxIndex: 2, label: "UI Scale",          desc: "Base size scalar",       icon: "󰁦", color: "sapphire" },
-        { tab: 0, boxIndex: 3, label: "Keyboard layouts",  desc: "Matches hyprland.conf",  icon: "󰌌", color: "green" },
-        { tab: 0, boxIndex: 4, label: "Layout shortcut",   desc: "Toggle combination",     icon: "󰯍", color: "teal" },
-        { tab: 0, boxIndex: 5, label: "Wallpaper directory",desc: "Absolute source path",  icon: "󰋩", color: "mauve" },
-        { tab: 0, boxIndex: 6, label: "Workspaces",        desc: "Static count in topbar", icon: "󰽿", color: "red" }
+        { tab: 0, boxIndex: 0, label: "UI Scale",          desc: "Base size scalar",       icon: "󰁦", color: "sapphire" },
+        { tab: 0, boxIndex: 1, label: "Keyboard layouts",  desc: "Matches hyprland.conf",  icon: "󰌌", color: "green" },
+        { tab: 0, boxIndex: 2, label: "Layout shortcut",   desc: "Toggle combination",     icon: "󰯍", color: "teal" },
+        { tab: 0, boxIndex: 3, label: "Wallpaper directory",desc: "Absolute source path",  icon: "󰋩", color: "mauve" },
+        { tab: 0, boxIndex: 4, label: "Workspaces",        desc: "Static count in topbar", icon: "󰽿", color: "red" }
     ]
 
     function getMatchingKeybindIndices(query) {
@@ -1082,169 +1076,23 @@ Item {
                     width: parent.width
                     spacing: root.s(10)
 
-                    // ── Box 0: Guide on startup ──────────────────────────────
+                    // ── Box 0: UI Scale ──────────────────────────────────────
                     Rectangle {
                         id: box0
                         Layout.fillWidth: true
-                        Layout.preferredHeight: guideRow.implicitHeight + root.s(28)
+                        Layout.preferredHeight: col0.implicitHeight + root.s(32)
                         radius: root.s(12)
 
                         property bool isActive: root.highlightedBox === 0
-                        color: isActive ? root.peach : root.surface0
-                        border.color: isActive ? root.peach : root.surface1
-                        border.width: 1
-                        Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
-
-                        MouseArea { anchors.fill: parent; onClicked: root.highlightedBox = 0; z: -1 }
-
-                        RowLayout {
-                            id: guideRow
-                            anchors.top: parent.top
-                            anchors.left: parent.left
-                            anchors.right: parent.right
-                            anchors.margins: root.s(16)
-                            spacing: root.s(14)
-                            Item {
-                                Layout.preferredWidth: root.s(22)
-                                Layout.alignment: Qt.AlignVCenter
-                                Text {
-                                    anchors.centerIn: parent
-                                    text: "󰑊"
-                                    font.family: "Iosevka Nerd Font"
-                                    font.pixelSize: root.s(18)
-                                    color: box0.isActive ? root.base : root.peach
-                                    Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
-                                }
-                            }
-                            ColumnLayout {
-                                Layout.fillWidth: true
-                                Layout.alignment: Qt.AlignVCenter
-                                spacing: root.s(3)
-                                Text {
-                                    text: "Guide on startup"
-                                    font.family: "Inter"; font.weight: Font.Medium; font.pixelSize: root.s(14)
-                                    color: box0.isActive ? root.base : root.text
-                                    Layout.fillWidth: true
-                                    Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
-                                }
-                                Text {
-                                    text: "Launch on login"
-                                    font.family: "Inter"; font.pixelSize: root.s(11)
-                                    color: box0.isActive ? Qt.alpha(root.base, 0.75) : Qt.alpha(root.subtext0, 0.7)
-                                    Layout.fillWidth: true
-                                    Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
-                                }
-                            }
-                            Rectangle {
-                                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                                Layout.preferredWidth: root.s(40)
-                                Layout.preferredHeight: root.s(22)
-                                radius: root.s(11)
-                                scale: toggle1Ma.containsMouse ? 1.05 : 1.0
-                                Behavior on scale { NumberAnimation { duration: 150; easing.type: Easing.OutBack } }
-                                color: Config.openGuideAtStartup
-                                    ? (box0.isActive ? root.base : root.peach)
-                                    : Qt.alpha(root.surface2, box0.isActive ? 0.4 : 1.0)
-                                Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
-                                Rectangle {
-                                    width: root.s(16); height: root.s(16); radius: root.s(8)
-                                    color: Config.openGuideAtStartup
-                                        ? (box0.isActive ? root.peach : root.base)
-                                        : (box0.isActive ? root.peach : root.surface0)
-                                    y: root.s(3); x: Config.openGuideAtStartup ? root.s(21) : root.s(3)
-                                    Behavior on x { NumberAnimation { duration: 250; easing.type: Easing.OutBack } }
-                                    Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
-                                }
-                                MouseArea { id: toggle1Ma; anchors.fill: parent; hoverEnabled: true; onClicked: Config.openGuideAtStartup = !Config.openGuideAtStartup; cursorShape: Qt.PointingHandCursor }
-                            }
-                        }
-                    }
-
-                    // ── Box 1: Help icon ─────────────────────────────────────
-                    Rectangle {
-                        id: box1
-                        Layout.fillWidth: true
-                        Layout.preferredHeight: helpIconRow.implicitHeight + root.s(28)
-                        radius: root.s(12)
-
-                        property bool isActive: root.highlightedBox === 1
-                        color: isActive ? root.blue : root.surface0
-                        border.color: isActive ? root.blue : root.surface1
-                        border.width: 1
-                        Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
-
-                        MouseArea { anchors.fill: parent; onClicked: root.highlightedBox = 1; z: -1 }
-
-                        RowLayout {
-                            id: helpIconRow
-                            anchors.top: parent.top
-                            anchors.left: parent.left
-                            anchors.right: parent.right
-                            anchors.margins: root.s(16)
-                            spacing: root.s(14)
-                            Item {
-                                Layout.preferredWidth: root.s(22)
-                                Layout.alignment: Qt.AlignVCenter
-                                Text {
-                                    anchors.centerIn: parent; text: "󰋖"
-                                    font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(18)
-                                    color: box1.isActive ? root.base : root.blue
-                                    Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
-                                }
-                            }
-                            ColumnLayout {
-                                Layout.fillWidth: true; Layout.alignment: Qt.AlignVCenter; spacing: root.s(3)
-                                Text {
-                                    text: "Help icon"; font.family: "Inter"; font.weight: Font.Medium; font.pixelSize: root.s(14)
-                                    color: box1.isActive ? root.base : root.text; Layout.fillWidth: true
-                                    Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
-                                }
-                                Text {
-                                    text: "Show button in topbar"; font.family: "Inter"; font.pixelSize: root.s(11)
-                                    color: box1.isActive ? Qt.alpha(root.base, 0.75) : Qt.alpha(root.subtext0, 0.7); Layout.fillWidth: true
-                                    Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
-                                }
-                            }
-                            Rectangle {
-                                Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                                Layout.preferredWidth: root.s(40); Layout.preferredHeight: root.s(22); radius: root.s(11)
-                                scale: toggle2Ma.containsMouse ? 1.05 : 1.0
-                                Behavior on scale { NumberAnimation { duration: 150; easing.type: Easing.OutBack } }
-                                color: Config.topbarHelpIcon
-                                    ? (box1.isActive ? root.base : root.blue)
-                                    : Qt.alpha(root.surface2, box1.isActive ? 0.4 : 1.0)
-                                Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
-                                Rectangle {
-                                    width: root.s(16); height: root.s(16); radius: root.s(8)
-                                    color: Config.topbarHelpIcon
-                                        ? (box1.isActive ? root.blue : root.base)
-                                        : (box1.isActive ? root.blue : root.surface0)
-                                    y: root.s(3); x: Config.topbarHelpIcon ? root.s(21) : root.s(3)
-                                    Behavior on x { NumberAnimation { duration: 250; easing.type: Easing.OutBack } }
-                                    Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
-                                }
-                                MouseArea { id: toggle2Ma; anchors.fill: parent; hoverEnabled: true; onClicked: Config.topbarHelpIcon = !Config.topbarHelpIcon; cursorShape: Qt.PointingHandCursor }
-                            }
-                        }
-                    }
-
-                    // ── Box 2: UI Scale ──────────────────────────────────────
-                    Rectangle {
-                        id: box2
-                        Layout.fillWidth: true
-                        Layout.preferredHeight: col2.implicitHeight + root.s(32)
-                        radius: root.s(12)
-
-                        property bool isActive: root.highlightedBox === 2
                         color: isActive ? root.sapphire : root.surface0
                         border.color: isActive ? root.sapphire : root.surface1
                         border.width: 1
                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
 
-                        MouseArea { anchors.fill: parent; onClicked: root.highlightedBox = 2; z: -1 }
+                        MouseArea { anchors.fill: parent; onClicked: root.highlightedBox = 0; z: -1 }
 
                         ColumnLayout {
-                            id: col2
+                            id: col0
                             anchors.top: parent.top; anchors.left: parent.left; anchors.right: parent.right; anchors.margins: root.s(16)
                             RowLayout {
                                 Layout.fillWidth: true; spacing: root.s(14)
@@ -1253,7 +1101,7 @@ Item {
                                     Text {
                                         anchors.centerIn: parent; text: "󰁦"
                                         font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(18)
-                                        color: box2.isActive ? root.base : root.sapphire
+                                        color: box0.isActive ? root.base : root.sapphire
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
                                 }
@@ -1261,12 +1109,12 @@ Item {
                                     Layout.fillWidth: true; Layout.alignment: Qt.AlignVCenter; spacing: root.s(3)
                                     Text {
                                         text: "UI Scale"; font.family: "Inter"; font.weight: Font.Medium; font.pixelSize: root.s(14)
-                                        color: box2.isActive ? root.base : root.text; Layout.fillWidth: true
+                                        color: box0.isActive ? root.base : root.text; Layout.fillWidth: true
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
                                     Text {
                                         text: "Base size scalar"; font.family: "Inter"; font.pixelSize: root.s(11)
-                                        color: box2.isActive ? Qt.alpha(root.base, 0.75) : Qt.alpha(root.subtext0, 0.7); Layout.fillWidth: true
+                                        color: box0.isActive ? Qt.alpha(root.base, 0.75) : Qt.alpha(root.subtext0, 0.7); Layout.fillWidth: true
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
                                 }
@@ -1285,7 +1133,7 @@ Item {
                                         Text {
                                             anchors.centerIn: parent; text: "-"
                                             font.family: "JetBrains Mono"; font.weight: Font.Medium; font.pixelSize: root.s(15)
-                                            color: box2.isActive ? root.base : root.sapphire
+                                            color: box0.isActive ? root.base : root.sapphire
                                             Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                         }
                                         MouseArea { id: sMinusMa; anchors.fill: parent; hoverEnabled: true; onClicked: Config.uiScale = Math.max(0.5, (Config.uiScale - 0.1).toFixed(1)) }
@@ -1293,7 +1141,7 @@ Item {
                                     Text { 
                                         text: Config.uiScale.toFixed(1) + "x"
                                         font.family: "JetBrains Mono"; font.weight: Font.Bold; font.pixelSize: root.s(13)
-                                        color: box2.isActive ? root.base : root.sapphire
+                                        color: box0.isActive ? root.base : root.sapphire
                                         Layout.minimumWidth: root.s(36); horizontalAlignment: Text.AlignHCenter
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
@@ -1308,7 +1156,7 @@ Item {
                                         Text {
                                             anchors.centerIn: parent; text: "+"
                                             font.family: "JetBrains Mono"; font.weight: Font.Medium; font.pixelSize: root.s(15)
-                                            color: box2.isActive ? root.base : root.sapphire
+                                            color: box0.isActive ? root.base : root.sapphire
                                             Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                         }
                                         MouseArea { id: sPlusMa; anchors.fill: parent; hoverEnabled: true; onClicked: Config.uiScale = Math.min(2.0, (Config.uiScale + 0.1).toFixed(1)) }
@@ -1318,23 +1166,23 @@ Item {
                         }
                     }
 
-                    // ── Box 3: Keyboard layouts ──────────────────────────────
+                    // ── Box 1: Keyboard layouts ──────────────────────────────
                     Rectangle {
-                        id: box3
+                        id: box1
                         Layout.fillWidth: true
-                        Layout.preferredHeight: col3lang.implicitHeight + root.s(32)
+                        Layout.preferredHeight: col1lang.implicitHeight + root.s(32)
                         radius: root.s(12)
 
-                        property bool isActive: root.highlightedBox === 3
+                        property bool isActive: root.highlightedBox === 1
                         color: isActive ? root.green : root.surface0
                         border.color: isActive ? root.green : root.surface1
                         border.width: 1
                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
 
-                        MouseArea { anchors.fill: parent; onClicked: root.highlightedBox = 3; z: -1 }
+                        MouseArea { anchors.fill: parent; onClicked: root.highlightedBox = 1; z: -1 }
 
                         ColumnLayout {
-                            id: col3lang
+                            id: col1lang
                             anchors.top: parent.top; anchors.left: parent.left; anchors.right: parent.right; anchors.margins: root.s(16)
                             spacing: root.s(16)
                             RowLayout {
@@ -1344,7 +1192,7 @@ Item {
                                     Text {
                                         anchors.top: parent.top; anchors.horizontalCenter: parent.horizontalCenter
                                         text: "󰌌"; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(18)
-                                        color: box3.isActive ? root.base : root.green
+                                        color: box1.isActive ? root.base : root.green
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
                                 }
@@ -1352,12 +1200,12 @@ Item {
                                     Layout.fillWidth: true; Layout.alignment: Qt.AlignTop; spacing: root.s(3)
                                     Text {
                                         text: "Keyboard layouts"; font.family: "Inter"; font.weight: Font.Medium; font.pixelSize: root.s(14)
-                                        color: box3.isActive ? root.base : root.text; Layout.fillWidth: true
+                                        color: box1.isActive ? root.base : root.text; Layout.fillWidth: true
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
                                     Text {
                                         text: "Matches hyprland.conf. Click ✖ to remove."; font.family: "Inter"; font.pixelSize: root.s(11)
-                                        color: box3.isActive ? Qt.alpha(root.base, 0.75) : Qt.alpha(root.subtext0, 0.7); Layout.fillWidth: true
+                                        color: box1.isActive ? Qt.alpha(root.base, 0.75) : Qt.alpha(root.subtext0, 0.7); Layout.fillWidth: true
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
                                     Flow {
@@ -1366,8 +1214,8 @@ Item {
                                             model: Config.language ? Config.language.split(",").filter(x => x.trim() !== "") : []
                                             Rectangle {
                                                 width: langChipLayout.implicitWidth + root.s(20); height: root.s(26); radius: root.s(13)
-                                                color: box3.isActive ? Qt.alpha(root.base, 0.2) : root.surface1
-                                                border.color: chipMa.containsMouse ? root.red : (box3.isActive ? Qt.alpha(root.base, 0.4) : "transparent")
+                                                color: box1.isActive ? Qt.alpha(root.base, 0.2) : root.surface1
+                                                border.color: chipMa.containsMouse ? root.red : (box1.isActive ? Qt.alpha(root.base, 0.4) : "transparent")
                                                 border.width: chipMa.containsMouse ? 1 : 0
                                                 scale: chipMa.containsMouse ? 1.05 : 1.0
                                                 Behavior on scale { NumberAnimation { duration: 150; easing.type: Easing.OutBack } }
@@ -1376,12 +1224,12 @@ Item {
                                                     id: langChipLayout; anchors.centerIn: parent; spacing: root.s(6)
                                                     Text {
                                                         text: modelData; font.family: "JetBrains Mono"; font.weight: Font.Medium; font.pixelSize: root.s(11)
-                                                        color: chipMa.containsMouse ? root.red : (box3.isActive ? root.base : root.text)
+                                                        color: chipMa.containsMouse ? root.red : (box1.isActive ? root.base : root.text)
                                                         Behavior on color { ColorAnimation { duration: 150 } }
                                                     }
                                                     Text {
                                                         text: "✖"; font.family: "JetBrains Mono"; font.pixelSize: root.s(11)
-                                                        color: chipMa.containsMouse ? root.red : (box3.isActive ? Qt.alpha(root.base, 0.6) : root.subtext0)
+                                                        color: chipMa.containsMouse ? root.red : (box1.isActive ? Qt.alpha(root.base, 0.6) : root.subtext0)
                                                         Behavior on color { ColorAnimation { duration: 150 } }
                                                     }
                                                 }
@@ -1401,10 +1249,10 @@ Item {
                             Rectangle {
                                 Layout.fillWidth: true; Layout.preferredHeight: root.s(34); Layout.topMargin: root.s(8)
                                 radius: root.s(7)
-                                color: box3.isActive ? Qt.alpha(root.base, 0.15) : root.surface0
+                                color: box1.isActive ? Qt.alpha(root.base, 0.15) : root.surface0
                                 border.color: langInput.activeFocus
-                                    ? (box3.isActive ? root.base : root.green)
-                                    : (box3.isActive ? Qt.alpha(root.base, 0.3) : root.surface2)
+                                    ? (box1.isActive ? root.base : root.green)
+                                    : (box1.isActive ? Qt.alpha(root.base, 0.3) : root.surface2)
                                 border.width: 1
                                 Behavior on border.color { ColorAnimation { duration: 200 } }
                                 Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
@@ -1413,7 +1261,7 @@ Item {
                                     anchors.fill: parent; anchors.margins: root.s(9)
                                     verticalAlignment: TextInput.AlignVCenter
                                     font.family: "JetBrains Mono"; font.pixelSize: root.s(11)
-                                    color: box3.isActive ? root.base : root.text; clip: true; selectByMouse: true
+                                    color: box1.isActive ? root.base : root.text; clip: true; selectByMouse: true
                                     Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     Keys.onPressed: (event) => {
                                         if (event.key === Qt.Key_Tab || event.key === Qt.Key_Down) {
@@ -1436,7 +1284,7 @@ Item {
                                     onTextChanged: { root.updateLangSearch(text); }
                                     Text {
                                         text: "Search to add..."
-                                        color: box3.isActive ? Qt.alpha(root.base, 0.5) : Qt.alpha(root.subtext0, 0.7)
+                                        color: box1.isActive ? Qt.alpha(root.base, 0.5) : Qt.alpha(root.subtext0, 0.7)
                                         visible: !parent.text && !parent.activeFocus; font: parent.font; anchors.verticalCenter: parent.verticalCenter
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
@@ -1446,8 +1294,8 @@ Item {
                                 Layout.fillWidth: true
                                 Layout.preferredHeight: langInput.activeFocus && langSearchModel.count > 0 ? Math.min(root.s(160), langSearchModel.count * root.s(30) + root.s(8)) : 0
                                 radius: root.s(7)
-                                color: box3.isActive ? Qt.alpha(root.base, 0.15) : root.surface0
-                                border.color: box3.isActive ? Qt.alpha(root.base, 0.3) : root.surface1
+                                color: box1.isActive ? Qt.alpha(root.base, 0.15) : root.surface0
+                                border.color: box1.isActive ? Qt.alpha(root.base, 0.3) : root.surface1
                                 border.width: 1
                                 clip: true
                                 Behavior on Layout.preferredHeight { NumberAnimation { duration: 250; easing.type: Easing.OutExpo } }
@@ -1464,13 +1312,13 @@ Item {
                                         anchors.horizontalCenter: parent.horizontalCenter; radius: root.s(4)
                                         property bool isHovered: sMa.containsMouse
                                         color: isHovered
-                                            ? Qt.alpha(box3.isActive ? root.base : root.green, 0.2)
-                                            : (ListView.isCurrentItem ? Qt.alpha(box3.isActive ? root.base : root.green, 0.1) : "transparent")
+                                            ? Qt.alpha(box1.isActive ? root.base : root.green, 0.2)
+                                            : (ListView.isCurrentItem ? Qt.alpha(box1.isActive ? root.base : root.green, 0.1) : "transparent")
                                         Behavior on color { ColorAnimation { duration: 150 } }
                                         RowLayout {
                                             anchors.fill: parent; anchors.leftMargin: root.s(8); anchors.rightMargin: root.s(8); spacing: root.s(8)
-                                            Text { text: model.code; font.family: "JetBrains Mono"; font.weight: Font.Bold; font.pixelSize: root.s(11); color: box3.isActive ? root.base : root.text; Behavior on color { ColorAnimation { duration: 150 } } }
-                                            Text { text: model.name; font.family: "Inter"; font.pixelSize: root.s(11); color: box3.isActive ? Qt.alpha(root.base, 0.7) : Qt.alpha(root.subtext0, 0.7); elide: Text.ElideRight; Layout.fillWidth: true; Behavior on color { ColorAnimation { duration: 150 } } }
+                                            Text { text: model.code; font.family: "JetBrains Mono"; font.weight: Font.Bold; font.pixelSize: root.s(11); color: box1.isActive ? root.base : root.text; Behavior on color { ColorAnimation { duration: 150 } } }
+                                            Text { text: model.name; font.family: "Inter"; font.pixelSize: root.s(11); color: box1.isActive ? Qt.alpha(root.base, 0.7) : Qt.alpha(root.subtext0, 0.7); elide: Text.ElideRight; Layout.fillWidth: true; Behavior on color { ColorAnimation { duration: 150 } } }
                                         }
                                         MouseArea {
                                             id: sMa; anchors.fill: parent; hoverEnabled: true; cursorShape: Qt.PointingHandCursor
@@ -1486,23 +1334,23 @@ Item {
                         }                       
                     }
 
-                    // ── Box 4: Layout shortcut ───────────────────────────────
+                    // ── Box 2: Layout shortcut ───────────────────────────────
                     Rectangle {
-                        id: box4
+                        id: box2
                         Layout.fillWidth: true
-                        Layout.preferredHeight: col4layout.implicitHeight + root.s(32)
+                        Layout.preferredHeight: col2layout.implicitHeight + root.s(32)
                         radius: root.s(12)
 
-                        property bool isActive: root.highlightedBox === 4
+                        property bool isActive: root.highlightedBox === 2
                         color: isActive ? root.teal : root.surface0
                         border.color: isActive ? root.teal : root.surface1
                         border.width: 1
                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
 
-                        MouseArea { anchors.fill: parent; onClicked: root.highlightedBox = 4; z: -1 }
+                        MouseArea { anchors.fill: parent; onClicked: root.highlightedBox = 2; z: -1 }
 
                         ColumnLayout {
-                            id: col4layout
+                            id: col2layout
                             anchors.top: parent.top; anchors.left: parent.left; anchors.right: parent.right; anchors.margins: root.s(16)
                             spacing: root.s(16)
                             RowLayout {
@@ -1512,7 +1360,7 @@ Item {
                                     Text {
                                         anchors.top: parent.top; anchors.horizontalCenter: parent.horizontalCenter
                                         text: "󰯍"; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(18)
-                                        color: box4.isActive ? root.base : root.teal
+                                        color: box2.isActive ? root.base : root.teal
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
                                 }
@@ -1520,21 +1368,21 @@ Item {
                                     Layout.fillWidth: true; Layout.alignment: Qt.AlignTop; spacing: root.s(3)
                                     Text {
                                         text: "Layout shortcut"; font.family: "Inter"; font.weight: Font.Medium; font.pixelSize: root.s(14)
-                                        color: box4.isActive ? root.base : root.text; Layout.fillWidth: true
+                                        color: box2.isActive ? root.base : root.text; Layout.fillWidth: true
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
                                     Text {
                                         text: "Toggle combination"; font.family: "Inter"; font.pixelSize: root.s(11)
-                                        color: box4.isActive ? Qt.alpha(root.base, 0.75) : Qt.alpha(root.subtext0, 0.7); Layout.fillWidth: true
+                                        color: box2.isActive ? Qt.alpha(root.base, 0.75) : Qt.alpha(root.subtext0, 0.7); Layout.fillWidth: true
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
                                     Rectangle {
                                         Layout.fillWidth: true; Layout.preferredHeight: root.s(34); Layout.topMargin: root.s(8)
                                         radius: root.s(7)
-                                        color: box4.isActive ? Qt.alpha(root.base, 0.15) : root.surface0
+                                        color: box2.isActive ? Qt.alpha(root.base, 0.15) : root.surface0
                                         border.color: root.isLayoutDropdownOpen
-                                            ? (box4.isActive ? root.base : root.teal)
-                                            : (box4.isActive ? Qt.alpha(root.base, 0.3) : root.surface2)
+                                            ? (box2.isActive ? root.base : root.teal)
+                                            : (box2.isActive ? Qt.alpha(root.base, 0.3) : root.surface2)
                                         border.width: 1
                                         Behavior on border.color { ColorAnimation { duration: 200 } }
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
@@ -1543,12 +1391,12 @@ Item {
                                             Text {
                                                 text: root.getKbToggleLabel(Config.kbOptions)
                                                 font.family: "JetBrains Mono"; font.pixelSize: root.s(11)
-                                                color: box4.isActive ? root.base : root.text; Layout.fillWidth: true
+                                                color: box2.isActive ? root.base : root.text; Layout.fillWidth: true
                                                 Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                             }
                                             Text {
                                                 text: root.isLayoutDropdownOpen ? "▴" : "▾"; font.pixelSize: root.s(12)
-                                                color: box4.isActive ? Qt.alpha(root.base, 0.7) : root.subtext0
+                                                color: box2.isActive ? Qt.alpha(root.base, 0.7) : root.subtext0
                                                 Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                             }
                                         }
@@ -1568,8 +1416,8 @@ Item {
                                         Layout.fillWidth: true
                                         Layout.preferredHeight: root.isLayoutDropdownOpen ? root.kbToggleModelArr.length * root.s(30) + root.s(8) : 0
                                         radius: root.s(7)
-                                        color: box4.isActive ? Qt.alpha(root.base, 0.15) : root.surface0
-                                        border.color: box4.isActive ? Qt.alpha(root.base, 0.3) : root.surface1
+                                        color: box2.isActive ? Qt.alpha(root.base, 0.15) : root.surface0
+                                        border.color: box2.isActive ? Qt.alpha(root.base, 0.3) : root.surface1
                                         border.width: 1
                                         clip: true
                                         Behavior on Layout.preferredHeight { NumberAnimation { duration: 250; easing.type: Easing.OutExpo } }
@@ -1585,16 +1433,16 @@ Item {
                                                 anchors.horizontalCenter: parent.horizontalCenter; radius: root.s(4)
                                                 property bool isHovered: toggleMa.containsMouse
                                                 color: isHovered
-                                                    ? Qt.alpha(box4.isActive ? root.base : root.teal, 0.2)
-                                                    : (ListView.isCurrentItem ? Qt.alpha(box4.isActive ? root.base : root.teal, 0.1) : "transparent")
+                                                    ? Qt.alpha(box2.isActive ? root.base : root.teal, 0.2)
+                                                    : (ListView.isCurrentItem ? Qt.alpha(box2.isActive ? root.base : root.teal, 0.1) : "transparent")
                                                 Behavior on color { ColorAnimation { duration: 150 } }
                                                 RowLayout {
                                                     anchors.fill: parent; anchors.leftMargin: root.s(8); anchors.rightMargin: root.s(8)
                                                     Text {
                                                         text: modelData.label; font.family: "JetBrains Mono"; font.pixelSize: root.s(11)
                                                         color: Config.kbOptions === modelData.val
-                                                            ? (box4.isActive ? root.base : root.teal)
-                                                            : (box4.isActive ? Qt.alpha(root.base, 0.8) : root.text)
+                                                            ? (box2.isActive ? root.base : root.teal)
+                                                            : (box2.isActive ? Qt.alpha(root.base, 0.8) : root.text)
                                                         Layout.fillWidth: true
                                                         Behavior on color { ColorAnimation { duration: 150 } }
                                                     }
@@ -1608,23 +1456,23 @@ Item {
                         }
                     }
 
-                    // ── Box 5: Wallpaper directory ───────────────────────────
+                    // ── Box 3: Wallpaper directory ───────────────────────────
                     Rectangle {
-                        id: box5
+                        id: box3
                         Layout.fillWidth: true
-                        Layout.preferredHeight: col5wp.implicitHeight + root.s(32)
+                        Layout.preferredHeight: col3wp.implicitHeight + root.s(32)
                         radius: root.s(12)
 
-                        property bool isActive: root.highlightedBox === 5
+                        property bool isActive: root.highlightedBox === 3
                         color: isActive ? root.mauve : root.surface0
                         border.color: isActive ? root.mauve : root.surface1
                         border.width: 1
                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
 
-                        MouseArea { anchors.fill: parent; onClicked: root.highlightedBox = 5; z: -1 }
+                        MouseArea { anchors.fill: parent; onClicked: root.highlightedBox = 3; z: -1 }
 
                         ColumnLayout {
-                            id: col5wp
+                            id: col3wp
                             anchors.top: parent.top; anchors.left: parent.left; anchors.right: parent.right; anchors.margins: root.s(16)
                             RowLayout {
                                 Layout.fillWidth: true; spacing: root.s(14)
@@ -1633,7 +1481,7 @@ Item {
                                     Text {
                                         anchors.top: parent.top; anchors.horizontalCenter: parent.horizontalCenter
                                         text: "󰋩"; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(18)
-                                        color: box5.isActive ? root.base : root.mauve
+                                        color: box3.isActive ? root.base : root.mauve
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
                                 }
@@ -1641,21 +1489,21 @@ Item {
                                     Layout.fillWidth: true; Layout.alignment: Qt.AlignTop; spacing: root.s(3)
                                     Text {
                                         text: "Wallpaper directory"; font.family: "Inter"; font.weight: Font.Medium; font.pixelSize: root.s(14)
-                                        color: box5.isActive ? root.base : root.text; Layout.fillWidth: true
+                                        color: box3.isActive ? root.base : root.text; Layout.fillWidth: true
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
                                     Text {
                                         text: "Absolute source path"; font.family: "Inter"; font.pixelSize: root.s(11)
-                                        color: box5.isActive ? Qt.alpha(root.base, 0.75) : Qt.alpha(root.subtext0, 0.7); Layout.fillWidth: true
+                                        color: box3.isActive ? Qt.alpha(root.base, 0.75) : Qt.alpha(root.subtext0, 0.7); Layout.fillWidth: true
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
                                     Rectangle {
                                         Layout.fillWidth: true; Layout.preferredHeight: root.s(34); Layout.topMargin: root.s(8)
                                         radius: root.s(7)
-                                        color: box5.isActive ? Qt.alpha(root.base, 0.15) : root.surface0
+                                        color: box3.isActive ? Qt.alpha(root.base, 0.15) : root.surface0
                                         border.color: wpDirInput.activeFocus
-                                            ? (box5.isActive ? root.base : root.mauve)
-                                            : (box5.isActive ? Qt.alpha(root.base, 0.3) : root.surface2)
+                                            ? (box3.isActive ? root.base : root.mauve)
+                                            : (box3.isActive ? Qt.alpha(root.base, 0.3) : root.surface2)
                                         border.width: 1
                                         Behavior on border.color { ColorAnimation { duration: 200 } }
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
@@ -1665,7 +1513,7 @@ Item {
                                             verticalAlignment: TextInput.AlignVCenter
                                             text: Config.wallpaperDir
                                             font.family: "JetBrains Mono"; font.pixelSize: root.s(11)
-                                            color: box5.isActive ? root.base : root.text; clip: true; selectByMouse: true
+                                            color: box3.isActive ? root.base : root.text; clip: true; selectByMouse: true
                                             Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                             Keys.onPressed: (event) => {
                                                 if (event.key === Qt.Key_Tab || event.key === Qt.Key_Down) {
@@ -1691,7 +1539,7 @@ Item {
                                                 if (activeFocus) { pathSuggestProc.query = text; pathSuggestProc.running = false; pathSuggestProc.running = true; }
                                             }
                                             Text {
-                                                text: "Enter directory..."; color: box5.isActive ? Qt.alpha(root.base, 0.5) : root.subtext0
+                                                text: "Enter directory..."; color: box3.isActive ? Qt.alpha(root.base, 0.5) : root.subtext0
                                                 visible: !parent.text && !parent.activeFocus; font: parent.font; anchors.verticalCenter: parent.verticalCenter
                                             }
                                         }
@@ -1700,8 +1548,8 @@ Item {
                                         Layout.fillWidth: true
                                         Layout.preferredHeight: wpDirInput.activeFocus && pathSuggestModel.count > 0 ? pathSuggestModel.count * root.s(28) + root.s(8) : 0
                                         radius: root.s(7)
-                                        color: box5.isActive ? Qt.alpha(root.base, 0.15) : root.surface0
-                                        border.color: box5.isActive ? Qt.alpha(root.base, 0.3) : root.surface1
+                                        color: box3.isActive ? Qt.alpha(root.base, 0.15) : root.surface0
+                                        border.color: box3.isActive ? Qt.alpha(root.base, 0.3) : root.surface1
                                         border.width: 1
                                         clip: true
                                         Behavior on Layout.preferredHeight { NumberAnimation { duration: 250; easing.type: Easing.OutExpo } }
@@ -1717,13 +1565,13 @@ Item {
                                                 anchors.horizontalCenter: parent.horizontalCenter; radius: root.s(4)
                                                 property bool isHovered: suggestMa.containsMouse
                                                 color: isHovered
-                                                    ? Qt.alpha(box5.isActive ? root.base : root.mauve, 0.2)
-                                                    : (ListView.isCurrentItem ? Qt.alpha(box5.isActive ? root.base : root.mauve, 0.1) : "transparent")
+                                                    ? Qt.alpha(box3.isActive ? root.base : root.mauve, 0.2)
+                                                    : (ListView.isCurrentItem ? Qt.alpha(box3.isActive ? root.base : root.mauve, 0.1) : "transparent")
                                                 Behavior on color { ColorAnimation { duration: 150 } }
                                                 Text {
                                                     anchors.verticalCenter: parent.verticalCenter; x: root.s(8)
                                                     text: model.path; font.family: "JetBrains Mono"; font.pixelSize: root.s(10)
-                                                    color: box5.isActive ? root.base : root.text
+                                                    color: box3.isActive ? root.base : root.text
                                                     elide: Text.ElideMiddle; width: parent.width - root.s(16)
                                                     Behavior on color { ColorAnimation { duration: 150 } }
                                                 }
@@ -1736,23 +1584,23 @@ Item {
                         }
                     }
 
-                    // ── Box 6: Workspaces ────────────────────────────────────
+                    // ── Box 4: Workspaces ────────────────────────────────────
                     Rectangle {
-                        id: box6
+                        id: box4
                         Layout.fillWidth: true
-                        Layout.preferredHeight: col6ws.implicitHeight + root.s(32)
+                        Layout.preferredHeight: col4ws.implicitHeight + root.s(32)
                         radius: root.s(12)
 
-                        property bool isActive: root.highlightedBox === 6
+                        property bool isActive: root.highlightedBox === 4
                         color: isActive ? root.red : root.surface0
                         border.color: isActive ? root.red : root.surface1
                         border.width: 1
                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
 
-                        MouseArea { anchors.fill: parent; onClicked: root.highlightedBox = 6; z: -1 }
+                        MouseArea { anchors.fill: parent; onClicked: root.highlightedBox = 4; z: -1 }
 
                         ColumnLayout {
-                            id: col6ws
+                            id: col4ws
                             anchors.top: parent.top; anchors.left: parent.left; anchors.right: parent.right; anchors.margins: root.s(16)
                             RowLayout {
                                 Layout.fillWidth: true; spacing: root.s(14)
@@ -1760,7 +1608,7 @@ Item {
                                     Layout.preferredWidth: root.s(22); Layout.alignment: Qt.AlignVCenter
                                     Text {
                                         anchors.centerIn: parent; text: "󰽿"; font.family: "Iosevka Nerd Font"; font.pixelSize: root.s(18)
-                                        color: box6.isActive ? root.base : root.red
+                                        color: box4.isActive ? root.base : root.red
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
                                 }
@@ -1768,12 +1616,12 @@ Item {
                                     Layout.fillWidth: true; Layout.alignment: Qt.AlignVCenter; spacing: root.s(3)
                                     Text {
                                         text: "Workspaces"; font.family: "Inter"; font.weight: Font.Bold; font.pixelSize: root.s(14)
-                                        color: box6.isActive ? root.base : root.text; Layout.fillWidth: true
+                                        color: box4.isActive ? root.base : root.text; Layout.fillWidth: true
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
                                     Text {
                                         text: "Static count in topbar"; font.family: "Inter"; font.pixelSize: root.s(11)
-                                        color: box6.isActive ? Qt.alpha(root.base, 0.75) : Qt.alpha(root.subtext0, 0.7); Layout.fillWidth: true
+                                        color: box4.isActive ? Qt.alpha(root.base, 0.75) : Qt.alpha(root.subtext0, 0.7); Layout.fillWidth: true
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
                                 }
@@ -1788,7 +1636,7 @@ Item {
                                         Text {
                                             anchors.centerIn: parent; text: "-"
                                             font.family: "JetBrains Mono"; font.weight: Font.Bold; font.pixelSize: root.s(15)
-                                            color: box6.isActive ? root.base : root.red
+                                            color: box4.isActive ? root.base : root.red
                                             Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                         }
                                         MouseArea { id: wsMinusMa; anchors.fill: parent; hoverEnabled: true; onClicked: Config.workspaceCount = Math.max(2, Config.workspaceCount - 1) }
@@ -1796,7 +1644,7 @@ Item {
                                     Text { 
                                         text: Config.workspaceCount.toString()
                                         font.family: "JetBrains Mono"; font.weight: Font.Black; font.pixelSize: root.s(14)
-                                        color: box6.isActive ? root.base : root.red
+                                        color: box4.isActive ? root.base : root.red
                                         Layout.minimumWidth: root.s(36); horizontalAlignment: Text.AlignHCenter
                                         Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                     }
@@ -1809,7 +1657,7 @@ Item {
                                         Text {
                                             anchors.centerIn: parent; text: "+"
                                             font.family: "JetBrains Mono"; font.weight: Font.Bold; font.pixelSize: root.s(15)
-                                            color: box6.isActive ? root.base : root.red
+                                            color: box4.isActive ? root.base : root.red
                                             Behavior on color { ColorAnimation { duration: 220; easing.type: Easing.OutExpo } }
                                         }
                                         MouseArea { id: wsPlusMa; anchors.fill: parent; hoverEnabled: true; onClicked: Config.workspaceCount = Math.min(10, Config.workspaceCount + 1) }

@@ -32,11 +32,8 @@ alias settings='nixHypr-dotfiles-settings com.nixHypr.dotfiles'
 # -----------------------------------------------------
 # NixHypr Apps
 # -----------------------------------------------------
-alias nixHypr='qs ipc call welcome toggle'
 alias nixHypr-settings='qs -p ~/.local/share/nixHypr-dotfiles-settings/quickshell ipc call settings toggle'
-alias nixHypr-calendar='qs ipc call calendar toggle'
 alias nixHypr-hyprland='flatpak run com.nixHypr.hyprlandsettings'
-alias nixHypr-sidebar='qs ipc call sidebar toggle'
 
 # -----------------------------------------------------
 # Git

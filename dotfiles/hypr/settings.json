@@ -1,10 +1,8 @@
 {
   "keybinds": [],
-  "openGuideAtStartup": true,
-  "topbarHelpIcon": true,
-  "wallpaperDir": "~/Pictures/Wallpapers",
+  "wallpaperDir": "/home/tiizzel/Pictures/Wallpapers",
   "language": "en",
   "kbOptions": "grp:alt_shift_toggle",
-  "workspaceCount": 8,
+  "workspaceCount": 6,
   "uiScale": 1
 }

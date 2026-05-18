@@ -25,5 +25,4 @@
   steamEnable     = true;
 
   # 🎨 THEMING & AESTHETICS
-  barChoice = "noctalia"; # or "waybar"
 }

@@ -40,6 +40,7 @@ in
       config.flake.nixosModules.hyprland
 
       # Hardware
+      config.flake.nixosModules.hardware
       config.flake.nixosModules.audio
       config.flake.nixosModules.printing
       config.flake.nixosModules.bluetooth

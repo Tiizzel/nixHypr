@@ -21,10 +21,6 @@ if [ -f $HOME/.config/nixHypr/settings/gamemode-enabled ]; then
     cat $nixHypr_cache_folder/last_monitor.conf > $HOME/.config/hypr/conf/monitor.conf
     rm $nixHypr_cache_folder/last_monitor.conf
   fi
-  if [ -f $nixHypr_cache_folder/restart-wpauto ]; then
-    rm $nixHypr_cache_folder/restart-wpauto
-    $HOME/.config/nixHypr/scripts/nixHypr-wallpaper-automation &
-  fi
   hyprctl reload
   rm $HOME/.config/nixHypr/settings/gamemode-enabled
   notify_user --a "${APP_NAME}" \
@@ -35,10 +31,6 @@ else
   if [ -f $gamemode_monitor ]; then
     cat $HOME/.config/hypr/conf/monitor.conf > $nixHypr_cache_folder/last_monitor.conf
     echo "source = $gamemode_monitor" > $HOME/.config/hypr/conf/monitor.conf
-  fi
-  if [ -f $nixHypr_cache_folder/wallpaper-automation ]; then
-    touch $nixHypr_cache_folder/restart-wpauto
-    $HOME/.config/nixHypr/scripts/nixHypr-wallpaper-automation
   fi
   hyprctl --batch "\
     keyword animations:enabled 0;\

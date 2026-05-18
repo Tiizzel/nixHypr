@@ -30,16 +30,6 @@ rule(".*waypaper.*", nil, { float = true, center = true, pin = true, size = "900
 -- Newelle
 rule("io.github.qwersyk.Newelle", nil, { float = true, center = true, pin = true, size = "1000 700" })
 
--- nixHypr Calendar
-rule("com.nixHypr.calendar", nil, { float = true, move = "21 76", pin = true, size = "400 400" })
-
--- nixHypr Sidebar
-rule("com.nixHypr.sidebar", nil, { float = true, move = "monitor_w-window_w-21 76", pin = true, size = "400 660" })
-
--- nixHypr Welcome
-rule("com.nixHypr.welcome", nil, { float = true, center = true, pin = true, size = "700 600" })
-rule(nil, "nixHypr Welcome",    { float = true, center = true, pin = true, size = "700 600" })
-
 -- nixHypr Settings
 rule("com.nixHypr.settings", nil, { float = true, move = "monitor_w*0.5-window_w*0.5 86", pin = true, size = "900 600" })
 rule(nil, "nixHypr Dotfiles Settings", { float = true, move = "monitor_w*0.5-window_w*0.5 86", pin = true, size = "900 600" })
@@ -70,9 +60,6 @@ rule(nil, "^([Pp]icture[-\\s]?[Ii]n[-\\s]?[Pp]icture)(.*)$", { float = true, pin
 
 -- General floating
 rule("dotfiles-floating", nil, { float = true, center = true, size = "1000 700" })
-
--- Dotfiles Sidepad
-rule("dotfiles-sidepad", nil, { float = true, pin = true, center = true, size = "1000 700" })
 
 -- TaterClient / DDNet fullscreen on launch
 rule(".*[Dd][Dd][Nn]et.*", nil, { fullscreen = true })

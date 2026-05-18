@@ -2,7 +2,7 @@
 
 {
   flake.nixosModules.drivers = { pkgs, ... }: {
-    # 🎮 AMDGPU & GRAPHICS HARDWARE
+    # AMDGPU & GRAPHICS HARDWARE
     hardware.graphics = {
       enable = true;
       enable32Bit = true; # Critical for 32-bit games (Steam/Wine)
@@ -14,13 +14,15 @@
       initrd.enable = true;
     };
 
-    # 🏎️ PERFORMANCE & LATENCY TUNING
+    # PERFORMANCE & LATENCY TUNING
     environment.variables = {
       # Enable a large shader cache size (forces Mesa to cache shaders to prevent in-game compilation stutter)
       MESA_SHADER_CACHE_MAX_SIZE = "4G";
     };
 
-    # 🛠️ AMDGPU CONTROLLER & OVERCLOCKING (LACT)
+    services.xserver.videoDrivers = ["amdgpu"];
+
+    # AMDGPU CONTROLLER & OVERCLOCKING (LACT)
     # Enable LACT system daemon for fan curves, voltage control, and monitoring
     services.lact = {
       enable = true;

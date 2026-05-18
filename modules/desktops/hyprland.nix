@@ -43,7 +43,6 @@
       jq
       socat
       libnotify
-      swaynotificationcenter
       pyprland
       brightnessctl # added because hypridle uses it
       nwg-dock-hyprland

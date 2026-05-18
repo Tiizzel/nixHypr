@@ -42,7 +42,6 @@
         "ohmyposh".source = config.lib.file.mkOutOfStoreSymlink "${d}/ohmyposh";
         "qt6ct".source = config.lib.file.mkOutOfStoreSymlink "${d}/qt6ct";
         "quickshell".source = config.lib.file.mkOutOfStoreSymlink "${d}/quickshell";
-        "swaync".source = config.lib.file.mkOutOfStoreSymlink "${d}/swaync";
         "vim".source = config.lib.file.mkOutOfStoreSymlink "${d}/vim";
         "waypaper".source = config.lib.file.mkOutOfStoreSymlink "${d}/waypaper";
         "wlogout".source = config.lib.file.mkOutOfStoreSymlink "${d}/wlogout";

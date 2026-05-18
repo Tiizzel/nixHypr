@@ -27,6 +27,7 @@
         config.flake.homeModules.git
         config.flake.homeModules.lazygit
         config.flake.homeModules.pay-respects
+        config.flake.homeModules.zoxide
       ];
       home.stateVersion = "25.11";
     };

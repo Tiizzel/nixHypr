@@ -13,7 +13,6 @@
       inotify-tools
       htop
       xclip
-      fzf
       cargo
       eza
       libnotify

@@ -42,12 +42,3 @@ info "NixHypr Dotfiles Settings started"
 # Start Quickshell Overview
 qs -p $HOME/.config/quickshell/overview &
 info "Quickshell Overview started"
-
-# Start NixHypr Welcome App
-if [ ! -f $HOME/.cache/nixHypr-welcome-autostart ]; then
-    sleep 3
-    qs -c nixHypr-shell ipc call welcome toggle
-    info "NixHypr Welcome started"
-else
-    info "NixHypr Welcome disabled"
-fi

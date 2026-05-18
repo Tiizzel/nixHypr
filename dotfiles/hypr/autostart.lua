@@ -9,24 +9,17 @@ hl.on("hyprland.start", function()
     -- Start Polkit
     hl.exec_cmd("systemctl --user start polkit-gnome-authentication-agent-1")
 
-    -- Restore Wallpaper
-    hl.exec_cmd(home .. "/nixHypr/scripts/nixHypr-wallpaper-app --restore")
-
     -- Autostart script
-    hl.exec_cmd(home .. "/nixHypr/scripts/nixHypr-autostart")
+    hl.exec_cmd(home .. "/.config/nixHypr/scripts/nixHypr-autostart")
 
     -- Load GTK settings
     hl.exec_cmd(home .. "/.config/hypr/scripts/gtk.sh")
-
-    -- Load Notification Daemon
-    hl.exec_cmd("swaync")
 
     -- Using hypridle to start hyprlock
     hl.exec_cmd("hypridle")
 
     -- Load cliphist history
     hl.exec_cmd("wl-paste --watch cliphist store")
-
 
     -- Start User Applications on Startup
     hl.exec_cmd("zen-beta")

@@ -81,8 +81,6 @@ Item {
     // Legacy Specific Properties (Bound to Settings.qml)
     // =========================================================================
     property real uiScale: 1.0
-    property bool openGuideAtStartup: true
-    property bool topbarHelpIcon: true
     property int workspaceCount: 8
     property int initialWorkspaceCount: 8
     property string wallpaperDir: Quickshell.env("WALLPAPER_DIR") || (homeDir + "/Pictures/Wallpapers")
@@ -101,8 +99,6 @@ Item {
     function saveAppSettings() {
         let configObj = {
             "uiScale": config.uiScale,
-            "openGuideAtStartup": config.openGuideAtStartup,
-            "topbarHelpIcon": config.topbarHelpIcon,
             "wallpaperDir": config.wallpaperDir,
             "language": config.language,
             "kbOptions": config.kbOptions,
@@ -324,8 +320,6 @@ Item {
                         
                         // Map explicitly defined properties
                         if (config.rawSettings.uiScale !== undefined) config.uiScale = config.rawSettings.uiScale;
-                        if (config.rawSettings.openGuideAtStartup !== undefined) config.openGuideAtStartup = config.rawSettings.openGuideAtStartup;
-                        if (config.rawSettings.topbarHelpIcon !== undefined) config.topbarHelpIcon = config.rawSettings.topbarHelpIcon;
                         if (config.rawSettings.wallpaperDir !== undefined) {
                             let wp = config.rawSettings.wallpaperDir;
                             if (wp.indexOf("~/") === 0) {

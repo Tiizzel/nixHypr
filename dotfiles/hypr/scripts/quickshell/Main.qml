@@ -124,6 +124,8 @@ PanelWindow {
     }
 
     Component.onCompleted: {
+        Quickshell.execDetached(["mkdir", "-p", paths.runDir]);
+        Quickshell.execDetached(["bash", "-c", "echo '0' > " + paths.runDir + "/notification_count"]);
         Qt.callLater(() => preloadWidget("settings"));
         preloadStaggerTimer.start();
     }
@@ -485,11 +487,20 @@ PanelWindow {
         masterWindow.targetH = t.h;
 
         let props = {};
-        if (newWidget === "wallpaper") props["widgetArg"] = arg;
+        if (newWidget === "wallpaper") {
+            props["widgetArg"] = arg;
+        } else if (newWidget === "notifications") {
+            props["notifModel"] = masterWindow.notifModel;
+            props["liveNotifs"] = masterWindow.liveNotifs;
+        }
 
         let cached = widgetCache[newWidget];
         if (cached) {
             if (newWidget === "wallpaper" && cached.widgetArg !== undefined) cached.widgetArg = arg;
+            if (newWidget === "notifications") {
+                if (cached.notifModel !== undefined) cached.notifModel = masterWindow.notifModel;
+                if (cached.liveNotifs !== undefined) cached.liveNotifs = masterWindow.liveNotifs;
+            }
             if (arg !== "" && cached.activeMode !== undefined) cached.activeMode = arg;
 
             cached.visible = true;

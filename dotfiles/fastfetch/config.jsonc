@@ -64,9 +64,17 @@
             "type": "shell"
         },
         {
+            "key": "│ {#32}󰍹 monitor {#keys}│",
+            "type": "display"
+        },
+        {
             "key": "│ {#33}󰍛 cpu     {#keys}│",
             "type": "cpu",
             "showPeCoreCount": true
+        },
+        {
+            "key": "│ {#33}󰢮 gpu     {#keys}│",
+            "type": "gpu"
         },
         {
             "key": "│ {#34}󰉉 disk    {#keys}│",
