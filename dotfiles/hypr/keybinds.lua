@@ -3,8 +3,9 @@
 -- -----------------------------------------------------
 
 local mainMod = "SUPER"
-local HYPRSCRIPTS = "/home/tiizzel/.config/hypr/scripts"
-local SCRIPTS = "/home/tiizzel/nixHypr/scripts"
+local home = os.getenv("HOME")
+local HYPRSCRIPTS = home .. "/.config/hypr/scripts"
+local SCRIPTS = home .. "/nixHypr/scripts"
 local editor = "antigravity"
 local browser = "zen-beta"
 local filemanager = "thunar"
@@ -97,16 +98,16 @@ hl.bind(mainMod .. " + ALT + A",   hl.dsp.exec_cmd(HYPRSCRIPTS .. "/text-extract
 hl.bind(mainMod .. " + CTRL + W",  hl.dsp.exec_cmd(SCRIPTS .. "/nixHypr-wallpaper-app"))
 hl.bind(mainMod .. " + ALT + W",   hl.dsp.exec_cmd(SCRIPTS .. "/nixHypr-wallpaper-automation"))
 hl.bind(mainMod .. " + K",         hl.dsp.exec_cmd(HYPRSCRIPTS .. "/keybindings.sh"))
-hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("/home/tiizzel/.config/waybar/launch.sh"))
-hl.bind(mainMod .. " + CTRL + B",  hl.dsp.exec_cmd("/home/tiizzel/.config/waybar/toggle.sh"))
+hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd(home .. "/.config/waybar/launch.sh"))
+hl.bind(mainMod .. " + CTRL + B",  hl.dsp.exec_cmd(home .. "/.config/waybar/toggle.sh"))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd(HYPRSCRIPTS .. "/loadconfig.sh"))
-hl.bind(mainMod .. " + CTRL + T",  hl.dsp.exec_cmd("/home/tiizzel/.config/waybar/themeswitcher.sh"))
+hl.bind(mainMod .. " + CTRL + T",  hl.dsp.exec_cmd(home .. "/.config/waybar/themeswitcher.sh"))
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd(SCRIPTS .. "/nixHypr-toggle-theme"))
 hl.bind(mainMod .. " + ALT + G",   hl.dsp.exec_cmd(HYPRSCRIPTS .. "/gamemode.sh"))
 hl.bind(mainMod .. " + CTRL + L",  hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
 hl.bind(mainMod .. " + ALT + L",   hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
 hl.bind(mainMod .. " + SHIFT + H", hl.dsp.exec_cmd(SCRIPTS .. "/nixHypr-toggle-hyprsunset"))
-hl.bind("CTRL + ALT + T",          hl.dsp.exec_cmd("/home/tiizzel/.config/nixHypr/themes/themes.sh"))
+hl.bind("CTRL + ALT + T",          hl.dsp.exec_cmd(home .. "/.config/nixHypr/themes/themes.sh"))
 
 -- ============= WORKSPACES (1-10) =============
 for i = 1, 10 do

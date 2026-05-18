@@ -1,20 +1,22 @@
 -- Autostart configuration
 
 hl.on("hyprland.start", function()
+    local home = os.getenv("HOME")
+
     -- Start Listeners
-    hl.exec_cmd("/home/tiizzel/.config/nixHypr/listeners.sh --startall")
+    hl.exec_cmd(home .. "/.config/nixHypr/listeners.sh --startall")
 
     -- Start Polkit
     hl.exec_cmd("systemctl --user start polkit-gnome-authentication-agent-1")
 
     -- Restore Wallpaper
-    hl.exec_cmd("/home/tiizzel/nixHypr/scripts/nixHypr-wallpaper-app --restore")
+    hl.exec_cmd(home .. "/nixHypr/scripts/nixHypr-wallpaper-app --restore")
 
     -- Autostart script
-    hl.exec_cmd("/home/tiizzel/nixHypr/scripts/nixHypr-autostart")
+    hl.exec_cmd(home .. "/nixHypr/scripts/nixHypr-autostart")
 
     -- Load GTK settings
-    hl.exec_cmd("/home/tiizzel/.config/hypr/scripts/gtk.sh")
+    hl.exec_cmd(home .. "/.config/hypr/scripts/gtk.sh")
 
     -- Load Notification Daemon
     hl.exec_cmd("swaync")
@@ -26,9 +28,14 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("wl-paste --watch cliphist store")
 
 
+    -- Start User Applications on Startup
+    hl.exec_cmd("zen-beta")
+    hl.exec_cmd("vesktop")
+    hl.exec_cmd("spotify")
+
     -- Start autostart cleanup
-    hl.exec_cmd("/home/tiizzel/.config/hypr/scripts/cleanup.sh")
+    hl.exec_cmd(home .. "/.config/hypr/scripts/cleanup.sh")
 end)
 
 -- Load configuration from nixHypr Hyprland Settings App (runs on every reload/start)
-hl.exec_cmd("/home/tiizzel/.config/com.nixHypr.hyprlandsettings/hyprctl.sh")
+hl.exec_cmd(os.getenv("HOME") .. "/.config/com.nixHypr.hyprlandsettings/hyprctl.sh")

@@ -7,7 +7,7 @@
 --
 
 -- Ensure we can find our local modules
-package.path = package.path .. ";/home/tiizzel/.config/hypr/?.lua"
+package.path = package.path .. ";" .. os.getenv("HOME") .. "/.config/hypr/?.lua"
 
 -- -----------------------------------------------------
 -- Modules

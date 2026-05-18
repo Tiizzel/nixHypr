@@ -326,7 +326,16 @@ Item {
                         if (config.rawSettings.uiScale !== undefined) config.uiScale = config.rawSettings.uiScale;
                         if (config.rawSettings.openGuideAtStartup !== undefined) config.openGuideAtStartup = config.rawSettings.openGuideAtStartup;
                         if (config.rawSettings.topbarHelpIcon !== undefined) config.topbarHelpIcon = config.rawSettings.topbarHelpIcon;
-                        if (config.rawSettings.wallpaperDir !== undefined) config.wallpaperDir = config.rawSettings.wallpaperDir;
+                        if (config.rawSettings.wallpaperDir !== undefined) {
+                            let wp = config.rawSettings.wallpaperDir;
+                            if (wp.indexOf("~/") === 0) {
+                                config.wallpaperDir = homeDir + wp.substring(1);
+                            } else if (wp.indexOf("/home/tiizzel") === 0) {
+                                config.wallpaperDir = wp.replace("/home/tiizzel", homeDir);
+                            } else {
+                                config.wallpaperDir = wp;
+                            }
+                        }
                         if (config.rawSettings.language !== undefined && config.rawSettings.language !== "") config.language = config.rawSettings.language;
                         if (config.rawSettings.kbOptions !== undefined) config.kbOptions = config.rawSettings.kbOptions;
                         if (config.rawSettings.workspaceCount !== undefined) {

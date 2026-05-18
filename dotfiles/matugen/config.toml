@@ -100,7 +100,7 @@ output_path = '~/nixHypr/dotfiles/zen/chrome/userContent.css'
 
 [templates.zed]
 input_path = 'templates/zed.json'
-output_path = '/home/tiizzel/nixHypr/dotfiles/zed/themes/matugen.json'
+output_path = '~/nixHypr/dotfiles/zed/themes/matugen.json'
 
 [templates.nixHypr_shell]
 input_path = "~/.config/matugen/templates/quickshell.qml"

@@ -66,7 +66,7 @@ Item {
 
     function triggerPowerAction(action) {
         masterWindow.switchWidget("hidden", "");
-        Quickshell.execDetached(["/home/tiizzel/.config/hypr/scripts/power.sh", action]);
+        Quickshell.execDetached([Config.hyprDir + "/scripts/power.sh", action]);
     }
 
     Keys.onPressed: (event) => {

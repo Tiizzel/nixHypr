@@ -1,7 +1,7 @@
 { inputs, config, ... }:
 
 {
-  flake.nixosModules.sops = { pkgs, ... }: {
+  flake.nixosModules.sops = { pkgs, hostVars, ... }: {
     imports = [
       inputs.sops-nix.nixosModules.sops
     ];
@@ -17,8 +17,8 @@
       age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
       secrets.sshAuthorizedKey = { neededForUsers = true; };
       secrets.githubSshKey = {
-        path = "/home/tiizzel/.ssh/id_ed25519";
-        owner = "tiizzel";
+        path = "/home/${hostVars.username}/.ssh/id_ed25519";
+        owner = hostVars.username;
         mode = "0600";
       };
     };

@@ -4,7 +4,7 @@ let
   hostVars = import ../../hosts/nixos/variables.nix;
 in
 {
-  flake.nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.${hostVars.hostName} = inputs.nixpkgs.lib.nixosSystem {
     specialArgs = { inherit inputs hostVars; };
     modules = [
       { nixpkgs.hostPlatform = "x86_64-linux"; }

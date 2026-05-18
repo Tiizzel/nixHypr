@@ -30,7 +30,10 @@
         "edge-flags.conf".source = config.lib.file.mkOutOfStoreSymlink "${d}/edge-flags.conf";
         "fastfetch".source = config.lib.file.mkOutOfStoreSymlink "${d}/fastfetch";
         "fish".source = config.lib.file.mkOutOfStoreSymlink "${d}/fish";
-        "gtk-3.0".source = config.lib.file.mkOutOfStoreSymlink "${d}/gtk-3.0";
+        "gtk-3.0/colors.css".source = config.lib.file.mkOutOfStoreSymlink "${d}/gtk-3.0/colors.css";
+        "gtk-3.0/gtk.css".source = config.lib.file.mkOutOfStoreSymlink "${d}/gtk-3.0/gtk.css";
+        "gtk-3.0/settings.ini".source = config.lib.file.mkOutOfStoreSymlink "${d}/gtk-3.0/settings.ini";
+        "gtk-3.0/bookmarks".text = "file:///home/${hostVars.username}/nixHypr\n";
         "gtk-4.0".source = config.lib.file.mkOutOfStoreSymlink "${d}/gtk-4.0";
         "hypr".source = config.lib.file.mkOutOfStoreSymlink "${d}/hypr";
         "kitty".source = config.lib.file.mkOutOfStoreSymlink "${d}/kitty";

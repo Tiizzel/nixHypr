@@ -103,3 +103,7 @@ hl.window_rule({
 -- Idle Inhibition for Fullscreen Windows
 hl.window_rule({ match = { fullscreen = true }, idle_inhibit = "fullscreen" })
 
+-- Startup Applications Workspace Assignments
+rule("zen-beta", nil, { workspace = "1" })
+rule("vesktop", nil, { workspace = "2" })
+rule("spotify", nil, { workspace = "2" })

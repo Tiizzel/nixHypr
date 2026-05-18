@@ -2,7 +2,7 @@
   "keybinds": [],
   "openGuideAtStartup": true,
   "topbarHelpIcon": true,
-  "wallpaperDir": "/home/tiizzel/Pictures/Wallpapers",
+  "wallpaperDir": "~/Pictures/Wallpapers",
   "language": "en",
   "kbOptions": "grp:alt_shift_toggle",
   "workspaceCount": 8,
