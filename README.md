@@ -78,6 +78,89 @@ The project has a dendritic layout for module imports:
 
 ---
 
+## ⌨️ Keybindings
+
+The primary modifier key is **`SUPER`** (the Windows key). Below are the default hotkeys structured by category:
+
+### 🚀 Application Launchers
+| Binding | Action |
+|---|---|
+| `SUPER` + `T` | Open Terminal (Kitty) |
+| `SUPER` + `B` | Open Web Browser (Zen) |
+| `SUPER` + `F` | Open File Manager (Thunar) |
+| `SUPER` + `Z` | Open Text Editor (Zed) |
+| `SUPER` + `Y` | Open Terminal File Manager (Yazi) |
+| `SUPER` + `SHIFT` + `D` | Open Discord (Vesktop) |
+| `SUPER` + `SHIFT` + `T` | Toggle Scratchpad Terminal |
+| `SUPER` + `E` | Open Emoji Picker |
+| `SUPER` + `O` | Open OBS Studio |
+| `SUPER` + `G` | Open GIMP |
+| `SUPER` + `ALT` + `M` | Open Audio Controller (Pavucontrol) |
+
+### 🪟 Window Management & Navigation
+| Binding | Action |
+|---|---|
+| `SUPER` + `Q` | Close Active Window |
+| `SUPER` + `SHIFT` + `Q` | Force Kill Active Process |
+| `SUPER` + `SHIFT` + `F` | Toggle Window Floating |
+| `SUPER` + `ALT` + `F` | Toggle All Windows Floating |
+| `SUPER` + `CTRL` + `F` | Toggle Fullscreen |
+| `SUPER` + `P` | Toggle Pseudo-Tiling |
+| `SUPER` + `SHIFT` + `I` | Cycle Split Layout (Horizontal/Vertical) |
+| `SUPER` + `Arrow` / `h/j/k/l` | Shift Focus (Left, Down, Up, Right) |
+| `SUPER` + `ALT` + `Arrow` / `h/j/k/l` | Swap Window Positions |
+| `SUPER` + `SHIFT` + `Arrow` / `h/j/k/l` | Move Window in Workspace |
+| `SUPER` + `LClick + Drag` | Move Floating Window |
+| `SUPER` + `RClick + Drag` | Resize Floating Window |
+
+### ❄️ Shell & Widget Controls (Quickshell / Waybar)
+| Binding | Action |
+|---|---|
+| `SUPER` + `SPACE` or `SHIFT` + `Enter` | Toggle Application Launcher |
+| `SUPER` + `Tab` | Toggle Workspace Overview / Window Switcher |
+| `SUPER` + `X` | Toggle Session Power Menu (Logout/Shut Down) |
+| `SUPER` + `SHIFT` + `W` | Toggle Wallpaper Picker Popup |
+| `SUPER` + `V` | Toggle Clipboard History Popup |
+| `SUPER` + `C` | Toggle Network Settings Popup |
+| `SUPER` + `M` | Toggle Calendar Popup |
+| `SUPER` + `ALT` + `P` or `SHIFT` + `,` | Toggle Shell Settings Popup |
+| `SUPER` + `CTRL` + `R` | Toggle Focus Time Mode |
+| `SUPER` + `SHIFT` + `B` | Restart Waybar |
+| `SUPER` + `CTRL` + `B` | Toggle Waybar Visibility |
+
+### 🛠️ System Actions & Utilities
+| Binding | Action |
+|---|---|
+| `SUPER` + `S` | Take Interactive Screenshot (Area Selection) |
+| `SUPER` + `CTRL` + `S` | Take Instant Screenshot (Fullscreen) |
+| `SUPER` + `SHIFT` + `S` or `ALT` + `S` | Take Instant Area Screenshot |
+| `SUPER` + `ALT` + `A` | Trigger OCR Text Extractor |
+| `SUPER` + `CTRL` + `W` | Open Wallpaper Manager App |
+| `SUPER` + `ALT` + `W` | Toggle Wallpaper Automation Service |
+| `SUPER` + `SHIFT` + `M` | Toggle Color Theme Mode (Dark/Light) |
+| `SUPER` + `SHIFT` + `H` | Toggle Blue Light Filter (Hyprsunset) |
+| `SUPER` + `ALT` + `G` | Toggle Gamemode (Disables Animations & Blur) |
+| `SUPER` + `CTRL` + `L` or `ALT` + `L` | Lock Session Screen (Hyprlock) |
+| `SUPER` + `SHIFT` + `R` | Force Reload Hyprland Configuration |
+| `CTRL` + `ALT` + `T` | Open Theme Selection Menu |
+| `SUPER` + `K` | Display On-Screen Keybinding Cheat Sheet |
+
+### 🔢 Workspaces & Media Keys
+| Binding | Action |
+|---|---|
+| `SUPER` + `1-9` | Switch to Workspace 1-9 |
+| `SUPER` + `SHIFT` + `1-9` | Move Window to Workspace 1-9 |
+| `SUPER` + `N` | Toggle Magic Special Workspace |
+| `SUPER` + `SHIFT` + `SPACE` | Move Active Window to Magic Workspace |
+| `SUPER` + `Mouse Wheel` | Cycle workspaces (Next/Previous) |
+| `ALT` + `Tab` | Cycle window stack |
+| `Brightness keys` | Set Brightness Up/Down (5% increments) |
+| `Volume Up/Down` | Set Volume Raise/Lower |
+| `Mute / Mic Mute` | Toggle Audio / Microphone muting |
+| `Play / Pause / Next / Prev` | Control media playbacks (Playerctl) |
+
+---
+
 ## ⚙️ Customization
 
 ### Central Variables
