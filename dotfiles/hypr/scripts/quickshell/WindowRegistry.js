@@ -43,6 +43,7 @@ function getLayout(name, mx, my, mw, mh, userScale) {
         "monitors":  { w: s(800, scale), h: s(650, scale), rx: Math.floor((mw/2)-(s(800, scale)/2)), ry: Math.floor((mh/2)-(s(650, scale)/2)), comp: "monitors/MonitorPopup.qml" },
         "stewart":   { w: s(800, scale), h: s(650, scale), rx: Math.floor((mw/2)-(s(800, scale)/2)), ry: Math.floor((mh/2)-(s(650, scale)/2)), comp: "stewart/stewart.qml" },
         "session":   { w: s(800, scale), h: s(250, scale), rx: Math.floor((mw/2)-(s(800, scale)/2)), ry: Math.floor((mh/2)-(s(250, scale)/2)), comp: "session/SessionPopup.qml" },
+        "keybinds":  { w: s(950, scale), h: s(700, scale), rx: Math.floor((mw/2)-(s(950, scale)/2)), ry: Math.floor((mh/2)-(s(700, scale)/2)), comp: "keybinds/KeybindsPopup.qml" },
 
         // --- Central Large Tools ---
         "focustime": { w: s(900, scale), h: s(700, scale), rx: Math.floor((mw/2)-(s(900, scale)/2)), ry: Math.floor((mh/2)-(s(700, scale)/2)), comp: "focustime/FocusTimePopup.qml" },

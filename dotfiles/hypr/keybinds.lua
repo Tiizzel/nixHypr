@@ -80,6 +80,7 @@ hl.bind(mainMod .. " + SHIFT + Return", hl.dsp.exec_cmd("quickshell ipc -c nixHy
 hl.bind(mainMod .. " + SHIFT + W",      hl.dsp.exec_cmd("quickshell ipc -c nixHypr-shell call main handleCommand toggle wallpaper ''"))
 hl.bind(mainMod .. " + Tab",            hl.dsp.exec_cmd("quickshell ipc -c overview call overview toggle"))
 hl.bind(mainMod .. " + X",              hl.dsp.exec_cmd("quickshell ipc -c nixHypr-shell call main handleCommand toggle session ''"))
+hl.bind(mainMod .. " + K",              hl.dsp.exec_cmd("quickshell ipc -c nixHypr-shell call main handleCommand toggle keybinds ''"))
 hl.bind(mainMod .. " + C",              hl.dsp.exec_cmd("quickshell ipc -c nixHypr-shell call main handleCommand toggle network ''"))
 hl.bind(mainMod .. " + V",              hl.dsp.exec_cmd("quickshell ipc -c nixHypr-shell call main handleCommand toggle clipboard ''"))
 hl.bind(mainMod .. " + M",              hl.dsp.exec_cmd("quickshell ipc -c nixHypr-shell call main handleCommand toggle calendar ''"))
