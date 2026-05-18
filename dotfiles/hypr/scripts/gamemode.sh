@@ -7,29 +7,33 @@
 # 
 
 
-nixHypr_cache_folder="$HOME/.cache/nixHypr/hyprland-dotfiles"
+# Source global caching/environment
+SCRIPTS_DIR="$(dirname "$(realpath "$0")")"
+source "$SCRIPTS_DIR/caching.sh"
+
+gamemode_state="$QS_STATE_DIR/gamemode-enabled"
+last_monitor_backup="$QS_CACHE_DIR/gamemode_last_monitor.conf"
 gamemode_monitor="$HOME/.config/hypr/conf/monitors/gamemode.conf"
 
 # Notifications
-source "$HOME/.config/nixHypr/scripts/nixHypr-notification-handler"
 APP_NAME="System"
 NOTIFICATION_ICON="joystick"
 
 
-if [ -f $HOME/.config/nixHypr/settings/gamemode-enabled ]; then
-  if [ -f $nixHypr_cache_folder/last_monitor.conf ]; then
-    cat $nixHypr_cache_folder/last_monitor.conf > $HOME/.config/hypr/conf/monitor.conf
-    rm $nixHypr_cache_folder/last_monitor.conf
+if [ -f "$gamemode_state" ]; then
+  if [ -f "$last_monitor_backup" ]; then
+    cat "$last_monitor_backup" > $HOME/.config/hypr/conf/monitor.conf
+    rm "$last_monitor_backup"
   fi
   hyprctl reload
-  rm $HOME/.config/nixHypr/settings/gamemode-enabled
+  rm "$gamemode_state"
   notify_user --a "${APP_NAME}" \
             --i "${NOTIFICATION_ICON}" \
             --s "Gamemode deactivated" \
             --m "Animations and blur are now enabled."
 else
-  if [ -f $gamemode_monitor ]; then
-    cat $HOME/.config/hypr/conf/monitor.conf > $nixHypr_cache_folder/last_monitor.conf
+  if [ -f "$gamemode_monitor" ]; then
+    cat $HOME/.config/hypr/conf/monitor.conf > "$last_monitor_backup"
     echo "source = $gamemode_monitor" > $HOME/.config/hypr/conf/monitor.conf
   fi
   hyprctl --batch "\
@@ -43,7 +47,7 @@ else
     keyword decoration:inactive_opacity 1;\
     keyword decoration:fullscreen_opacity 1;\
     keyword decoration:rounding 0"
-  touch $HOME/.config/nixHypr/settings/gamemode-enabled
+  touch "$gamemode_state"
   notify_user --a "${APP_NAME}" \
           --i "${NOTIFICATION_ICON}" \
           --s "Gamemode activated" \

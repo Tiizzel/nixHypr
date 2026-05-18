@@ -32,3 +32,29 @@ if [ -d "$QS_DIR" ]; then
         qs_ensure_cache "$WIDGET_NAME"
     done
 fi
+
+# Global notify_user helper
+notify_user() {
+    local app="System"
+    local icon="dialog-information"
+    local summary="Notification"
+    local message=""
+    local urgency="normal"
+
+    while [[ "$#" -gt 0 ]]; do
+        case "$1" in
+            --a) app="$2"; shift 2 ;;
+            --i) icon="$2"; shift 2 ;;
+            --s) summary="$2"; shift 2 ;;
+            --m) message="$2"; shift 2 ;;
+            --u) urgency="$2"; shift 2 ;;
+            *) shift ;;
+        esac
+    done
+
+    if command -v notify-send &>/dev/null; then
+        notify-send -u "$urgency" -a "$app" -i "$icon" "$summary" "$message"
+    else
+        echo "[$app] $summary: $message"
+    fi
+}

@@ -1,20 +1,20 @@
 /* Matugen integration */
 :root {
-  --s-base00: #101418;
-  --s-base01: #1c2024;
-  --s-base02: #42474e;
-  --s-base03: #42474e;
-  --s-base04: #8c9198;
-  --s-base05: #e0e2e8;
-  --s-base06: #c2c7ce;
-  --s-base07: #e0e2e8;
+  --s-base00: #0f1416;
+  --s-base01: #1b2022;
+  --s-base02: #40484b;
+  --s-base03: #40484b;
+  --s-base04: #899295;
+  --s-base05: #dee3e6;
+  --s-base06: #bfc8cb;
+  --s-base07: #dee3e6;
   --s-base08: #ffb4ab;
-  --s-base09: #d1bfe7;
-  --s-base0A: #b8c8da;
-  --s-base0B: #054b71;
-  --s-base0C: #4e4162;
-  --s-base0D: #98ccf9;
-  --s-base0E: #394857;
+  --s-base09: #c0c4eb;
+  --s-base0A: #b2cbd3;
+  --s-base0B: #004e5d;
+  --s-base0C: #404565;
+  --s-base0D: #85d2e8;
+  --s-base0E: #344a51;
   --s-base0F: #93000a;
   --rounding: 8px;
 }

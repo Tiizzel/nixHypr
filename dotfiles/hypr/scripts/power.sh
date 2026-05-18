@@ -34,7 +34,6 @@ terminate_clients() {
 
 		echo ":: PID $pid has terminated."
 	done
-	bash $HOME/.config/nixHypr/listeners.sh --stopall
 }
 
 if [[ "$1" == "exit" ]]; then

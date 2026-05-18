@@ -1,5 +1,4 @@
 @import url("../../colors.css");
-@import url("../../../nixHypr/settings/dock-border.css");
 
 window {
   	background: @blur_background8;

@@ -18,7 +18,6 @@ cursor_theme="$(grep 'gtk-cursor-theme-name' "$config" | sed 's/.*\s*=\s*//')"
 cursor_size="$(grep 'gtk-cursor-theme-size' "$config" | sed 's/.*\s*=\s*//')"
 font_name="$(grep 'gtk-font-name' "$config" | sed 's/.*\s*=\s*//')"
 prefer_dark_theme="$(grep 'gtk-application-prefer-dark-theme' "$config" | sed 's/.*\s*=\s*//')"
-terminal=$(cat $HOME/.config/nixHypr/settings/terminal.sh)
 
 # Echo value for debugging
 echo "GTK-Theme:" $gtk_theme
@@ -32,7 +31,6 @@ else
 fi
 echo "Color Theme:" $prefer_dark_theme_value
 echo "Font Name:" $font_name
-echo "Terminal:" $terminal
 
 # Update gsettings
 gsettings set "$gnome_schema" gtk-theme "$gtk_theme"

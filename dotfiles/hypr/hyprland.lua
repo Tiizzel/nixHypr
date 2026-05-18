@@ -78,8 +78,8 @@ hl.config({
     -- General window layout and colors
     -- -----------------------------------------------------
     general = {
-        gaps_in = 10,
-        gaps_out = 20,
+        gaps_in = 3,
+        gaps_out = 6,
         border_size = 2,
         col = {
             active_border = { colors = { colors.primary, colors.on_primary }, angle = 90 },
@@ -101,8 +101,8 @@ hl.config({
 
         blur = {
             enabled = true,
-            size = 4,
-            passes = 4,
+            size = 10,
+            passes = 2,
             new_optimizations = true,
             ignore_opacity = true,
             xray = true,
@@ -110,8 +110,8 @@ hl.config({
 
         shadow = {
             enabled = true,
-            range = 32,
-            render_power = 2,
+            range = 2,
+            render_power = 1,
             color = "rgba(00000050)",
         },
     },

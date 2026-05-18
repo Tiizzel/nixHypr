@@ -182,7 +182,7 @@ Item {
                     echo "" >> ${logFile}
                     echo "[$(date +'%H:%M:%S.%3N')] APPLYING CACHED SEARCH: $DEST_FILE TO $TARGET_MONITORS" >> ${logFile}
                     
-                    ~/.config/nixHypr/scripts/nixHypr-wallpaper "$DEST_FILE" >> ${logFile} 2>&1 && bash "$RELOAD_SCRIPT" >> ${logFile} 2>&1 &
+                    ~/.config/hypr/scripts/wallpaper.sh "$DEST_FILE" >> ${logFile} 2>&1 && bash "$RELOAD_SCRIPT" >> ${logFile} 2>&1 &
                 `;
                 Quickshell.execDetached(["bash", "-c", applyScript]);
             } else {
@@ -218,7 +218,7 @@ Item {
                         echo "" >> ${logFile}
                         echo "[$(date +'%H:%M:%S.%3N')] APPLYING NEW DOWNLOAD: $DEST_FILE TO $TARGET_MONITORS" >> ${logFile}
                         
-                        ~/.config/nixHypr/scripts/nixHypr-wallpaper "$DEST_FILE" >> ${logFile} 2>&1 && bash "$RELOAD_SCRIPT" >> ${logFile} 2>&1 &
+                        ~/.config/hypr/scripts/wallpaper.sh "$DEST_FILE" >> ${logFile} 2>&1 && bash "$RELOAD_SCRIPT" >> ${logFile} 2>&1 &
                     fi
                 `;
                 Quickshell.execDetached(["bash", "-c", downloadScript]);
@@ -249,14 +249,14 @@ Item {
                     done
                 fi
                 
-                ~/.config/nixHypr/scripts/nixHypr-wallpaper "${escThumb}" --skip >> ${logFile} 2>&1 && bash "${escReload}" >> ${logFile} 2>&1 &
+                ~/.config/hypr/scripts/wallpaper.sh "${escThumb}" --skip >> ${logFile} 2>&1 && bash "${escReload}" >> ${logFile} 2>&1 &
             `;
         } else {
             wallpaperCmd = `
                 echo "" >> ${logFile}
                 echo "[$(date +'%H:%M:%S.%3N')] APPLYING LOCAL IMAGE: ${escOriginal} TO ${escOutputs}" >> ${logFile}
                 
-                ~/.config/nixHypr/scripts/nixHypr-wallpaper "${escOriginal}" >> ${logFile} 2>&1 && bash "${escReload}" >> ${logFile} 2>&1 &
+                ~/.config/hypr/scripts/wallpaper.sh "${escOriginal}" >> ${logFile} 2>&1 && bash "${escReload}" >> ${logFile} 2>&1 &
             `;
         }
 

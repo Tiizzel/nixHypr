@@ -37,7 +37,6 @@
         "hypr".source = config.lib.file.mkOutOfStoreSymlink "${d}/hypr";
         "kitty".source = config.lib.file.mkOutOfStoreSymlink "${d}/kitty";
         "matugen".source = config.lib.file.mkOutOfStoreSymlink "${d}/matugen";
-        "nixHypr".source = config.lib.file.mkOutOfStoreSymlink "${d}/nixHypr";
         "nwg-dock-hyprland".source = config.lib.file.mkOutOfStoreSymlink "${d}/nwg-dock-hyprland";
         "ohmyposh".source = config.lib.file.mkOutOfStoreSymlink "${d}/ohmyposh";
         "qt6ct".source = config.lib.file.mkOutOfStoreSymlink "${d}/qt6ct";

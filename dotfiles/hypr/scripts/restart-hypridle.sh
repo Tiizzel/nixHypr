@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-# Notifications
-source "$HOME/.config/nixHypr/scripts/nixHypr-notification-handler"
+# Source global caching/environment
+SCRIPTS_DIR="$(dirname "$(realpath "$0")")"
+source "$SCRIPTS_DIR/caching.sh"
 
 killall hypridle
 sleep 1

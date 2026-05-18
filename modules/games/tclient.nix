@@ -10,7 +10,7 @@
     xdg.desktopEntries.tclient = {
       name = "TaterClient";
       genericName = "Teeworlds / DDNet Client";
-      exec = "systemd-cat -t tclient TaterClient-DDNet";
+      exec = "env SDL_VIDEODRIVER=x11 systemd-cat -t tclient TaterClient-DDNet";
       icon = "ddnet";
       categories = [ "Game" ];
       terminal = false;
@@ -20,3 +20,4 @@
     home.file.".local/share/ddnet".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/ddnet-data";
   };
 }
+# exec = "systemd-cat -t tclient TaterClient-DDNet";

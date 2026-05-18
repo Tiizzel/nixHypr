@@ -17,23 +17,19 @@ alias shutdown='systemctl poweroff'
 alias v='$EDITOR'
 alias vim='$EDITOR'
 alias wifi='nmtui'
-alias arch-cleanup='~/.config/nixHypr/scripts/arch/cleanup.sh'
-alias apps='~/.config/nixHypr/bin/nixHypr-apps'
-alias screenshot='~/.config/nixHypr/bin/nixHypr-screenshot'
-alias updates='~/.config/nixHypr/scripts/nixHypr-install-system-updates'
-alias filemanager='~/.config/nixHypr/settings/filemanager'
+alias apps='quickshell ipc -c nixHypr-shell call main handleCommand toggle applauncher ""'
+alias screenshot='~/.config/hypr/scripts/screenshot.sh'
+alias updates='nh os switch --update'
+alias filemanager='thunar'
 alias lock='hyprlock'
 alias clock='tty-clock'
-alias system='~/.config/nixHypr/settings/systemmonitor'
-alias quick='~/.config/nixHypr/bin/nixHypr-quicklinks'
-alias wallpaper='~/.config/nixHypr/bin/nixHypr-wallpaper'
-alias settings='nixHypr-dotfiles-settings com.nixHypr.dotfiles'
+alias system='btop'
+alias wallpaper='quickshell ipc -c nixHypr-shell call main handleCommand toggle wallpaper ""'
+alias settings='quickshell ipc -c nixHypr-shell call main handleCommand toggle settings ""'
 
 # -----------------------------------------------------
-# NixHypr Apps
+# NixOS System Management
 # -----------------------------------------------------
-alias nixHypr-settings='qs -p ~/.local/share/nixHypr-dotfiles-settings/quickshell ipc call settings toggle'
-alias nixHypr-hyprland='flatpak run com.nixHypr.hyprlandsettings'
 
 # -----------------------------------------------------
 # Git
@@ -49,10 +45,7 @@ alias gfo="git fetch origin"
 alias gcheck="git checkout"
 alias gcredential="git config credential.helper store"
 
-# -----------------------------------------------------
-# Scripts
-# -----------------------------------------------------
-alias ascii='~/.config/nixHypr/scripts/nixHypr-ascii-header'
+
 
 # -----------------------------------------------------
 # System

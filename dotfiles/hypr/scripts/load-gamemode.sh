@@ -6,8 +6,11 @@
 # /___/                                     
 # 
 
-# Notifications
-source "$HOME/.config/nixHypr/scripts/nixHypr-notification-handler"
+# Source global caching/environment
+SCRIPTS_DIR="$(dirname "$(realpath "$0")")"
+source "$SCRIPTS_DIR/caching.sh"
+
+gamemode_state="$QS_STATE_DIR/gamemode-enabled"
 
 _loadGameMode() {
     hyprctl --batch "\
@@ -20,7 +23,7 @@ _loadGameMode() {
         keyword decoration:rounding 0"
 }
 
-if [ -f $HOME/.config/nixHypr/settings/gamemode-enabled ]; then
+if [ -f "$gamemode_state" ]; then
     _loadGameMode
     notify_user --a "System" \
         --i "joystick" \

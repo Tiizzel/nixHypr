@@ -2,22 +2,31 @@
 # AUTOSTART
 # -----------------------------------------------------
 
-# The 'finder' command (Fuzzy Finder)
 finder() {
-    # Run the script and capture the result
-    local result=$($HOME/.config/nixHypr/bin/nixHypr-finder)
+    local list selected type_icon path_val
+    list=$(find -L . -maxdepth 4 -printf "%y %p\n" 2>/dev/null | awk '
+        $1 == "d" { print " " $2 }
+        $1 == "f" { print "󰈚 " $2 }
+        $1 == "l" { print " " $2 }
+    ' | grep -v " \./$")
 
-    # Check if the script told us to CD
-    if [[ "$result" == TYPE_DIR:* ]]; then
-        local target_dir="${result#TYPE_DIR:}"
-        cd "$target_dir" && ls
-    elif [[ "$result" == TYPE_FILE:* ]]; then
-    # Check if we have a file
-        ${EDITOR:-nano} "${result#TYPE_FILE:}"
+    selected=$(echo "$list" | fzf \
+        --style full \
+        --height 50% \
+        --layout reverse \
+        --border \
+        --prompt "🔍 Finder: " \
+        --with-nth 2..)
+
+    [ -z "$selected" ] && return 0
+
+    type_icon=$(echo "$selected" | cut -d' ' -f1)
+    path_val=$(echo "$selected" | cut -d' ' -f2-)
+
+    if [ "$type_icon" = "" ]; then
+        cd "$path_val" && ls
     else
-    # Return an error
-        echo "Could not read $result" >&2
-        return 1
+        ${EDITOR:-nano} "$path_val"
     fi
 }
 
@@ -25,7 +34,7 @@ finder() {
 # Fastfetch
 # -----------------------------------------------------
 if [[ $(tty) == *"pts"* ]]; then
-    if [ ! -f $HOME/.config/nixHypr/settings/hide-fastfetch ]; then
+    if [ ! -f $HOME/.config/fastfetch/hide-fastfetch ]; then
         fastfetch
     fi
 fi

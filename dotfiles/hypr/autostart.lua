@@ -3,14 +3,16 @@
 hl.on("hyprland.start", function()
     local home = os.getenv("HOME")
 
-    -- Start Listeners
-    hl.exec_cmd(home .. "/.config/nixHypr/listeners.sh --startall")
-
     -- Start Polkit
     hl.exec_cmd("systemctl --user start polkit-gnome-authentication-agent-1")
 
-    -- Autostart script
-    hl.exec_cmd(home .. "/.config/nixHypr/scripts/nixHypr-autostart")
+    -- Initialize Wallpaper
+    hl.exec_cmd(home .. "/.config/hypr/scripts/wallpaper.sh $(cat " .. home .. "/.cache/quickshell/wallpaper/current_wallpaper 2>/dev/null || echo '" .. home .. "/Pictures/Wallpapers/default.jpg')")
+
+    -- Start Quickshell Desktop Shell & Panels
+    hl.exec_cmd("quickshell -c nixHypr-shell")
+    hl.exec_cmd("quickshell -p " .. home .. "/.config/quickshell/overview")
+    hl.exec_cmd("PROFILE=com.nixHypr.dotfiles quickshell -p " .. home .. "/.local/share/nixHypr-dotfiles-settings/quickshell")
 
     -- Load GTK settings
     hl.exec_cmd(home .. "/.config/hypr/scripts/gtk.sh")

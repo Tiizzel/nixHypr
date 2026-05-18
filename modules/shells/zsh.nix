@@ -2,14 +2,49 @@
 
 {
   flake.nixosModules.zsh = { pkgs, ... }: {
-    programs.zsh.enable = true;
+    programs.zsh = {
+      enable = true;
+      interactiveShellInit = ''
+        # Custom fc function for cleaning nix generations
+        fc() {
+          if [[ "$*" == *"-h"* ]] || [[ "$*" == *"--help"* ]]; then
+            nh clean all --help
+            return 0
+          fi
+
+          local keep=""
+          local args=()
+
+          while [[ $# -gt 0 ]]; do
+            if [[ "$1" =~ ^[0-9]+''$ ]]; then
+              keep="$1"
+            else
+              args+=("$1")
+            fi
+            shift
+          done
+
+          if [ -z "$keep" ]; then
+            echo -n "How many generations to keep? [5]: "
+            read -r keep
+            keep="''${keep:-5}"
+          fi
+
+          if [[ ! "$keep" =~ ^[0-9]+''$ ]]; then
+            echo "Error: Keep count must be a number."
+            return 1
+          fi
+
+          nh clean all --keep "$keep" "''${args[@]}"
+        }
+      '';
+    };
     environment.shellAliases = {
       sv = "sudo nvim";
       v = "nvim";
       c = "clear";
       fr = "nh os switch";
       fu = "nh os switch --update";
-      fc = "nh clean all";
     };
     environment.systemPackages = [
       pkgs.oh-my-posh
