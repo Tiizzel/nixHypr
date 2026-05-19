@@ -4,7 +4,7 @@
 # Quickshell Manager Script (Reference Version)
 # -----------------------------------------------------------------------------
 # Adjusting to local structure
-SHELL_QML_PATH="$HOME/.config/hypr/scripts/quickshell/shell.qml"
+SHELL_QML_PATH="$HOME/.config/quickshell/nixHypr-shell/shell.qml"
 
 # -----------------------------------------------------------------------------
 ACTION="$1"

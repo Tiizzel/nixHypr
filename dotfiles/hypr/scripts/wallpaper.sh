@@ -204,13 +204,6 @@ info "Matugen updated"
 qs -c nixHypr-shell ipc call main forceReload
 info "Quickshell Theme updated"
 
-# Reload nwg-dock-hyprland
-if pgrep -x "nwg-dock-hyprlan" > /dev/null || pgrep -f "nwg-dock-hyprland" > /dev/null; then
-    nohup bash -c "$HOME/.config/nwg-dock-hyprland/launch.sh" > /dev/null 2>&1 &
-    disown
-    info "nwg-dock-hyprland reloaded"
-fi
-
 # Update Pywalfox
 if type pywalfox >/dev/null 2>&1; then
     pywalfox update

@@ -37,7 +37,7 @@ hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("OZONE_PLATFORM", "wayland")
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "wayland")
-hl.env("SDL_VIDEODRIVER", "wayland")
+hl.env("SDL_VIDEODRIVER", "x11")
 hl.env("QS_NO_RELOAD_POPUP", "1")
 
 -- -----------------------------------------------------

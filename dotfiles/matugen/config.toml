@@ -1,9 +1,5 @@
 [config]
 
-[templates.colorsjson]
-input_path = '~/.config/matugen/templates/colors.json'
-output_path = '~/.config/hypr/colors/colors.json'
-
 [templates.kitty]
 input_path = '~/.config/matugen/templates/kitty-colors.conf'
 output_path = '~/.config/kitty/colors-matugen.conf'
@@ -13,10 +9,6 @@ post_hook = 'pkill -SIGUSR1 kitty'
 input_path = '~/.config/matugen/templates/btop.theme'
 output_path = '~/.config/btop/themes/matugen.theme'
 
-[templates.hyprland]
-input_path = '~/.config/matugen/templates/hyprland-colors.conf'
-output_path = '~/.config/hypr/colors.conf'
-post_hook = 'hyprctl reload'
 [templates.gtk3]
 input_path = '~/.config/matugen/templates/gtk-colors.css'
 output_path = '~/.config/gtk-3.0/colors.css'
@@ -32,31 +24,10 @@ output_path = '~/.cache/wal/colors.json'
 [templates.swaync]
 input_path = '~/.config/matugen/templates/colors.css'
 output_path = '~/.config/swaync/colors.css'
-[templates.nwgdock]
-input_path = '~/.config/matugen/templates/colors.css'
-output_path = '~/.config/nwg-dock-hyprland/colors.css'
 
 [templates.sequences]
 input_path = '~/.config/matugen/templates/sequences'
 output_path = '~/.cache/wal/sequences'
-
-[templates.primary]
-input_path = '~/.config/matugen/templates/primary'
-output_path = '~/.config/hypr/colors/primary'
-
-[templates.secondary]
-input_path = '~/.config/matugen/templates/secondary'
-output_path = '~/.config/hypr/colors/secondary'
-
-[templates.on_surface]
-input_path = '~/.config/matugen/templates/onsurface'
-output_path = '~/.config/hypr/colors/onsurface'
-
-[templates.on_primary]
-input_path = '~/.config/matugen/templates/onprimary'
-output_path = '~/.config/hypr/colors/onprimary'
-
-
 
 [templates.quickshell_overview]
 input_path  = "~/.config/matugen/templates/quickshell.qml"
@@ -70,32 +41,32 @@ post_hook = "jq --slurpfile palette ~/.config/ohmyposh/colors.json '. + $palette
 
 [templates.firefox_chrome]
 input_path = '~/.config/matugen/templates/firefox-userChrome.css'
-output_path = '~/nixHypr/dotfiles/firefox/chrome/userChrome.css'
+output_path = '~/.mozilla/firefox/default/chrome/userChrome.css'
 
 [templates.firefox_content]
 input_path = '~/.config/matugen/templates/firefox-userContent.css'
-output_path = '~/nixHypr/dotfiles/firefox/chrome/userContent.css'
+output_path = '~/.mozilla/firefox/default/chrome/userContent.css'
 
 [templates.zen_chrome]
 input_path = '~/.config/matugen/templates/zen-userChrome.css'
-output_path = '~/nixHypr/dotfiles/zen/chrome/userChrome.css'
+output_path = '~/.zen/aiodjulf.Default Profile/chrome/userChrome.css'
 
 [templates.zen_content]
 input_path = '~/.config/matugen/templates/zen-userContent.css'
-output_path = '~/nixHypr/dotfiles/zen/chrome/userContent.css'
+output_path = '~/.zen/aiodjulf.Default Profile/chrome/userContent.css'
 
 [templates.zed]
 input_path = 'templates/zed.json'
-output_path = '~/nixHypr/dotfiles/zed/themes/matugen.json'
+output_path = '~/.config/zed/themes/matugen.json'
 
 [templates.nixHypr_shell]
 input_path = "~/.config/matugen/templates/quickshell.qml"
-output_path = "~/nixHypr/dotfiles/hypr/scripts/quickshell/MatugenColors.qml"
+output_path = "~/nixHypr/dotfiles/quickshell/nixHypr-shell/MatugenColors.qml"
 post_hook = "quickshell ipc -c nixHypr-shell call main forceReload"
 
 [templates.vesktop]
 input_path = '~/.config/matugen/templates/vesktop.css'
-output_path = '~/nixHypr/dotfiles/vesktop/matugen.css'
+output_path = '~/.config/vesktop/themes/matugen.css'
 
 [templates.spicetify_css]
 input_path = '~/.config/matugen/templates/spicetify-user.css'

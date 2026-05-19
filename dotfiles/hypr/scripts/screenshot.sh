@@ -298,7 +298,7 @@ if [ "$FULL_MODE" = true ] || [ -n "$GEOMETRY" ]; then
     exit 0
 fi
 
-QML_PATH="$HOME/.config/hypr/scripts/quickshell/ScreenshotOverlay.qml"
+QML_PATH="$HOME/.config/quickshell/nixHypr-shell/ScreenshotOverlay.qml"
 
 if pgrep -f "quickshell -p $QML_PATH" > /dev/null; then
     pkill -f "quickshell -p $QML_PATH"

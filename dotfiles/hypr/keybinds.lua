@@ -97,8 +97,7 @@ hl.bind(mainMod .. " + ALT + S",   hl.dsp.exec_cmd(HYPRSCRIPTS .. "/screenshot.s
 hl.bind(mainMod .. " + ALT + A",   hl.dsp.exec_cmd(HYPRSCRIPTS .. "/text-extractor.sh"))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("hyprctl reload"))
 hl.bind(mainMod .. " + ALT + G",   hl.dsp.exec_cmd(HYPRSCRIPTS .. "/gamemode.sh"))
-hl.bind(mainMod .. " + CTRL + L",  hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
-hl.bind(mainMod .. " + ALT + L",   hl.dsp.exec_cmd("pidof hyprlock || hyprlock"))
+hl.bind(mainMod .. " + CTRL + L",  hl.dsp.exec_cmd(HYPRSCRIPTS .. "/lock.sh"))
 hl.bind(mainMod .. " + SHIFT + H", hl.dsp.exec_cmd("pgrep -x hyprsunset && pkill -x hyprsunset || hyprsunset"))
 
 -- ============= WORKSPACES (1-10) =============
@@ -132,7 +131,7 @@ hl.bind("XF86AudioPause",        hl.dsp.exec_cmd("playerctl pause"),      { lock
 hl.bind("XF86AudioNext",         hl.dsp.exec_cmd("playerctl next"),       { locked = true })
 hl.bind("XF86AudioPrev",         hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 hl.bind("XF86AudioMicMute",      hl.dsp.exec_cmd("pactl set-source-mute @DEFAULT_SOURCE@ toggle"), { locked = true, repeating = true })
-hl.bind("XF86ScreenSaver",       hl.dsp.exec_cmd("hyprlock"), { locked = true })
+hl.bind("XF86ScreenSaver",       hl.dsp.exec_cmd(HYPRSCRIPTS .. "/lock.sh"), { locked = true })
 
 -- ============= REPEATING KEYS =============
 hl.bind("ALT + Tab", hl.dsp.window.cycle_next(), { repeating = true })

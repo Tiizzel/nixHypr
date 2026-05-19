@@ -1,0 +1,1 @@
+../../hypr/scripts/caching.sh

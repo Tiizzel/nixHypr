@@ -10,7 +10,7 @@
     xdg.desktopEntries.tclient = {
       name = "TaterClient";
       genericName = "Teeworlds / DDNet Client";
-      exec = "env SDL_VIDEODRIVER=x11 systemd-cat -t tclient TaterClient-DDNet";
+      exec = "systemd-cat -t tclient TaterClient-DDNet";
       icon = "ddnet";
       categories = [ "Game" ];
       terminal = false;

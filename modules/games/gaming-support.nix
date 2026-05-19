@@ -92,6 +92,8 @@
       winetricks # Winetricks
       wine-wayland # Wine Wayland
 
+      scanmem # Cheat Engine
+
       # SDL2 with controller support
       SDL2
 

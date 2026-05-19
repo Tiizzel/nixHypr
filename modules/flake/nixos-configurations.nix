@@ -34,6 +34,10 @@ in
       config.flake.nixosModules.nh
       config.flake.nixosModules.services
       config.flake.nixosModules.sops
+      config.flake.nixosModules.host-packages
+
+      # Login Manager
+      config.flake.nixosModules.sddm
 
       # Desktops
       config.flake.nixosModules.plasma

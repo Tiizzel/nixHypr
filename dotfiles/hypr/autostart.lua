@@ -17,7 +17,7 @@ hl.on("hyprland.start", function()
     -- Load GTK settings
     hl.exec_cmd(home .. "/.config/hypr/scripts/gtk.sh")
 
-    -- Using hypridle to start hyprlock
+    -- Using hypridle to start nixHyprlock
     hl.exec_cmd("hypridle")
 
     -- Load cliphist history
