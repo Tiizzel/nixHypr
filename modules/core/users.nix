@@ -17,10 +17,14 @@
         config.flake.homeModules.symlinks
         config.flake.homeModules.firefox
         config.flake.homeModules.zen
+        config.flake.homeModules.helium
         config.flake.homeModules.vesktop
         config.flake.homeModules.spicetify
         config.flake.homeModules.tclient
         config.flake.homeModules.runelite
+        config.flake.homeModules.retroarch
+        config.flake.homeModules.heroic
+        config.flake.homeModules.cartridges
         config.flake.homeModules.atuin
         config.flake.homeModules.bat
         config.flake.homeModules.fzf

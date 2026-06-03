@@ -24,5 +24,8 @@
   gamingSupportEnable = true;
   steamEnable     = true;
 
-  # 🎨 THEMING & AESTHETICS
+  # ⚙️ BOOTLOADER CONFIGURATION
+  bootloader      = "grub";
+  grubTheme       = "mojave";
+  grubResolution  = "2560x1440";
 }

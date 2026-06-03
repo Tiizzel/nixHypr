@@ -1,0 +1,440 @@
+building the system configuration...
+warning: Git tree '/home/tiizzel/nixHypr' is dirty
+error:
+       … while calling the 'derivationStrict' builtin
+         at «nix-internal»/derivation-internal.nix:37:12:
+           36|
+           37|   strict = derivationStrict drvAttrs;
+             |            ^
+           38|
+
+       … while evaluating derivation 'nixos-system-nixos-26.11.20260531.331800d'
+         whose name attribute is located at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/pkgs/stdenv/generic/make-derivation.nix:651:11
+
+       … while evaluating attribute 'buildCommand' of derivation 'nixos-system-nixos-26.11.20260531.331800d'
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/nixos/modules/system/activation/top-level.nix:63:7:
+           62|       allowSubstitutes = false;
+           63|       buildCommand = systemBuilder;
+             |       ^
+           64|
+
+       … while calling the 'getAttr' builtin
+         at «nix-internal»/derivation-internal.nix:50:17:
+           49|     value = commonAttrs // {
+           50|       outPath = builtins.getAttr outputName strict;
+             |                 ^
+           51|       drvPath = strict.drvPath;
+
+       … while calling the 'derivationStrict' builtin
+         at «nix-internal»/derivation-internal.nix:37:12:
+           36|
+           37|   strict = derivationStrict drvAttrs;
+             |            ^
+           38|
+
+       … while evaluating derivation 'etc'
+         whose name attribute is located at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/pkgs/stdenv/generic/make-derivation.nix:651:11
+
+       … while evaluating attribute 'buildCommand' of derivation 'etc'
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/pkgs/build-support/trivial-builders/default.nix:81:17:
+           80|         enableParallelBuilding = true;
+           81|         inherit buildCommand name;
+             |                 ^
+           82|         passAsFile = [ "buildCommand" ] ++ (derivationArgs.passAsFile or [ ]);
+
+       … from call site
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/nixos/modules/system/etc/etc.nix:56:11:
+           55|         mkdir -p "$out/etc"
+           56|         ${lib.concatMapStringsSep "\n" (
+             |           ^
+           57|           etcEntry:
+
+       … while calling 'concatMapStringsSep'
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/strings.nix:262:13:
+          261|   concatMapStringsSep =
+          262|     sep: f: list:
+             |             ^
+          263|     concatStringsSep sep (map f list);
+
+       … while calling the 'concatStringsSep' builtin
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/strings.nix:263:5:
+          262|     sep: f: list:
+          263|     concatStringsSep sep (map f list);
+             |     ^
+          264|
+
+       … while calling anonymous lambda
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/nixos/modules/system/etc/etc.nix:57:11:
+           56|         ${lib.concatMapStringsSep "\n" (
+           57|           etcEntry:
+             |           ^
+           58|           lib.escapeShellArgs [
+
+       … from call site
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/nixos/modules/system/etc/etc.nix:58:11:
+           57|           etcEntry:
+           58|           lib.escapeShellArgs [
+             |           ^
+           59|             "makeEtcEntry"
+
+       … while calling 'concatMapStringsSep'
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/strings.nix:262:13:
+          261|   concatMapStringsSep =
+          262|     sep: f: list:
+             |             ^
+          263|     concatStringsSep sep (map f list);
+
+       … while calling the 'concatStringsSep' builtin
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/strings.nix:263:5:
+          262|     sep: f: list:
+          263|     concatStringsSep sep (map f list);
+             |     ^
+          264|
+
+       … while calling 'escapeShellArg'
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/strings.nix:1201:5:
+         1200|   escapeShellArg =
+         1201|     arg:
+             |     ^
+         1202|     let
+
+       … while evaluating a branch condition
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/strings.nix:1205:5:
+         1204|     in
+         1205|     if match "[[:alnum:],._+:@%/-]+" string == null then
+             |     ^
+         1206|       "'${replaceString "'" "'\\''" string}'"
+
+       … while calling the 'match' builtin
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/strings.nix:1205:8:
+         1204|     in
+         1205|     if match "[[:alnum:],._+:@%/-]+" string == null then
+             |        ^
+         1206|       "'${replaceString "'" "'\\''" string}'"
+
+       … while evaluating the second argument passed to builtins.match
+
+       … while calling the 'toString' builtin
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/strings.nix:1203:16:
+         1202|     let
+         1203|       string = toString arg;
+             |                ^
+         1204|     in
+
+       … from call site
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/nixos/modules/system/etc/etc.nix:61:16:
+           60|             # Force local source paths to be added to the store
+           61|             "${etcEntry.source}"
+             |                ^
+           62|             etcEntry.target
+
+       … while calling anonymous lambda
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/attrsets.nix:1187:17:
+         1186|         mapAttrs (
+         1187|           name: value:
+             |                 ^
+         1188|           if isAttrs value && cond value then recurse (path ++ [ name ]) value else f (path ++ [ name ]) value
+
+       … from call site
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/attrsets.nix:1188:85:
+         1187|           name: value:
+         1188|           if isAttrs value && cond value then recurse (path ++ [ name ]) value else f (path ++ [ name ]) value
+             |                                                                                     ^
+         1189|         );
+
+       … while calling anonymous lambda
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/modules.nix:283:71:
+          282|           # For definitions that have an associated option
+          283|           declaredConfig = mapAttrsRecursiveCond (v: !isOption v) (_: v: v.value) options;
+             |                                                                       ^
+          284|
+
+       … while evaluating the attribute 'value'
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/modules.nix:1169:7:
+         1168|     // {
+         1169|       value = addErrorContext "while evaluating the option `${showOption loc}':" value;
+             |       ^
+         1170|       inherit (res.defsFinal') highestPrio;
+
+       … while evaluating the option `environment.etc.dbus-1.source':
+
+       … while evaluating the attribute 'mergedValue'
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/modules.nix:1266:5:
+         1265|     # Type-check the remaining definitions, and merge them. Or throw if no definitions.
+         1266|     mergedValue =
+             |     ^
+         1267|       if isDefined then
+
+       … while evaluating a branch condition
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/modules.nix:1275:14:
+         1274|             checkedAndMerged.value
+         1275|         else if all (def: type.check def.value) defsFinal then
+             |              ^
+         1276|           type.merge loc defsFinal
+
+       … while calling the 'all' builtin
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/modules.nix:1275:17:
+         1274|             checkedAndMerged.value
+         1275|         else if all (def: type.check def.value) defsFinal then
+             |                 ^
+         1276|           type.merge loc defsFinal
+
+       … while calling anonymous lambda
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/modules.nix:1275:22:
+         1274|             checkedAndMerged.value
+         1275|         else if all (def: type.check def.value) defsFinal then
+             |                      ^
+         1276|           type.merge loc defsFinal
+
+       … from call site
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/modules.nix:1275:27:
+         1274|             checkedAndMerged.value
+         1275|         else if all (def: type.check def.value) defsFinal then
+             |                           ^
+         1276|           type.merge loc defsFinal
+
+       … while calling 'check'
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/types.nix:729:11:
+          728|         check =
+          729|           x:
+             |           ^
+          730|           let
+
+       … in the right operand of the AND (&&) operator
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/types.nix:746:11:
+          745|           && (inStore == null || inStore == isInStore)
+          746|           && (absolute == null || absolute == isAbsolute);
+             |           ^
+          747|       };
+
+       … in the right operand of the OR (||) operator
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/types.nix:746:32:
+          745|           && (inStore == null || inStore == isInStore)
+          746|           && (absolute == null || absolute == isAbsolute);
+             |                                ^
+          747|       };
+
+       … while calling the 'substring' builtin
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/types.nix:739:26:
+          738|             );
+          739|             isAbsolute = substring 0 1 (toString x) == "/";
+             |                          ^
+          740|             isExpectedType = (
+
+       … while calling the 'toString' builtin
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/types.nix:739:41:
+          738|             );
+          739|             isAbsolute = substring 0 1 (toString x) == "/";
+             |                                         ^
+          740|             isExpectedType = (
+
+       … while calling the 'getAttr' builtin
+         at «nix-internal»/derivation-internal.nix:50:17:
+           49|     value = commonAttrs // {
+           50|       outPath = builtins.getAttr outputName strict;
+             |                 ^
+           51|       drvPath = strict.drvPath;
+
+       … while calling the 'derivationStrict' builtin
+         at «nix-internal»/derivation-internal.nix:37:12:
+           36|
+           37|   strict = derivationStrict drvAttrs;
+             |            ^
+           38|
+
+       … while evaluating derivation 'dbus-1'
+         whose name attribute is located at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/pkgs/stdenv/generic/make-derivation.nix:651:11
+
+       … while evaluating attribute 'serviceDirectories' of derivation 'dbus-1'
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/pkgs/by-name/ma/makeDBusConf/package.nix:19:13:
+           18|   {
+           19|     inherit serviceDirectories suidHelper apparmor;
+             |             ^
+           20|     preferLocalBuild = true;
+
+       … while calling anonymous lambda
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/types.nix:787:26:
+          786|             headError = checkDefsForError check loc defs;
+          787|             value = map (x: x.optionalValue.value or x.mergedValue) evals;
+             |                          ^
+          788|             valueMeta.list = map (v: v.checkedAndMerged.valueMeta) evals;
+
+       … while evaluating the attribute 'optionalValue.value'
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/modules.nix:1332:41:
+         1331|
+         1332|     optionalValue = if isDefined then { value = mergedValue; } else { };
+             |                                         ^
+         1333|   };
+
+       (11 duplicate frames omitted)
+
+       … while evaluating derivation 'system-path'
+         whose name attribute is located at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/pkgs/stdenv/generic/make-derivation.nix:651:11
+
+       … while evaluating attribute 'chosenOutputs' of derivation 'system-path'
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/pkgs/build-support/buildenv/default.nix:113:9:
+          112|
+          113|         chosenOutputs = map (drv: {
+             |         ^
+          114|           paths =
+
+       … while evaluating list element at index 133
+
+       … while evaluating attribute 'paths'
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/pkgs/build-support/buildenv/default.nix:114:11:
+          113|         chosenOutputs = map (drv: {
+          114|           paths =
+             |           ^
+          115|             # First add the usual output(s): respect if user has chosen explicitly,
+
+       … while evaluating list element at index 0
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/pkgs/build-support/buildenv/default.nix:114:11:
+          113|         chosenOutputs = map (drv: {
+          114|           paths =
+             |           ^
+          115|             # First add the usual output(s): respect if user has chosen explicitly,
+
+       … while calling the 'getAttr' builtin
+         at «nix-internal»/derivation-internal.nix:50:17:
+           49|     value = commonAttrs // {
+           50|       outPath = builtins.getAttr outputName strict;
+             |                 ^
+           51|       drvPath = strict.drvPath;
+
+       … while calling the 'derivationStrict' builtin
+         at «nix-internal»/derivation-internal.nix:37:12:
+           36|
+           37|   strict = derivationStrict drvAttrs;
+             |            ^
+           38|
+
+       … while evaluating derivation 'bitwarden-desktop-2026.5.0'
+         whose name attribute is located at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/pkgs/stdenv/generic/make-derivation.nix:651:11
+
+       … while evaluating attribute 'installPhase' of derivation 'bitwarden-desktop-2026.5.0'
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/pkgs/by-name/bi/bitwarden-desktop/package.nix:189:3:
+          188|
+          189|   installPhase = ''
+             |   ^
+          190|     runHook preInstall
+
+       … from call site
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/pkgs/by-name/bi/bitwarden-desktop/package.nix:199:5:
+          198|   ''
+          199|   + lib.optionalString stdenv.hostPlatform.isLinux ''
+             |     ^
+          200|     mkdir -p $out/opt/Bitwarden
+
+       … while calling 'optionalString'
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/strings.nix:766:26:
+          765|   */
+          766|   optionalString = cond: string: if cond then string else "";
+             |                          ^
+          767|
+
+       … from call site
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/pkgs/by-name/bi/bitwarden-desktop/package.nix:203:20:
+          202|
+          203|     makeWrapper '${lib.getExe electron}' "$out/bin/bitwarden" \
+             |                    ^
+          204|       --run "ulimit -c 0" \
+
+       … while calling 'getExe'
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/meta.nix:527:5:
+          526|   getExe =
+          527|     x:
+             |     ^
+          528|     getExe' x (
+
+       … from call site
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/meta.nix:528:5:
+          527|     x:
+          528|     getExe' x (
+             |     ^
+          529|       x.meta.mainProgram or (
+
+       … while calling 'getExe''
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/meta.nix:573:8:
+          572|   getExe' =
+          573|     x: y:
+             |        ^
+          574|     assert assertMsg (isDerivation x)
+
+       … in the condition of the assert statement
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/lib/customisation.nix:432:13:
+          431|           outPath =
+          432|             assert condition;
+             |             ^
+          433|             drv.${outputName}.outPath;
+
+       … while evaluating the attribute 'handled'
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/pkgs/stdenv/generic/check-meta.nix:730:9:
+          729|         valid = "no";
+          730|         handled = handle {
+             |         ^
+          731|           inherit attrs meta;
+
+       … from call site
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/pkgs/stdenv/generic/check-meta.nix:730:19:
+          729|         valid = "no";
+          730|         handled = handle {
+             |                   ^
+          731|           inherit attrs meta;
+
+       … while calling 'handle'
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/pkgs/stdenv/generic/check-meta.nix:671:5:
+          670|   handle =
+          671|     {
+             |     ^
+          672|       attrs,
+
+       … while calling the 'seq' builtin
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/pkgs/stdenv/generic/check-meta.nix:705:5:
+          704|     # Give all warnings first, then error if any
+          705|     builtins.seq (foldl' giveWarning null warnings) withError;
+             |     ^
+          706|
+
+       … while calling the 'throw' builtin
+         at «github:NixOS/nixpkgs/331800de5053fcebacf6813adb5db9c9dca22a0c?narHash=sha256-x5UQuRsH3MqI0U9afaXSNqzTPSeZlRLvFAav2Ux1pNw%3D»/pkgs/stdenv/generic/check-meta.nix:693:13:
+          692|           else
+          693|             throw msg;
+             |             ^
+          694|
+
+       error: Refusing to evaluate package 'electron-39.8.10' in /nix/store/3a2vdn5i7vd2wl654xs8nb52jf1v6cbh-source/pkgs/development/tools/electron/binary/generic.nix:50 because it is marked as insecure
+
+       Known issues:
+        - Electron version 39.8.10 is EOL
+
+       You can install it anyway by allowing this package, using the
+       following methods:
+
+       a) To temporarily allow all insecure packages, you can use an environment
+          variable for a single invocation of the nix tools:
+
+            $ export NIXPKGS_ALLOW_INSECURE=1
+
+          Note: When using `nix shell`, `nix build`, `nix develop`, etc with a flake,
+                then pass `--impure` in order to allow use of environment variables.
+
+       b) for `nixos-rebuild` you can add ‘electron-39.8.10’ to
+          `nixpkgs.config.permittedInsecurePackages` in the configuration.nix,
+          like so:
+
+            {
+              nixpkgs.config.permittedInsecurePackages = [
+                "electron-39.8.10"
+              ];
+            }
+
+       c) For `nix-env`, `nix-build`, `nix-shell` or any other Nix command you can add
+          ‘electron-39.8.10’ to `permittedInsecurePackages` in
+          ~/.config/nixpkgs/config.nix, like so:
+
+            {
+              permittedInsecurePackages = [
+                "electron-39.8.10"
+              ];
+            }
+Command 'nix --extra-experimental-features 'nix-command flakes' build --print-out-paths '.#nixosConfigurations."nixos".config.system.build.toplevel' --dry-run --show-trace' returned non-zero exit status 1.

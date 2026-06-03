@@ -16,7 +16,7 @@
 
       gamescope = {
         enable = true;
-        capSysNice = true;
+        capSysNice = false; # TODO: re-enable once nixpkgs fixes bubblewrap setuid regression (#523200)
         args = [
           "--rt"
           "--expose-wayland"

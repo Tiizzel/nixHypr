@@ -2,6 +2,8 @@
 
 {
   flake.nixosModules.gtk = { pkgs, ... }: {
+    programs.dconf.enable = true;
+
     environment.systemPackages = with pkgs; [
       lxappearance
       nwg-look

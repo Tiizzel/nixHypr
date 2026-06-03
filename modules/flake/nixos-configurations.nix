@@ -71,6 +71,7 @@ in
       # Browsers
       config.flake.nixosModules.firefox
       config.flake.nixosModules.zen
+      config.flake.nixosModules.helium
 
       # CLI tools
       config.flake.nixosModules.git
