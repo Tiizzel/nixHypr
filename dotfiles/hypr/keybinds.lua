@@ -5,7 +5,7 @@
 local mainMod = "SUPER"
 local home = os.getenv("HOME")
 local HYPRSCRIPTS = home .. "/.config/hypr/scripts"
-local editor = "antigravity"
+local editor = "antigravity-ide"
 local browser = "zen-beta"
 local filemanager = "thunar"
 local terminal = "kitty"

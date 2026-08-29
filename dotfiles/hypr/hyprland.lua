@@ -33,7 +33,9 @@ hl.env("GDK_SCALE", "1")
 hl.env("GDK_BACKEND", "wayland,x11,*")
 hl.env("CLUTTER_BACKEND", "wayland")
 hl.env("MOZ_ENABLE_WAYLAND", "1")
+hl.env("XCURSOR_THEME", "Bibata-Modern-Classic")
 hl.env("XCURSOR_SIZE", "24")
+hl.env("HYPRCURSOR_THEME", "Bibata-Modern-Classic")
 hl.env("HYPRCURSOR_SIZE", "24")
 hl.env("OZONE_PLATFORM", "wayland")
 hl.env("ELECTRON_OZONE_PLATFORM_HINT", "wayland")
@@ -44,7 +46,7 @@ hl.env("QS_NO_RELOAD_POPUP", "1")
 -- Cursor
 -- -----------------------------------------------------
 hl.on("hyprland.start", function()
-    hl.exec_cmd("hyprctl setcursor breeze_cursors 24")
+    hl.exec_cmd("hyprctl setcursor Bibata-Modern-Classic 24")
 end)
 
 hl.config({

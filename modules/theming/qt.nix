@@ -10,7 +10,7 @@
 
     environment.systemPackages = with pkgs; [
       libsForQt5.qt5ct
-      libsForQt5.qt5.qtwayland
+      qt5.qtwayland
       kdePackages.qt6ct
       kdePackages.qtwayland
       kdePackages.qtsvg

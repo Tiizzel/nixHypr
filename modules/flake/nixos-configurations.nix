@@ -40,7 +40,7 @@ in
       config.flake.nixosModules.sddm
 
       # Desktops
-      config.flake.nixosModules.plasma
+      # config.flake.nixosModules.plasma
       config.flake.nixosModules.hyprland
 
       # Hardware
@@ -106,6 +106,7 @@ in
       config.flake.nixosModules.screenshot
       config.flake.nixosModules.ocr
       config.flake.nixosModules.quickshell
+      config.flake.nixosModules.nordvpn
     ];
   };
 }

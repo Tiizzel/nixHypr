@@ -39,7 +39,6 @@
       hyprsunset
       wl-clipboard
       cliphist
-      inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
       jq
       socat
       libnotify

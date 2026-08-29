@@ -10,6 +10,7 @@
       kdePackages.breeze-gtk
       gnome-themes-extra
       adw-gtk3
+      bibata-cursors
     ];
   };
 }
