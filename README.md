@@ -5,7 +5,7 @@ This is my personal NixOS and Hyprland configuration. It is built using Nix Flak
 It was originally ported from Stephan Raabe's **ML4W** Hyprland configuration, and I've since rewritten and modularized it to fit NixOS.
 
 
-*   **AI Assistance** - Portions of this NixOS configuration and its ongoing maintenance have been assisted by AI tools to ensure modularity, correctness, and transparency.
+**AI Assistance** - Portions of this NixOS configuration and its ongoing maintenance have been assisted by AI tools.
 
 ---
 
