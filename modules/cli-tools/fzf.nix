@@ -4,6 +4,7 @@
   flake.homeModules.fzf = { pkgs, ... }: {
     programs.fzf = {
       enable = true;
+      historyWidget.command = "";
       enableZshIntegration = true;
       enableFishIntegration = true;
       enableBashIntegration = true;

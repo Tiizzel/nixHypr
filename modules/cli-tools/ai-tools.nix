@@ -4,7 +4,7 @@
   flake.nixosModules.ai-tools = { pkgs, ... }:
     {
       environment.systemPackages = [
-        pkgs.gemini-cli
+        pkgs.antigravity-cli
         pkgs.claude-code
       ];
     };

@@ -76,16 +76,49 @@ hl.window_rule({
     no_blur = true
 })
 
--- Games Exclusions (disable blur, force fullscreen, allow tearing/immediate presentation)
-hl.window_rule({ match = { class = "^(gamescope)$" }, tag = "games" })
-hl.window_rule({ match = { class = "^(steam_app_\\d+)$" }, tag = "games" })
+-- Games Exclusions & Performance (disable blur, force opaque, allow tearing/immediate presentation, inhibit idle)
+local game_matchers = {
+    "^(steam_app_\\d+)$",
+    "^(gamescope)$",
+    "^(.*\\.exe)$",
+    "^[Ww]ine$",
+    "^[Pp]roton.*$",
+    "^[Hh]eroic$",
+    "^[Ll]utris$",
+    "^[Rr]etroarch$",
+    "^[Pp][Cc][Ss][Xx]2$",
+    "^[Rr][Pp][Cc][Ss]3$",
+    "^[Yy]uzu$",
+    "^[Rr]yujinx$",
+    "^[Dd]olphin-emu$",
+    "^[Cc]itra.*$",
+    "^[Pp][Pp][Ss][Ss][Pp][Pp].*$",
+    "^[Oo]su!.*$",
+    ".*[Dd][Dd][Nn]et.*",
+    ".*[Tt]ater[Cc]lient.*",
+    "^[Dd]ota2$",
+    "^[Cc]s2$",
+    "^[Vv]alheim$",
+    "^org\\.prismlauncher\\..*$",
+    "^net\\.minecraft\\..*$"
+}
+
+for _, cls in ipairs(game_matchers) do
+    hl.window_rule({ match = { class = cls }, tag = "games" })
+end
 
 hl.window_rule({
     match = { tag = "games" },
     fullscreen = true,
     no_blur = true,
-    immediate = true
+    opaque = true,
+    opacity = "1.0 override 1.0 override",
+    immediate = true,
+    idle_inhibit = "focus"
 })
+
+-- Steam Floating Dialogs & Popups
+rule("^[Ss]team$", "^(Friends List|Steam - News|Settings|Community|Chat|Screenshot Uploader|Steam Guard|Game Properties|Properties|Add Non-Steam Game|Install|Uninstall|Verify|Steam - Self Updater).*$", { float = true, center = true, no_blur = true })
 
 -- Idle Inhibition for Fullscreen Windows
 hl.window_rule({ match = { fullscreen = true }, idle_inhibit = "fullscreen" })

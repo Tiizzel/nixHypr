@@ -107,7 +107,6 @@ hl.config({
             passes = 2,
             new_optimizations = true,
             ignore_opacity = true,
-            xray = true,
         },
 
         shadow = {
@@ -131,6 +130,10 @@ hl.config({
         pass_mouse_when_bound = false,
     },
 
+    render = {
+        direct_scanout = 2,
+    },
+
     -- -----------------------------------------------------
     -- Misc settings
     -- -----------------------------------------------------
@@ -140,6 +143,7 @@ hl.config({
         initial_workspace_tracking = 1,
         on_focus_under_fullscreen = true,
         allow_session_lock_restore = true,
+        vrr = 0,
     },
 })
 

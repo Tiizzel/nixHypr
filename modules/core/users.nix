@@ -24,6 +24,7 @@
         config.flake.homeModules.retroarch
         config.flake.homeModules.heroic
         config.flake.homeModules.cartridges
+        config.flake.homeModules.shadps4
         config.flake.homeModules.atuin
         config.flake.homeModules.bat
         config.flake.homeModules.fzf

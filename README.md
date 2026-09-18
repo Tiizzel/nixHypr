@@ -4,6 +4,9 @@ This is my personal NixOS and Hyprland configuration. It is built using Nix Flak
 
 It was originally ported from Stephan Raabe's **ML4W** Hyprland configuration, and I've since rewritten and modularized it to fit NixOS.
 
+
+*   **AI Assistance** - Portions of this NixOS configuration and its ongoing maintenance have been assisted by AI tools to ensure modularity, correctness, and transparency.
+
 ---
 
 ## 🎨 Theme & Styling
@@ -205,3 +208,4 @@ To use it after a fresh install:
 *   **[ML4W (Stephan Raabe)](https://github.com/mylinuxforwork)** - This configuration was originally ported from his fantastic ML4W Hyprland setup and then adapted into a modular NixOS flake.
 *   **[ilyamiro (Ilya Miroshnik)](https://github.com/ilyamiro)** - The Quickshell topbar panel, session menus, application launcher, and workspace overview widgets are adapted from his QML configurations.
 *   **[flake-parts](https://github.com/hercules-ci/flake-parts)** & **[import-tree](https://github.com/vic/import-tree)** - Used to easily discover and structure all Nix modules automatically.
+

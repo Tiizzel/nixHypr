@@ -88,6 +88,7 @@ in
       config.flake.nixosModules.gtk
       config.flake.nixosModules.qt
       config.flake.nixosModules.symlinks
+      config.flake.nixosModules.openrgb
 
       # Media
       config.flake.nixosModules.cava

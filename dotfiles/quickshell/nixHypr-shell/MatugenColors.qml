@@ -3,105 +3,105 @@ import QtQuick
 QtObject {
     readonly property string fontFamily: "Fira Sans Semibold"
 	
-		readonly property color background: "#121318"
+		readonly property color background: "#0e1416"
 	
 		readonly property color error: "#ffb4ab"
 	
 		readonly property color error_container: "#93000a"
 	
-		readonly property color inverse_on_surface: "#303036"
+		readonly property color inverse_on_surface: "#2b3133"
 	
-		readonly property color inverse_primary: "#515b92"
+		readonly property color inverse_primary: "#006877"
 	
-		readonly property color inverse_surface: "#e3e1e9"
+		readonly property color inverse_surface: "#dee3e5"
 	
-		readonly property color on_background: "#e3e1e9"
+		readonly property color on_background: "#dee3e5"
 	
 		readonly property color on_error: "#690005"
 	
 		readonly property color on_error_container: "#ffdad6"
 	
-		readonly property color on_primary: "#222c61"
+		readonly property color on_primary: "#00363e"
 	
-		readonly property color on_primary_container: "#dee0ff"
+		readonly property color on_primary_container: "#a2eeff"
 	
-		readonly property color on_primary_fixed: "#0a154b"
+		readonly property color on_primary_fixed: "#001f25"
 	
-		readonly property color on_primary_fixed_variant: "#394379"
+		readonly property color on_primary_fixed_variant: "#004e5a"
 	
-		readonly property color on_secondary: "#2c2f42"
+		readonly property color on_secondary: "#1c3439"
 	
-		readonly property color on_secondary_container: "#dfe1f9"
+		readonly property color on_secondary_container: "#cde7ed"
 	
-		readonly property color on_secondary_fixed: "#171a2c"
+		readonly property color on_secondary_fixed: "#051f24"
 	
-		readonly property color on_secondary_fixed_variant: "#434659"
+		readonly property color on_secondary_fixed_variant: "#334a50"
 	
-		readonly property color on_surface: "#e3e1e9"
+		readonly property color on_surface: "#dee3e5"
 	
-		readonly property color on_surface_variant: "#c6c5d0"
+		readonly property color on_surface_variant: "#bfc8cb"
 	
-		readonly property color on_tertiary: "#44263e"
+		readonly property color on_tertiary: "#262f4d"
 	
-		readonly property color on_tertiary_container: "#ffd7f2"
+		readonly property color on_tertiary_container: "#dbe1ff"
 	
-		readonly property color on_tertiary_fixed: "#2d1228"
+		readonly property color on_tertiary_fixed: "#101a37"
 	
-		readonly property color on_tertiary_fixed_variant: "#5d3c55"
+		readonly property color on_tertiary_fixed_variant: "#3d4665"
 	
-		readonly property color outline: "#90909a"
+		readonly property color outline: "#899295"
 	
-		readonly property color outline_variant: "#46464f"
+		readonly property color outline_variant: "#3f484a"
 	
-		readonly property color primary: "#bac3ff"
+		readonly property color primary: "#83d2e3"
 	
-		readonly property color primary_container: "#394379"
+		readonly property color primary_container: "#004e5a"
 	
-		readonly property color primary_fixed: "#dee0ff"
+		readonly property color primary_fixed: "#a2eeff"
 	
-		readonly property color primary_fixed_dim: "#bac3ff"
+		readonly property color primary_fixed_dim: "#83d2e3"
 	
 		readonly property color scrim: "#000000"
 	
-		readonly property color secondary: "#c3c5dd"
+		readonly property color secondary: "#b1cbd1"
 	
-		readonly property color secondary_container: "#434659"
+		readonly property color secondary_container: "#334a50"
 	
-		readonly property color secondary_fixed: "#dfe1f9"
+		readonly property color secondary_fixed: "#cde7ed"
 	
-		readonly property color secondary_fixed_dim: "#c3c5dd"
+		readonly property color secondary_fixed_dim: "#b1cbd1"
 	
 		readonly property color shadow: "#000000"
 	
-		readonly property color source_color: "#646c9c"
+		readonly property color source_color: "#758a8f"
 	
-		readonly property color surface: "#121318"
+		readonly property color surface: "#0e1416"
 	
-		readonly property color surface_bright: "#39393f"
+		readonly property color surface_bright: "#343a3c"
 	
-		readonly property color surface_container: "#1f1f25"
+		readonly property color surface_container: "#1b2122"
 	
-		readonly property color surface_container_high: "#29292f"
+		readonly property color surface_container_high: "#252b2c"
 	
-		readonly property color surface_container_highest: "#34343a"
+		readonly property color surface_container_highest: "#303637"
 	
-		readonly property color surface_container_low: "#1b1b21"
+		readonly property color surface_container_low: "#171d1e"
 	
-		readonly property color surface_container_lowest: "#0d0e13"
+		readonly property color surface_container_lowest: "#090f10"
 	
-		readonly property color surface_dim: "#121318"
+		readonly property color surface_dim: "#0e1416"
 	
-		readonly property color surface_tint: "#bac3ff"
+		readonly property color surface_tint: "#83d2e3"
 	
-		readonly property color surface_variant: "#46464f"
+		readonly property color surface_variant: "#3f484a"
 	
-		readonly property color tertiary: "#e5bad8"
+		readonly property color tertiary: "#bcc5eb"
 	
-		readonly property color tertiary_container: "#5d3c55"
+		readonly property color tertiary_container: "#3d4665"
 	
-		readonly property color tertiary_fixed: "#ffd7f2"
+		readonly property color tertiary_fixed: "#dbe1ff"
 	
-		readonly property color tertiary_fixed_dim: "#e5bad8"
+		readonly property color tertiary_fixed_dim: "#bcc5eb"
 	
 
     // Catppuccin mappings to Material You color roles

@@ -2,6 +2,6 @@
 
 {
   flake.nixosModules.antigravity = { pkgs, ... }: {
-    environment.systemPackages = [ pkgs.antigravity ];
+    environment.systemPackages = [ pkgs.antigravity-ide ];
   };
 }
