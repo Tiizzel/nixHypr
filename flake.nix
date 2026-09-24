@@ -22,6 +22,11 @@
       url = "github:hyprwm/Hyprland";
     };
 
+    mango = {
+      url = "github:mangowm/mango/wl-only";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     matugen.url = "github:InioX/matugen";
 
     zen-browser = {

@@ -1,0 +1,72 @@
+{ inputs, ... }:
+
+{
+  flake.nixosModules.mangoWM = { pkgs, ... }: {
+    environment.systemPackages = with pkgs; [
+      inputs.mango.packages.${pkgs.stdenv.hostPlatform.system}.default
+      hypridle
+      awww
+      wl-clipboard
+      cliphist
+      jq
+      socat
+      libnotify
+      pyprland
+      brightnessctl
+      nwg-displays
+      slurp
+      grim
+      grimblast
+      imagemagick
+      ffmpeg
+      inotify-tools
+      playerctl
+      pavucontrol
+      pamixer
+      networkmanager
+      bluez
+    ];
+
+    xdg.portal = {
+      enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    };
+
+    security.polkit.enable = true;
+
+    systemd.user.services.polkit-gnome-authentication-agent-1 = {
+      description = "polkit-gnome-authentication-agent-1";
+      wantedBy = [ "graphical-session.target" ];
+      wants = [ "graphical-session.target" ];
+      after = [ "graphical-session.target" ];
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+    };
+
+    services.displayManager.sessionPackages = [
+      inputs.mango.packages.${pkgs.stdenv.hostPlatform.system}.default
+    ];
+
+    environment.sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+      XDG_SESSION_TYPE = "wayland";
+      QT_QPA_PLATFORM = "wayland;xcb";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      GDK_BACKEND = "wayland,x11";
+      SDL_VIDEODRIVER = "wayland,x11";
+      CLUTTER_BACKEND = "wayland";
+    };
+  };
+
+  flake.homeModules.mangoWM = { config, ... }: 
+  let
+    d = "${config.home.homeDirectory}/nixHypr/dotfiles";
+  in {
+    xdg.configFile."mango".source = config.lib.file.mkOutOfStoreSymlink "${d}/mango";
+  };
+}

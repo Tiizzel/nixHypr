@@ -43,13 +43,13 @@ body {
 
 /* Matugen Overrides for better integration */
 :root {
-    --spice-main: #0e1416;
-    --spice-sidebar: #1b2122;
-    --spice-player: #171d1e;
-    --spice-card: #303637;
-    --spice-text: #dee3e5;
-    --spice-button: #83d2e3;
-    --spice-button-active: #a2eeff;
-    --spice-tab-active: #cde7ed;
+    --spice-main: #11140f;
+    --spice-sidebar: #1d211b;
+    --spice-player: #191d17;
+    --spice-card: #32362f;
+    --spice-text: #e1e4da;
+    --spice-button: #a5d395;
+    --spice-button-active: #c1efaf;
+    --spice-tab-active: #d7e8cc;
     --corner-radius: 12px;
 }

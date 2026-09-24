@@ -12,6 +12,7 @@
 
     home-manager.users.${hostVars.username} = { pkgs, ... }: {
       imports = [
+        config.flake.homeModules.mangoWM
         config.flake.homeModules.zsh
         config.flake.homeModules.symlinks
         config.flake.homeModules.firefox

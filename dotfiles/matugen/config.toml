@@ -84,3 +84,8 @@ output_path = '~/nixHypr/dotfiles/antigravity/settings.json'
 input_path = '~/.config/matugen/templates/colors.lua'
 output_path = '~/nixHypr/dotfiles/hypr/colors.lua'
 post_hook = 'hyprctl reload'
+
+[templates.mango_colors]
+input_path = '~/.config/matugen/templates/mango-colors.conf'
+output_path = '~/nixHypr/dotfiles/mango/cfg/colors.conf'
+post_hook = 'mmsg dispatch reload_config'

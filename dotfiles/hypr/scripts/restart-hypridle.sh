@@ -4,7 +4,7 @@
 SCRIPTS_DIR="$(dirname "$(realpath "$0")")"
 source "$SCRIPTS_DIR/caching.sh"
 
-killall hypridle
+pkill -x hypridle || true
 sleep 1
 hypridle &
 

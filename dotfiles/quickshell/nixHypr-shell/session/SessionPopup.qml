@@ -66,7 +66,10 @@ Item {
 
     function triggerPowerAction(action) {
         masterWindow.switchWidget("hidden", "");
-        Quickshell.execDetached([Config.hyprDir + "/scripts/power.sh", action]);
+        let mangoScript = Quickshell.env("HOME") + "/.config/mango/scripts/power.sh";
+        let hyprScript = Config.hyprDir + "/scripts/power.sh";
+        let cmd = "if pgrep -x mango > /dev/null; then " + mangoScript + " " + action + "; else " + hyprScript + " " + action + "; fi";
+        Quickshell.execDetached(["bash", "-c", cmd]);
     }
 
     Keys.onPressed: (event) => {

@@ -16,6 +16,7 @@ require("monitor")
 require("autostart")
 require("keybinds")
 require("windowrules")
+require("layouts")
 local colors = require("colors")
 
 -- -----------------------------------------------------
@@ -87,7 +88,7 @@ hl.config({
             active_border = { colors = { colors.primary, colors.on_primary }, angle = 90 },
             inactive_border = colors.on_primary,
         },
-        layout = "dwindle",
+        layout = "master",
         resize_on_border = true,
         allow_tearing = true,
     },
@@ -120,9 +121,7 @@ hl.config({
     -- -----------------------------------------------------
     -- Layouts
     -- -----------------------------------------------------
-    master = {
-        -- new_status = "master"
-    },
+
 
     binds = {
         workspace_back_and_forth = false,
@@ -168,4 +167,6 @@ hl.animation({ leaf = "fadeLayersIn",  enabled = true, speed = 2, bezier = "menu
 hl.animation({ leaf = "fadeLayersOut", enabled = true, speed = 4.5, bezier = "menu_accel" })
 hl.animation({ leaf = "workspaces",    enabled = true, speed = 7, bezier = "menu_decel", style = "slide" })
 hl.animation({ leaf = "specialWorkspace", enabled = true, speed = 3, bezier = "md3_decel", style = "slidevert" })
+
+-- deleted custom layout
 
